@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class TransactionsManager {
 
-    public static boolean addMoney(CDITeam cdiTeam, int amount) throws SQLException {
+    public static boolean addMoney(CDITeam cdiTeam, int amount) {
         try (Connection connection = DatabaseManager.MAIN_DB.getDatabaseAccess().getConnection()) {
             connection.setAutoCommit(false);
             PreparedStatement statement = connection.prepareStatement("UPDATE team SET golds = golds + ? WHERE name = ?");
