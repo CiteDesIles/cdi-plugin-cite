@@ -1,5 +1,7 @@
 package fr.citedesiles.plugincite;
 
+import fr.citedesiles.plugincite.commands.AdminCommand;
+import fr.citedesiles.plugincite.listener.OnPlayerChat;
 import fr.citedesiles.plugincite.postgresql.CheckTable;
 import fr.citedesiles.plugincite.postgresql.DatabaseManager;
 import fr.citedesiles.plugincite.utils.ConfigManager;
@@ -18,6 +20,10 @@ public class PluginCite extends JavaPlugin {
         getLogger().info("PluginCite enabled");
         configManager = new ConfigManager(this);
         DatabaseManager.initAllDataBaseConnections();
+
+        getServer().getPluginManager().registerEvents(new OnPlayerChat(this), this);
+
+        getCommand("admin").setExecutor(new AdminCommand(this));
         try {
             configManager.loadConfig();
         } catch (IOException e) {
