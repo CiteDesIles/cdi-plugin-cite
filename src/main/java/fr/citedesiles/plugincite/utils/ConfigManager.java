@@ -65,19 +65,9 @@ public class ConfigManager {
 
     public void updateConfig() throws IOException {
         Configuration compiledConfig = YamlConfiguration.loadConfiguration(new File(plugin.getDataFolder(), "config.yml"));
+        configCache = compiledConfig;
 
-        if (configCache == null || configCache.getInt("version") != compiledConfig.getInt("version")) {
-            Configuration config = YamlConfiguration.loadConfiguration(new File(plugin.getDataFolder(), "config.yml"));
-
-            for (String key : compiledConfig.getKeys(false)) {
-                if (!config.contains(key)) {
-                    config.set(key, compiledConfig.get(key));
-                }
-            }
-            config.set("version", compiledConfig.get("version"));
-
-            configCache = config;
-        }
+        // P
     }
 
     public Object configValue(String key) throws IOException {

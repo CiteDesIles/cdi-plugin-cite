@@ -10,35 +10,46 @@ import java.util.concurrent.CompletableFuture;
 
 public class CheckTable {
 
-//    public static void checkTeamTableExist() {
-//        try {
-//            Connection connection = DatabaseManager.MAIN_DB.getDatabaseAccess().getConnection();
-//            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM TEAM");
-//            ResultSet resultSet = preparedStatement.executeQuery();
-//            if (resultSet.next()) {
-//                PluginCite.instance().getLogger().info("Table TEAM exists");
-//            } else {
-//                PluginCite.instance().getLogger().info("Table TEAM does not exist");
-//            }
-//        } catch (SQLException e) {
-//            PluginCite.instance().getLogger().severe("Error while checking if table TEAM exists");
-//        }
-//    }
-//
-//    public static void checkPlayerTableExist() {
-//        try {
-//            Connection connection = DatabaseManager.MAIN_DB.getDatabaseAccess().getConnection();
-//            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM PLAYER");
-//            ResultSet resultSet = preparedStatement.executeQuery();
-//            if (resultSet.next()) {
-//                PluginCite.instance().getLogger().info("Table PLAYER exists");
-//            } else {
-//                PluginCite.instance().getLogger().info("Table PLAYER does not exist");
-//            }
-//        } catch (SQLException e) {
-//            PluginCite.instance().getLogger().severe("Error while checking if table PLAYER exists");
-//        }
-//    }
+    public static void checkTables() {
+        CompletableFuture.runAsync(() -> {
+            checkTeamTableExist();
+            checkPlayerTableExist();
+        });
+    }
+
+    public static void checkTeamTableExist() {
+        try {
+            Connection connection = DatabaseManager.MAIN_DB.getDatabaseAccess().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM TEAM");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                PluginCite.instance().getLogger().info("Table TEAM exists");
+            } else {
+                PluginCite.instance().getLogger().info("Table TEAM does not exist");
+                createTeamTable();
+            }
+            connection.close();
+        } catch (SQLException e) {
+            PluginCite.instance().getLogger().severe("Error while checking if table TEAM exists");
+        }
+    }
+
+    public static void checkPlayerTableExist() {
+        try {
+            Connection connection = DatabaseManager.MAIN_DB.getDatabaseAccess().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM PLAYER");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                PluginCite.instance().getLogger().info("Table PLAYER exists");
+            } else {
+                PluginCite.instance().getLogger().info("Table PLAYER does not exist");
+                createPlayerTable();
+            }
+            connection.close();
+        } catch (SQLException e) {
+            PluginCite.instance().getLogger().severe("Error while checking if table PLAYER exists");
+        }
+    }
 
     public static void createTeamTable() {
         /*
@@ -46,6 +57,7 @@ public class CheckTable {
         - name VARCHAR(255) PRIMARY KEY
         - tag VARCHAR(255)
         - color VARCHAR(255)
+        - team_leader VARCHAR(255)
         - display_name VARCHAR(255)
         - golds BIGINT
         - supportPoints BIGINT
@@ -53,9 +65,10 @@ public class CheckTable {
          */
         try {
             Connection connection = DatabaseManager.MAIN_DB.getDatabaseAccess().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("CREATE TABLE TEAM (name VARCHAR(255) PRIMARY KEY, tag VARCHAR(255), color VARCHAR(255), display_name VARCHAR(255), golds BIGINT, supportPoints BIGINT, Slots BIGINT)");
+            PreparedStatement preparedStatement = connection.prepareStatement("CREATE TABLE TEAM (name VARCHAR(255) PRIMARY KEY, tag VARCHAR(255), color VARCHAR(255), team_leader VARCHAR(255),  display_name VARCHAR(255), golds BIGINT, supportPoints BIGINT, Slots BIGINT)");
             preparedStatement.execute();
             PluginCite.instance().getLogger().info("Table TEAM has been created");
+            connection.close();
         } catch (SQLException e) {
             PluginCite.instance().getLogger().severe("Error while creating table TEAM");
         }

@@ -18,6 +18,7 @@ public class DatabaseAccess {
     private void setupHikari() {
         final HikariConfig config = new HikariConfig();
 
+        config.setDataSourceClassName("org.postgresql.ds.PGSimpleDataSource");
         config.setMaximumPoolSize(10);
         config.setJdbcUrl(credentials.toURI());
         config.setUsername(credentials.getUsername());

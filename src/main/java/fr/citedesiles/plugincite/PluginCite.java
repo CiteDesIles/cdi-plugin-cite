@@ -1,8 +1,11 @@
 package fr.citedesiles.plugincite;
 
+import fr.citedesiles.plugincite.postgresql.CheckTable;
 import fr.citedesiles.plugincite.postgresql.DatabaseManager;
 import fr.citedesiles.plugincite.utils.ConfigManager;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.io.IOException;
 
 public class PluginCite extends JavaPlugin {
 
@@ -14,6 +17,12 @@ public class PluginCite extends JavaPlugin {
         INSTANCE = this;
         getLogger().info("PluginCite enabled");
         configManager = new ConfigManager(this);
+        DatabaseManager.initAllDataBaseConnections();
+        try {
+            configManager.loadConfig();
+        } catch (IOException e) {
+            getLogger().severe("An error occurred while loading config.yml");
+        }
     }
 
     @Override
