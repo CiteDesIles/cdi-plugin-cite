@@ -1,3 +1,9 @@
 name: PluginCite
 version: 1.0
 main: fr.citedesiles.plugincite.PluginCite
+depend:
+  - FancyNpcs
+commands:
+  admin:
+    description: Commande d'administration
+    usage: /admin <commande>

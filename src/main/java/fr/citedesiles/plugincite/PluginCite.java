@@ -2,24 +2,30 @@ package fr.citedesiles.plugincite;
 
 import fr.citedesiles.plugincite.commands.AdminCommand;
 import fr.citedesiles.plugincite.listener.OnPlayerChat;
+import fr.citedesiles.plugincite.npcs.NPCManager;
+import fr.citedesiles.plugincite.npcs.NPCs;
 import fr.citedesiles.plugincite.postgresql.CheckTable;
 import fr.citedesiles.plugincite.postgresql.DatabaseManager;
 import fr.citedesiles.plugincite.utils.ConfigManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 public class PluginCite extends JavaPlugin {
 
     private static PluginCite INSTANCE;
-    ConfigManager configManager;
+    private static ConfigManager configManager;
+    private static NPCManager npcManager;
 
     @Override
     public void onEnable() {
         INSTANCE = this;
+        npcManager = new NPCManager();
         getLogger().info("PluginCite enabled");
         configManager = new ConfigManager(this);
         DatabaseManager.initAllDataBaseConnections();
+
 
         getServer().getPluginManager().registerEvents(new OnPlayerChat(this), this);
 
@@ -33,6 +39,7 @@ public class PluginCite extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        npcManager().removeAllNPC();
         getLogger().info("PluginCite disabled");
     }
 
@@ -42,5 +49,9 @@ public class PluginCite extends JavaPlugin {
 
     public ConfigManager configManager() {
         return configManager;
+    }
+
+    public NPCManager npcManager() {
+        return npcManager;
     }
 }
