@@ -1,11 +1,13 @@
 package fr.citedesiles.plugincite;
 
 import fr.citedesiles.plugincite.commands.AdminCommand;
+import fr.citedesiles.plugincite.customsItems.ItemManager;
 import fr.citedesiles.plugincite.listener.OnPlayerChat;
 import fr.citedesiles.plugincite.npcs.NPCManager;
 import fr.citedesiles.plugincite.npcs.NPCs;
 import fr.citedesiles.plugincite.postgresql.CheckTable;
 import fr.citedesiles.plugincite.postgresql.DatabaseManager;
+import fr.citedesiles.plugincite.shop.ShopManager;
 import fr.citedesiles.plugincite.utils.ConfigManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -17,6 +19,8 @@ public class PluginCite extends JavaPlugin {
     private static PluginCite INSTANCE;
     private static ConfigManager configManager;
     private static NPCManager npcManager;
+    private static ItemManager itemManager;
+    private static ShopManager shopManager;
 
     @Override
     public void onEnable() {
@@ -25,6 +29,12 @@ public class PluginCite extends JavaPlugin {
         getLogger().info("PluginCite enabled");
         configManager = new ConfigManager(this);
         DatabaseManager.initAllDataBaseConnections();
+        CheckTable.checkTables();
+
+        itemManager = new ItemManager();
+        shopManager = new ShopManager();
+
+        //itemManager.initCustomsItems();
 
 
         getServer().getPluginManager().registerEvents(new OnPlayerChat(this), this);
@@ -53,5 +63,13 @@ public class PluginCite extends JavaPlugin {
 
     public NPCManager npcManager() {
         return npcManager;
+    }
+
+    public ShopManager shopManager() {
+        return shopManager;
+    }
+
+    public ItemManager itemManager() {
+        return itemManager;
     }
 }

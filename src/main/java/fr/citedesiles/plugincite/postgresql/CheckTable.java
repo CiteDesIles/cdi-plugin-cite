@@ -20,7 +20,7 @@ public class CheckTable {
     public static void checkTeamTableExist() {
         try {
             Connection connection = DatabaseManager.MAIN_DB.getDatabaseAccess().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM TEAM");
+            PreparedStatement preparedStatement = connection.prepareStatement("SHOW TABLES LIKE 'TEAM'");
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 PluginCite.instance().getLogger().info("Table TEAM exists");
@@ -30,14 +30,14 @@ public class CheckTable {
             }
             connection.close();
         } catch (SQLException e) {
-            PluginCite.instance().getLogger().severe("Error while checking if table TEAM exists");
+            PluginCite.instance().getLogger().severe("Error while checking if table TEAM exists" + e.getMessage());
         }
     }
 
     public static void checkPlayerTableExist() {
         try {
             Connection connection = DatabaseManager.MAIN_DB.getDatabaseAccess().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM PLAYER");
+            PreparedStatement preparedStatement = connection.prepareStatement("SHOW TABLES LIKE 'PLAYER'");
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 PluginCite.instance().getLogger().info("Table PLAYER exists");
@@ -47,7 +47,7 @@ public class CheckTable {
             }
             connection.close();
         } catch (SQLException e) {
-            PluginCite.instance().getLogger().severe("Error while checking if table PLAYER exists");
+            PluginCite.instance().getLogger().severe("Error while checking if table PLAYER exists" + e.getMessage());
         }
     }
 
@@ -70,7 +70,7 @@ public class CheckTable {
             PluginCite.instance().getLogger().info("Table TEAM has been created");
             connection.close();
         } catch (SQLException e) {
-            PluginCite.instance().getLogger().severe("Error while creating table TEAM");
+            PluginCite.instance().getLogger().severe("Error while creating table TEAM" + e.getMessage());
         }
     }
 
@@ -87,7 +87,7 @@ public class CheckTable {
             preparedStatement.execute();
             PluginCite.instance().getLogger().info("Table PLAYER has been created");
         } catch (SQLException e) {
-            PluginCite.instance().getLogger().severe("Error while creating table PLAYER");
+            PluginCite.instance().getLogger().severe("Error while creating table PLAYER" + e.getMessage());
         }
     }
 

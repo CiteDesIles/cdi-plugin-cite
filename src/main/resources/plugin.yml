@@ -1,5 +1,6 @@
 name: PluginCite
 version: 1.0
+api-version: 1.21
 main: fr.citedesiles.plugincite.PluginCite
 depend:
   - FancyNpcs

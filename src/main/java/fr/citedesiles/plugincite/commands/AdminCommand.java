@@ -2,9 +2,13 @@ package fr.citedesiles.plugincite.commands;
 
 import fr.citedesiles.plugincite.PluginCite;
 import fr.citedesiles.plugincite.npcs.NPCs;
+import net.kyori.adventure.text.TextComponent;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.ExecutionException;
@@ -31,6 +35,14 @@ public class AdminCommand implements CommandExecutor {
                 } catch (ExecutionException | InterruptedException e) {
                     throw new RuntimeException(e);
                 }
+                break;
+            case "index":
+                Player player = (Player) commandSender;
+                Inventory inv = Bukkit.createInventory(null, 54, "Index");
+                for(int i = 0; i < 54; i++) {
+                    inv.setItem(i, plugin.itemManager().getCustomsItems().get(i));
+                }
+
                 break;
             case "removeAllNPC":
                 plugin.npcManager().removeAllNPC();

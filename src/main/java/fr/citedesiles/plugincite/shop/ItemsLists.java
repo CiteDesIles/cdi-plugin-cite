@@ -20,5 +20,9 @@ public class ItemsLists {
         itemsLists.put(itemsList, items);
     }
 
-    public
+    public void initLists() {
+        createItemsList("confiserie");
+        Map<ItemStack, Integer> confiserie = new HashMap<>();
+
+    }
 }
