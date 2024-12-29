@@ -49,7 +49,7 @@ public class AdminCommand implements CommandExecutor {
                 break;
             case "whatismyteam":
                 Player player1 = (Player) commandSender;
-                // TODO: Implements :D player1.sendMessage(TextComponent.of("§aVotre équipe est: " + plugin.playerManager().(player1.getUniqueId()).getTeam()));
+                player1.sendMessage("§aVotre équipe est: " + plugin.playerManager().get(player1.getUniqueId()).getTeam());
                 break;
         }
         return true;

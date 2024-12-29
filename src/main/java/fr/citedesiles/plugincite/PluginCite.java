@@ -34,8 +34,6 @@ public class PluginCite extends JavaPlugin {
         getLogger().info("PluginCite enabled");
         configManager = new ConfigManager(this);
 
-
-
         itemManager = new ItemManager();
         shopManager = new ShopManager();
 
@@ -43,7 +41,6 @@ public class PluginCite extends JavaPlugin {
         teamManager = new CDITeamManager(this);
 
         //itemManager.initCustomsItems();
-
 
         getServer().getPluginManager().registerEvents(new OnPlayerChat(this), this);
         getServer().getPluginManager().registerEvents(new OnNPCInteract(this), this);

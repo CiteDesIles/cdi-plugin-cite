@@ -4,10 +4,12 @@ import java.util.UUID;
 
 public class CDIPlayer {
     private UUID uuid;
+    private String discordID;
     private String team;
 
-    public CDIPlayer(UUID uuid, String team) {
+    public CDIPlayer(UUID uuid, String discordID, String team) {
         this.uuid = uuid;
+        this.discordID = discordID;
         this.team = team;
     }
 
