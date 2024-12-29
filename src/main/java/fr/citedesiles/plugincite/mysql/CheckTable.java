@@ -1,4 +1,4 @@
-package fr.citedesiles.plugincite.postgresql;
+package fr.citedesiles.plugincite.mysql;
 
 import fr.citedesiles.plugincite.PluginCite;
 

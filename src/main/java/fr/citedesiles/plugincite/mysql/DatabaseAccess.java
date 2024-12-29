@@ -1,4 +1,4 @@
-package fr.citedesiles.plugincite.postgresql;
+package fr.citedesiles.plugincite.mysql;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;

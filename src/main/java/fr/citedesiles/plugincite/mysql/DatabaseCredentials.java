@@ -1,4 +1,4 @@
-package fr.citedesiles.plugincite.postgresql;
+package fr.citedesiles.plugincite.mysql;
 
 public class DatabaseCredentials {
     private String host;

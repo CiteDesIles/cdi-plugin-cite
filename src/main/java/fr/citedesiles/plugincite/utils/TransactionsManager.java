@@ -2,7 +2,7 @@ package fr.citedesiles.plugincite.utils;
 
 import fr.citedesiles.plugincite.PluginCite;
 import fr.citedesiles.plugincite.objects.CDITeam;
-import fr.citedesiles.plugincite.postgresql.DatabaseManager;
+import fr.citedesiles.plugincite.mysql.DatabaseManager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

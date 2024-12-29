@@ -4,15 +4,13 @@ import fr.citedesiles.plugincite.commands.AdminCommand;
 import fr.citedesiles.plugincite.customsItems.ItemManager;
 import fr.citedesiles.plugincite.listener.OnPlayerChat;
 import fr.citedesiles.plugincite.npcs.NPCManager;
-import fr.citedesiles.plugincite.npcs.NPCs;
-import fr.citedesiles.plugincite.postgresql.CheckTable;
-import fr.citedesiles.plugincite.postgresql.DatabaseManager;
+import fr.citedesiles.plugincite.mysql.CheckTable;
+import fr.citedesiles.plugincite.mysql.DatabaseManager;
 import fr.citedesiles.plugincite.shop.ShopManager;
 import fr.citedesiles.plugincite.utils.ConfigManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
-import java.util.concurrent.ExecutionException;
 
 public class PluginCite extends JavaPlugin {
 
