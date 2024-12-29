@@ -47,6 +47,10 @@ public class AdminCommand implements CommandExecutor {
             case "removeAllNPC":
                 plugin.npcManager().removeAllNPC();
                 break;
+            case "whatismyteam":
+                Player player1 = (Player) commandSender;
+                // TODO: Implements :D player1.sendMessage(TextComponent.of("§aVotre équipe est: " + plugin.playerManager().(player1.getUniqueId()).getTeam()));
+                break;
         }
         return true;
     }

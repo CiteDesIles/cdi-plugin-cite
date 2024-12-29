@@ -13,7 +13,7 @@ public class TransactionsManager {
     public static boolean addMoney(CDITeam cdiTeam, int amount) {
         try (Connection connection = DatabaseManager.MAIN_DB.getDatabaseAccess().getConnection()) {
             connection.setAutoCommit(false);
-            PreparedStatement statement = connection.prepareStatement("UPDATE team SET golds = golds + ? WHERE name = ?");
+            PreparedStatement statement = connection.prepareStatement("UPDATE TEAM SET golds = golds + ? WHERE name = ?");
             statement.setInt(1, amount);
             statement.setString(2, cdiTeam.getName());
             statement.executeUpdate();
@@ -28,7 +28,7 @@ public class TransactionsManager {
     public static boolean removeMoney(CDITeam cdiTeam, int amount) {
         try (Connection connection = DatabaseManager.MAIN_DB.getDatabaseAccess().getConnection()) {
             connection.setAutoCommit(false);
-            PreparedStatement statement = connection.prepareStatement("UPDATE team SET golds = golds - ? WHERE name = ?");
+            PreparedStatement statement = connection.prepareStatement("UPDATE TEAM SET golds = golds - ? WHERE name = ?");
             statement.setInt(1, amount);
             statement.setString(2, cdiTeam.getName());
             statement.executeUpdate();
@@ -43,7 +43,7 @@ public class TransactionsManager {
     public static boolean setMoney(CDITeam cdiTeam, int amount) {
         try (Connection connection = DatabaseManager.MAIN_DB.getDatabaseAccess().getConnection()) {
             connection.setAutoCommit(false);
-            PreparedStatement statement = connection.prepareStatement("UPDATE team SET golds = ? WHERE name = ?");
+            PreparedStatement statement = connection.prepareStatement("UPDATE TEAM SET golds = ? WHERE name = ?");
             statement.setInt(1, amount);
             statement.setString(2, cdiTeam.getName());
             statement.executeUpdate();
@@ -58,7 +58,7 @@ public class TransactionsManager {
     public static boolean addSupportPoints(CDITeam cdiTeam, int amount) {
         try (Connection connection = DatabaseManager.MAIN_DB.getDatabaseAccess().getConnection()) {
             connection.setAutoCommit(false);
-            PreparedStatement statement = connection.prepareStatement("UPDATE team SET supportpoints = team.supportpoints + ? WHERE name = ?");
+            PreparedStatement statement = connection.prepareStatement("UPDATE TEAM SET supportpoints = TEAM.supportpoints + ? WHERE name = ?");
             statement.setInt(1, amount);
             statement.setString(2, cdiTeam.getName());
             statement.executeUpdate();
@@ -73,7 +73,7 @@ public class TransactionsManager {
     public static boolean removeSupportPoints(CDITeam cdiTeam, int amount) {
         try (Connection connection = DatabaseManager.MAIN_DB.getDatabaseAccess().getConnection()) {
             connection.setAutoCommit(false);
-            PreparedStatement statement = connection.prepareStatement("UPDATE team SET supportpoints = team.supportpoints - ? WHERE name = ?");
+            PreparedStatement statement = connection.prepareStatement("UPDATE TEAM SET supportpoints = TEAM.supportpoints - ? WHERE name = ?");
             statement.setInt(1, amount);
             statement.setString(2, cdiTeam.getName());
             statement.executeUpdate();
@@ -88,7 +88,7 @@ public class TransactionsManager {
     public static boolean setSupportPoints(CDITeam cdiTeam, int amount) {
         try (Connection connection = DatabaseManager.MAIN_DB.getDatabaseAccess().getConnection()) {
             connection.setAutoCommit(false);
-            PreparedStatement statement = connection.prepareStatement("UPDATE team SET supportpoints = ? WHERE name = ?");
+            PreparedStatement statement = connection.prepareStatement("UPDATE TEAM SET supportpoints = ? WHERE name = ?");
             statement.setInt(1, amount);
             statement.setString(2, cdiTeam.getName());
             statement.executeUpdate();

@@ -10,14 +10,16 @@ public class CDITeam {
     private List<UUID> members;
     private long money;
     private int supportPoints;
+    private int slots;
 
-    public CDITeam(String name, String displayName, UUID owner, List<UUID> members, long money, int supportPoints) {
+    public CDITeam(String name, String displayName, UUID owner, List<UUID> members, long money, int supportPoints, int slots) {
         this.name = name;
         this.displayName = displayName;
         this.owner = owner;
         this.members = members;
         this.money = money;
         this.supportPoints = supportPoints;
+        this.slots = slots;
     }
 
     public String getName() {
@@ -86,5 +88,9 @@ public class CDITeam {
 
     public void removeMember(UUID member) {
         members.remove(member);
+    }
+
+    public int getSlots() {
+        return slots;
     }
 }

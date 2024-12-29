@@ -2,10 +2,15 @@ package fr.citedesiles.plugincite;
 
 import fr.citedesiles.plugincite.commands.AdminCommand;
 import fr.citedesiles.plugincite.customsItems.ItemManager;
+import fr.citedesiles.plugincite.listener.OnNPCInteract;
 import fr.citedesiles.plugincite.listener.OnPlayerChat;
+import fr.citedesiles.plugincite.listener.OnPlayerJoin;
+import fr.citedesiles.plugincite.mysql.TeamSyncSQL;
 import fr.citedesiles.plugincite.npcs.NPCManager;
 import fr.citedesiles.plugincite.mysql.CheckTable;
 import fr.citedesiles.plugincite.mysql.DatabaseManager;
+import fr.citedesiles.plugincite.objects.CDIPlayerManager;
+import fr.citedesiles.plugincite.objects.CDITeamManager;
 import fr.citedesiles.plugincite.shop.ShopManager;
 import fr.citedesiles.plugincite.utils.ConfigManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -19,6 +24,8 @@ public class PluginCite extends JavaPlugin {
     private static NPCManager npcManager;
     private static ItemManager itemManager;
     private static ShopManager shopManager;
+    private static CDIPlayerManager playerManager;
+    private static CDITeamManager teamManager;
 
     @Override
     public void onEnable() {
@@ -26,16 +33,21 @@ public class PluginCite extends JavaPlugin {
         npcManager = new NPCManager();
         getLogger().info("PluginCite enabled");
         configManager = new ConfigManager(this);
-        DatabaseManager.initAllDataBaseConnections();
-        CheckTable.checkTables();
+
+
 
         itemManager = new ItemManager();
         shopManager = new ShopManager();
+
+        playerManager = new CDIPlayerManager(this);
+        teamManager = new CDITeamManager(this);
 
         //itemManager.initCustomsItems();
 
 
         getServer().getPluginManager().registerEvents(new OnPlayerChat(this), this);
+        getServer().getPluginManager().registerEvents(new OnNPCInteract(this), this);
+        getServer().getPluginManager().registerEvents(new OnPlayerJoin(this), this);
 
         getCommand("admin").setExecutor(new AdminCommand(this));
         try {
@@ -43,6 +55,10 @@ public class PluginCite extends JavaPlugin {
         } catch (IOException e) {
             getLogger().severe("An error occurred while loading config.yml");
         }
+
+        DatabaseManager.initAllDataBaseConnections();
+        CheckTable.checkTables();
+        TeamSyncSQL.getAllTeamsFromDB(this);
     }
 
     @Override
@@ -69,5 +85,13 @@ public class PluginCite extends JavaPlugin {
 
     public ItemManager itemManager() {
         return itemManager;
+    }
+
+    public CDIPlayerManager playerManager() {
+        return playerManager;
+    }
+
+    public CDITeamManager teamManager() {
+        return teamManager;
     }
 }
