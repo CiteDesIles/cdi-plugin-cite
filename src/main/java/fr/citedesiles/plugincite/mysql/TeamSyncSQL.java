@@ -43,7 +43,7 @@ public class TeamSyncSQL {
         }
     }
 
-        public static void UpdateAllTeamsToDB() {
+        public static void updateAllTeamsToDB() {
         for(CDITeam cdiTeam : PluginCite.instance().teamManager().getTeams()) {
             try {
                 Connection connection = DatabaseManager.MAIN_DB.getDatabaseAccess().getConnection();
