@@ -41,8 +41,6 @@ public class PluginCite extends JavaPlugin {
         playerManager = new CDIPlayerManager(this);
         teamManager = new CDITeamManager(this);
 
-        //itemManager.initCustomsItems();
-
         getServer().getPluginManager().registerEvents(new OnPlayerChat(this), this);
         getServer().getPluginManager().registerEvents(new OnNPCInteract(this), this);
         getServer().getPluginManager().registerEvents(new OnPlayerJoin(this), this);

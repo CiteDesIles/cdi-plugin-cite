@@ -5,17 +5,18 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class ItemManager {
-    Map<String, ItemStack> customsItems;
+    Map<String, ItemStack> customsItems = new HashMap<>();
 
     public List<ItemStack> getCustomsItems() {
         return new ArrayList<>(customsItems.values());
     }
 
-    public void initCustomsItems() {
+    public ItemManager() {
         ItemStack bonbonViolette = new ItemStack(Material.PURPLE_DYE, 1);
         ItemMeta bonbonVioletteMeta = bonbonViolette.getItemMeta();
         bonbonVioletteMeta.setDisplayName("§5§lBonbon à la violette");
