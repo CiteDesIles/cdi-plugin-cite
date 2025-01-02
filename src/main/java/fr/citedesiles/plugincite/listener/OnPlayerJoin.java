@@ -4,6 +4,8 @@ import fr.citedesiles.plugincite.PluginCite;
 import fr.citedesiles.plugincite.mysql.DatabaseManager;
 import fr.citedesiles.plugincite.objects.CDIPlayer;
 import net.kyori.adventure.text.TextComponent;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -40,10 +42,17 @@ public class OnPlayerJoin implements Listener {
 
             } else {
                 event.getPlayer().kickPlayer("Vous n'êtes pas enregistré dans la base de données");
+                return;
             }
         } catch (SQLException e) {
             event.getPlayer().kickPlayer("Erreur de connexion à la base de données");
             e.printStackTrace();
+            return;
         }
+
+        event.setJoinMessage("§7(§a+§7) " + event.getPlayer().getName());
+        Player player = event.getPlayer();
+        Bukkit.getScoreboardManager().getMainScoreboard().getTeam(plugin.playerManager().get(player).getTeam())
+            .addPlayer(player);
     }
 }

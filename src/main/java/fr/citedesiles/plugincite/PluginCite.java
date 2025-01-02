@@ -14,6 +14,7 @@ import fr.citedesiles.plugincite.objects.CDITeamManager;
 import fr.citedesiles.plugincite.runnable.TeamSyncSaveRunnable;
 import fr.citedesiles.plugincite.shop.ShopManager;
 import fr.citedesiles.plugincite.utils.ConfigManager;
+import fr.citedesiles.plugincite.utils.ScoreboardTeamManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
@@ -27,6 +28,7 @@ public class PluginCite extends JavaPlugin {
     private static ShopManager shopManager;
     private static CDIPlayerManager playerManager;
     private static CDITeamManager teamManager;
+    private static ScoreboardTeamManager scoreboardTeamManager;
 
     @Override
     public void onEnable() {
@@ -58,6 +60,9 @@ public class PluginCite extends JavaPlugin {
 
         TeamSyncSaveRunnable teamSyncSaveRunnable = new TeamSyncSaveRunnable();
         teamSyncSaveRunnable.runTaskTimerAsynchronously(this, 0, 20 * 5);
+
+        scoreboardTeamManager = new ScoreboardTeamManager(this);
+        scoreboardTeamManager.initAllTeams();
     }
 
     @Override

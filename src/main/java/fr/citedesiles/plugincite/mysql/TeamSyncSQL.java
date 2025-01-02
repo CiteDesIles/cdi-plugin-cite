@@ -25,7 +25,7 @@ public class TeamSyncSQL {
                 long money = resultSet.getLong("golds");
                 int supportPoints = resultSet.getInt("supportPoints");
                 int slots = resultSet.getInt("Slots");
-                CDITeam cdiTeam = new CDITeam(name, tag, UUID.fromString(team_leader), new ArrayList<UUID>(), money, supportPoints, slots);
+                CDITeam cdiTeam = new CDITeam(name, tag, UUID.fromString(team_leader), new ArrayList<UUID>(), money, supportPoints, slots, color);
                 plugin.teamManager().add(cdiTeam);
                 Connection connectionPlayer = DatabaseManager.MAIN_DB.getDatabaseAccess().getConnection();
                 PreparedStatement preparedStatementPlayer = connectionPlayer.prepareStatement("SELECT * FROM PLAYER WHERE team = ?");
