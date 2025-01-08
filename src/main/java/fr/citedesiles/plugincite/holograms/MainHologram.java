@@ -25,6 +25,8 @@ public class MainHologram {
         hologramData.setPersistent(false);
         hologramData.setBillboard(Display.Billboard.FIXED);
         hologramData.setScale(new Vector3f(1.2f));
+        hologramData.setSeeThrough(false);
+        hologramData.setVisibilityDistance(64);
         hologramData.setText(List.of("§6§lCité des îles", "§7Classement principal loading..."));
         Hologram hologram = manager.create(hologramData);
         manager.addHologram(hologram);
@@ -33,6 +35,8 @@ public class MainHologram {
         hologramData2.setBackground(Color.fromRGB(80, 10, 9));
         hologramData2.setPersistent(false);
         hologramData2.setScale(new Vector3f(1.2f));
+        hologramData2.setSeeThrough(false);
+        hologramData2.setVisibilityDistance(64);
         hologramData2.setBillboard(Display.Billboard.FIXED);
         hologramData2.setText(List.of("§6§lCité des îles", "§7Classement principal loading..."));
         Hologram hologram2 = manager.create(hologramData2);
