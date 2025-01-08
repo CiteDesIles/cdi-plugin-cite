@@ -48,9 +48,9 @@ public class OnClickInventory implements Listener {
                 String team = PluginCite.instance().playerManager().get((Player) event.getWhoClicked()).getTeam();
                 PluginCite.instance().teamManager().addGoldToTeam(team, total);
                 if(originalItem.getItemMeta().hasDisplayName()) {
-                    event.getWhoClicked().sendMessage("§aVous avez vendu " + count + " " + item.getItemMeta().getDisplayName() + " §apour " + price * count + " golds.");
+                    event.getWhoClicked().sendMessage("§aVous avez vendu " + count + " " + item.getItemMeta().getDisplayName() + " §apour §e§l" + price * count + " golds§a.");
                 } else {
-                    event.getWhoClicked().sendMessage("§aVous avez vendu " + count + " " + item.getType().toString() + " §apour " + price * count + " golds.");
+                    event.getWhoClicked().sendMessage("§aVous avez vendu " + count + " " + item.getType().toString() + " §apour §e§l" + price * count + " golds§a.");
                 }
                 return;
             }
@@ -60,9 +60,9 @@ public class OnClickInventory implements Listener {
                     String team = PluginCite.instance().playerManager().get((Player) event.getWhoClicked()).getTeam();
                     PluginCite.instance().teamManager().addGoldToTeam(team, 64 * price);
                     if(originalItem.getItemMeta().hasDisplayName()) {
-                        event.getWhoClicked().sendMessage("§aVous avez vendu 64 " + item.getItemMeta().getDisplayName() + " §apour " + 64 * price + " golds.");
+                        event.getWhoClicked().sendMessage("§aVous avez vendu 64 " + item.getItemMeta().getDisplayName() + " §apour §e§l" + 64 * price + " golds§a.");
                     } else {
-                        event.getWhoClicked().sendMessage("§aVous avez vendu 64 " + item.getType().toString() + " §apour " + 64 * price + " golds.");
+                        event.getWhoClicked().sendMessage("§aVous avez vendu 64 " + item.getType().toString() + " §apour §e§l" + 64 * price + " golds§a.");
                     }
                     return;
                 } else {
@@ -75,9 +75,9 @@ public class OnClickInventory implements Listener {
                 String team = PluginCite.instance().playerManager().get((Player) event.getWhoClicked()).getTeam();
                 PluginCite.instance().teamManager().addGoldToTeam(team, price);
                 if(originalItem.getItemMeta().hasDisplayName()) {
-                    event.getWhoClicked().sendMessage("§aVous avez vendu 1 " + item.getItemMeta().getDisplayName() + " §apour " + price + " golds.");
+                    event.getWhoClicked().sendMessage("§aVous avez vendu 1 " + item.getItemMeta().getDisplayName() + " §apour §e§l" + price + " golds§a.");
                 } else {
-                    event.getWhoClicked().sendMessage("§aVous avez vendu 1 " + item.getType().toString() + " §apour " + price + " golds.");
+                    event.getWhoClicked().sendMessage("§aVous avez vendu 1 " + item.getType().toString() + " §apour §e§l" + price + " golds§a.");
                 }
             }
 
