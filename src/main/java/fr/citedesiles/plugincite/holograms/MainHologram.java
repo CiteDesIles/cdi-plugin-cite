@@ -69,6 +69,9 @@ public class MainHologram {
             }
             if(currentTeamBest != null) {
                 rankedTeams.add(currentTeamBest);
+                if(currentTeamBest.getName().equals("adminTeam") || currentTeamBest.getName().equals("modTeam")) {
+                    continue;
+                }
                 text.add("§7" + positiona + "e. " + currentTeamBest.getDisplayName() + " §e" + currentTeamBest.getMoney() + " golds");
                 positiona++;
             }
