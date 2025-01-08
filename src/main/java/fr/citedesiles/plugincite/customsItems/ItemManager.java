@@ -24,4 +24,8 @@ public class ItemManager {
         bonbonViolette.setItemMeta(bonbonVioletteMeta);
         customsItems.put("bonbonViolette", bonbonViolette);
     }
+
+    public ItemStack get(String name) {
+        return customsItems.get(name);
+    }
 }

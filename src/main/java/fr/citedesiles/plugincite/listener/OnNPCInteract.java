@@ -25,7 +25,7 @@ public class OnNPCInteract implements Listener {
         switch (event.getNpc().getData().getName()) {
             case "cdi-confiseur" -> {
                 ShopManager shopManager = new ShopManager();
-                shopManager.openShop(event.getPlayer(), "confiseur");
+                shopManager.openShop(event.getPlayer(), "confiserie");
             }
         }
     }

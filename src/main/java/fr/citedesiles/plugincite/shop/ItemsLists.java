@@ -1,5 +1,7 @@
 package fr.citedesiles.plugincite.shop;
 
+import fr.citedesiles.plugincite.PluginCite;
+import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
@@ -23,6 +25,9 @@ public class ItemsLists {
     public void initLists() {
         createItemsList("confiserie");
         Map<ItemStack, Integer> confiserie = new HashMap<>();
-
+        confiserie.put(PluginCite.instance().itemManager().get("bonbonViolette"), 500);
+        confiserie.put(new ItemStack(Material.SUGAR, 1), 50);
+        confiserie.put(new ItemStack(Material.COOKIE, 1), 100);
+        putItemsList("confiserie", confiserie);
     }
 }
