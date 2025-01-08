@@ -60,7 +60,7 @@ public class MainHologram {
         int positiona = 1;
         for(CDITeam team : PluginCite.instance().teamManager().getTeams()) {
             CDITeam currentTeamBest = null;
-            long currentBest = 0;
+            long currentBest = Long.MIN_VALUE;
             for(CDITeam _team : PluginCite.instance().teamManager().getTeams()) {
                 if(_team.getMoney() > currentBest && !rankedTeams.contains(_team)) {
                     currentTeamBest = _team;
