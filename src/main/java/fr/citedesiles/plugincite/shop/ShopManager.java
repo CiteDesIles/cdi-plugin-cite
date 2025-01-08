@@ -1,10 +1,12 @@
 package fr.citedesiles.plugincite.shop;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -31,7 +33,7 @@ public class ShopManager {
                         "§c ",
                         "§fClique gauche pour vendre §e1 §funité",
                         "§fClique droit pour vendre §e64 §funités",
-                        "§fClique milieu pour vendre §eTOUT §fce que vous avez (soit " + count * price + " golds)"
+                        "§fShift-Click pour vendre §eTOUT §fce que vous avez (soit " + count * price + " golds)"
                     ));
                 } else {
                     itemMeta.setLore(List.of(
@@ -39,10 +41,9 @@ public class ShopManager {
                         "§fQuantité dans votre inventaire: " + count,
                         "§c ",
                         "§fClique gauche pour vendre §e1 §funité",
-                        "§fClique milieu pour vendre §eTOUT §fce que vous avez (soit " + count * price + " golds)"
+                        "§fShift-Click pour vendre §eTOUT §fce que vous avez (soit " + count * price + " golds)"
                     ));
                 }
-                itemMeta.setLocalizedName(itemsList);
                 item.setItemMeta(itemMeta);
                 inv.setItem(i, item);
             }
@@ -59,5 +60,55 @@ public class ShopManager {
             }
         }
         return count;
+    }
+
+    public ItemStack getOriginalItemFromList(ItemStack item, String itemList) {
+        for(ItemStack itemStack : itemsLists.getItemsList(itemList).keySet()) {
+            if(isSimilar(item, itemStack)) {
+                return itemStack;
+            }
+        }
+        return null;
+    }
+
+    public boolean isInItemsList(String itemsList, ItemStack item) {
+        boolean found = false;
+        for(ItemStack itemStack : itemsLists.getItemsList(itemsList).keySet()) {
+            if(isSimilar(item, itemStack)) {
+                found = true;
+            }
+        }
+        return found;
+    }
+
+    public int getPrice(String itemsList, ItemStack item) {
+        for(ItemStack itemStack : itemsLists.getItemsList(itemsList).keySet()) {
+            if(isSimilar(item, itemStack)) {
+                return itemsLists.getItemsList(itemsList).get(itemStack);
+            }
+        }
+        return -1;
+    }
+
+    public boolean isSimilar(ItemStack item1, ItemStack item2) {
+        if(item1.getType() != item2.getType()) {
+            //Bukkit.broadcastMessage("§cType");
+            return false;
+        }
+        if(item1.hasItemMeta() && item2.hasItemMeta()) {
+            if(item1.getItemMeta().hasDisplayName() && item2.getItemMeta().hasDisplayName()) {
+                if(!item1.getItemMeta().getDisplayName().equals(item2.getItemMeta().getDisplayName())) {
+              //      Bukkit.broadcastMessage("§cName");
+                    return false;
+                }
+            }
+            if(item1.getItemMeta().hasCustomModelData() && item2.getItemMeta().hasCustomModelData()) {
+                if(item1.getItemMeta().getCustomModelData() != item2.getItemMeta().getCustomModelData()) {
+                //    Bukkit.broadcastMessage("§cModel");
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }

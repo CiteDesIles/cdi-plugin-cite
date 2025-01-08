@@ -2,6 +2,7 @@ package fr.citedesiles.plugincite;
 
 import fr.citedesiles.plugincite.commands.AdminCommand;
 import fr.citedesiles.plugincite.customsItems.ItemManager;
+import fr.citedesiles.plugincite.listener.OnClickInventory;
 import fr.citedesiles.plugincite.listener.OnNPCInteract;
 import fr.citedesiles.plugincite.listener.OnPlayerChat;
 import fr.citedesiles.plugincite.listener.OnPlayerJoin;
@@ -46,6 +47,7 @@ public class PluginCite extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new OnPlayerChat(this), this);
         getServer().getPluginManager().registerEvents(new OnNPCInteract(this), this);
         getServer().getPluginManager().registerEvents(new OnPlayerJoin(this), this);
+        getServer().getPluginManager().registerEvents(new OnClickInventory(this), this);
 
         getCommand("admin").setExecutor(new AdminCommand(this));
         try {

@@ -20,4 +20,12 @@ public class CDITeamManager {
     public List<CDITeam> getTeams() {
         return new ArrayList<>(teams);
     }
+
+    public void addGoldToTeam(String teamName, long amount) {
+        for (CDITeam team : teams) {
+            if (team.getName().equals(teamName)) {
+                team.setMoney(team.getMoney() + amount);
+            }
+        }
+    }
 }
