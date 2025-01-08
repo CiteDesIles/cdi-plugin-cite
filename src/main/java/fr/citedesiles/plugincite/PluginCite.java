@@ -1,7 +1,9 @@
 package fr.citedesiles.plugincite;
 
+import de.oliver.fancyholograms.api.HologramManager;
 import fr.citedesiles.plugincite.commands.AdminCommand;
 import fr.citedesiles.plugincite.customsItems.ItemManager;
+import fr.citedesiles.plugincite.holograms.HologramsManager;
 import fr.citedesiles.plugincite.listener.OnClickInventory;
 import fr.citedesiles.plugincite.listener.OnNPCInteract;
 import fr.citedesiles.plugincite.listener.OnPlayerChat;
@@ -30,6 +32,7 @@ public class PluginCite extends JavaPlugin {
     private static CDIPlayerManager playerManager;
     private static CDITeamManager teamManager;
     private static ScoreboardTeamManager scoreboardTeamManager;
+    private static HologramsManager hologramsManager;
 
     @Override
     public void onEnable() {
@@ -65,6 +68,9 @@ public class PluginCite extends JavaPlugin {
 
         scoreboardTeamManager = new ScoreboardTeamManager(this);
         scoreboardTeamManager.initAllTeams();
+
+        hologramsManager = new HologramsManager();
+        hologramsManager.initAll();
     }
 
     @Override
@@ -99,5 +105,9 @@ public class PluginCite extends JavaPlugin {
 
     public CDITeamManager teamManager() {
         return teamManager;
+    }
+
+    public HologramsManager hologramManager() {
+        return hologramsManager;
     }
 }
