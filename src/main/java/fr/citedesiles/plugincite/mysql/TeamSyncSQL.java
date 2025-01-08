@@ -22,10 +22,11 @@ public class TeamSyncSQL {
                 String tag = resultSet.getString("tag");
                 String color = resultSet.getString("color");
                 String team_leader = resultSet.getString("team_leader");
+                String display_name = resultSet.getString("display_name");
                 long money = resultSet.getLong("golds");
                 int supportPoints = resultSet.getInt("supportPoints");
                 int slots = resultSet.getInt("Slots");
-                CDITeam cdiTeam = new CDITeam(name, tag, UUID.fromString(team_leader), new ArrayList<UUID>(), money, supportPoints, slots, color);
+                CDITeam cdiTeam = new CDITeam(name, display_name, UUID.fromString(team_leader), new ArrayList<UUID>(), money, supportPoints, slots, color, tag);
                 plugin.teamManager().add(cdiTeam);
                 Connection connectionPlayer = DatabaseManager.MAIN_DB.getDatabaseAccess().getConnection();
                 PreparedStatement preparedStatementPlayer = connectionPlayer.prepareStatement("SELECT * FROM PLAYER WHERE team = ?");

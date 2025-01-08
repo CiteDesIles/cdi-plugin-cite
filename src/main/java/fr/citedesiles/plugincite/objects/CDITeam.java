@@ -12,8 +12,9 @@ public class CDITeam {
     private int supportPoints;
     private int slots;
     private String color;
+    private String tag;
 
-    public CDITeam(String name, String displayName, UUID owner, List<UUID> members, long money, int supportPoints, int slots, String color) {
+    public CDITeam(String name, String displayName, UUID owner, List<UUID> members, long money, int supportPoints, int slots, String color, String tag) {
         this.name = name;
         this.displayName = displayName;
         this.owner = owner;
@@ -22,6 +23,7 @@ public class CDITeam {
         this.supportPoints = supportPoints;
         this.slots = slots;
         this.color = color;
+        this.tag = tag;
     }
 
     public String getName() {
