@@ -1,5 +1,8 @@
 package fr.citedesiles.plugincite.objects;
 
+import org.bukkit.Location;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -13,6 +16,7 @@ public class CDITeam {
     private int slots;
     private String color;
     private String tag;
+    List<Location> heads;
 
     public CDITeam(String name, String displayName, UUID owner, List<UUID> members, long money, int supportPoints, int slots, String color, String tag) {
         this.name = name;
@@ -24,6 +28,7 @@ public class CDITeam {
         this.slots = slots;
         this.color = color;
         this.tag = tag;
+        this.heads = new ArrayList<>();
     }
 
     public String getName() {
@@ -108,5 +113,33 @@ public class CDITeam {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public List<Location> getHeads() {
+        return heads;
+    }
+
+    public void setHeads(List<Location> heads) {
+        this.heads = heads;
+    }
+
+    public void addHead(Location head) {
+        heads.add(head);
+    }
+
+    public void removeHead(Location head) {
+        heads.remove(head);
+    }
+
+    public boolean hasHead(Location head) {
+        return heads.contains(head);
     }
 }

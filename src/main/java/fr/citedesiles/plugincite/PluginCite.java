@@ -4,10 +4,7 @@ import de.oliver.fancyholograms.api.HologramManager;
 import fr.citedesiles.plugincite.commands.AdminCommand;
 import fr.citedesiles.plugincite.customsItems.ItemManager;
 import fr.citedesiles.plugincite.holograms.HologramsManager;
-import fr.citedesiles.plugincite.listener.OnClickInventory;
-import fr.citedesiles.plugincite.listener.OnNPCInteract;
-import fr.citedesiles.plugincite.listener.OnPlayerChat;
-import fr.citedesiles.plugincite.listener.OnPlayerJoin;
+import fr.citedesiles.plugincite.listener.*;
 import fr.citedesiles.plugincite.mysql.TeamSyncSQL;
 import fr.citedesiles.plugincite.npcs.NPCManager;
 import fr.citedesiles.plugincite.mysql.CheckTable;
@@ -18,6 +15,7 @@ import fr.citedesiles.plugincite.runnable.RefreshRunnable;
 import fr.citedesiles.plugincite.runnable.TeamSyncSaveRunnable;
 import fr.citedesiles.plugincite.shop.ShopManager;
 import fr.citedesiles.plugincite.utils.ConfigManager;
+import fr.citedesiles.plugincite.utils.HeadsFileManager;
 import fr.citedesiles.plugincite.utils.ScoreboardTeamManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -52,6 +50,7 @@ public class PluginCite extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new OnNPCInteract(this), this);
         getServer().getPluginManager().registerEvents(new OnPlayerJoin(this), this);
         getServer().getPluginManager().registerEvents(new OnClickInventory(this), this);
+        getServer().getPluginManager().registerEvents(new OnInteractWithPlayerSkull(this), this);
 
         getCommand("admin").setExecutor(new AdminCommand(this));
         try {
@@ -75,11 +74,13 @@ public class PluginCite extends JavaPlugin {
 
         hologramsManager = new HologramsManager();
         hologramsManager.initAll();
+        HeadsFileManager.loadHeads();
     }
 
     @Override
     public void onDisable() {
         npcManager().removeAllNPC();
+        HeadsFileManager.saveHeads();
         getLogger().info("PluginCite disabled");
     }
 

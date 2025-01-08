@@ -1,6 +1,7 @@
 package fr.citedesiles.plugincite.objects;
 
 import fr.citedesiles.plugincite.PluginCite;
+import org.bukkit.scoreboard.Team;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,5 +28,14 @@ public class CDITeamManager {
                 team.setMoney(team.getMoney() + amount);
             }
         }
+    }
+
+    public CDITeam getTeam(String teamName) {
+        for (CDITeam cdiTeam : teams) {
+            if (cdiTeam.getName().equals(teamName)) {
+                return cdiTeam;
+            }
+        }
+        return null;
     }
 }
