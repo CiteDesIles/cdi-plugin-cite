@@ -14,7 +14,25 @@ public class CheckTable {
         CompletableFuture.runAsync(() -> {
             checkTeamTableExist();
             checkPlayerTableExist();
+            checkTableObjectifExist();
         });
+    }
+
+    public static void checkTableObjectifExist() {
+        try {
+            Connection connection = DatabaseManager.MAIN_DB.getDatabaseAccess().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SHOW TABLES LIKE 'OBJECTIF'");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                PluginCite.instance().getLogger().info("Table OBJECTIF exists");
+            } else {
+                PluginCite.instance().getLogger().info("Table OBJECTIF does not exist");
+                createObjectifTable();
+            }
+            connection.close();
+        } catch (SQLException e) {
+            PluginCite.instance().getLogger().severe("Error while checking if table OBJECTIF exists" + e.getMessage());
+        }
     }
 
     public static void checkTeamTableExist() {
@@ -48,6 +66,24 @@ public class CheckTable {
             connection.close();
         } catch (SQLException e) {
             PluginCite.instance().getLogger().severe("Error while checking if table PLAYER exists" + e.getMessage());
+        }
+    }
+
+    private static void createObjectifTable() {
+        /*
+        Table Objectif:
+        - team VARCHAR(255) PRIMARY KEY
+        - objectif VARCHAR(255) PRIMARY KEY
+        - value BIGINT
+         */
+        try {
+            Connection connection = DatabaseManager.MAIN_DB.getDatabaseAccess().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("CREATE TABLE OBJECTIF (team VARCHAR(255) NOT NULL, objectif VARCHAR(255) NOT NULL, value BIGINT)");
+            preparedStatement.execute();
+            PluginCite.instance().getLogger().info("Table OBJECTIF has been created");
+            connection.close();
+        } catch (SQLException e) {
+            PluginCite.instance().getLogger().severe("Error while creating table OBJECTIF" + e.getMessage());
         }
     }
 
