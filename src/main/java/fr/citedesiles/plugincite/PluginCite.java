@@ -71,7 +71,7 @@ public class PluginCite extends JavaPlugin {
         refreshRunnable.runTaskTimer(this, 0, 20 * 5);
 
         ScoreboardRunnable scoreboardRunnable = new ScoreboardRunnable();
-        scoreboardRunnable.runTaskTimer(this, 0, 20 * 5);
+        scoreboardRunnable.runTaskTimer(this, 0, 10);
 
         scoreboardTeamManager = new ScoreboardTeamManager(this);
         scoreboardTeamManager.initAllTeams();
