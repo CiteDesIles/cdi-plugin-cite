@@ -1,6 +1,7 @@
 package fr.citedesiles.plugincite.listener;
 
 import fr.citedesiles.plugincite.PluginCite;
+import fr.citedesiles.plugincite.shop.ShopManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -52,6 +53,8 @@ public class OnClickInventory implements Listener {
                     PluginCite.instance().teamManager().addSPToTeam(PluginCite.instance().playerManager().get((Player) event.getWhoClicked()).getTeam(), total);
                     event.getWhoClicked().sendMessage("§aVous avez déposé " + total + " " + item.getType().toString() + " §apour §b§l" + total + " SP§a.");
                     plugin.shopManager().itemsLists().editPrice("upgrade", originalItem, price-total);
+                    (event.getWhoClicked()).closeInventory();
+                    PluginCite.instance().shopManager().openShop((Player) event.getWhoClicked(), "upgrade");
                     return;
                 }
                 if(event.isLeftClick()) {
@@ -63,6 +66,8 @@ public class OnClickInventory implements Listener {
                     PluginCite.instance().teamManager().addSPToTeam(PluginCite.instance().playerManager().get((Player) event.getWhoClicked()).getTeam(), total);
                     event.getWhoClicked().sendMessage("§aVous avez déposé " + total + " " + item.getType().toString() + " §apour §b§l" + total + " SP§a.");
                     plugin.shopManager().itemsLists().editPrice("upgrade", originalItem, price-total);
+                    (event.getWhoClicked()).closeInventory();
+                    PluginCite.instance().shopManager().openShop((Player) event.getWhoClicked(), "upgrade");
                     return;
                 }
                 return;
