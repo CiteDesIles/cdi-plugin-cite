@@ -26,4 +26,17 @@ public class NPCs {
         npc.spawnForAll();
         return npc;
     }
+
+    public Npc upgrade() throws ExecutionException, InterruptedException {
+        Location location = new Location(Bukkit.getWorld("world"), 0, 93, 0);
+        NpcData npcData = new NpcData("cdi-upgrade", uuid, location);
+        npcData.setDisplayName("§6Reconstructeur de la Tour");
+        CompletableFuture<SkinFetcher.SkinData> skin = SkinFetcher.fetchSkinByURL("https://minesk.in/3ae2a67a962345c8ba049242ee7fc102");
+        npcData.setSkin(skin.get());
+        Npc npc = FancyNpcsPlugin.get().getNpcAdapter().apply(npcData);
+        FancyNpcsPlugin.get().getNpcManager().registerNpc(npc);
+        npc.create();
+        npc.spawnForAll();
+        return npc;
+    }
 }

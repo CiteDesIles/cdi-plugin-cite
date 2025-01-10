@@ -1,6 +1,5 @@
 package fr.citedesiles.plugincite;
 
-import de.oliver.fancyholograms.api.HologramManager;
 import fr.citedesiles.plugincite.commands.AdminCommand;
 import fr.citedesiles.plugincite.customsItems.ItemManager;
 import fr.citedesiles.plugincite.holograms.HologramsManager;
@@ -21,6 +20,7 @@ import fr.citedesiles.plugincite.utils.ScoreboardTeamManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class PluginCite extends JavaPlugin {
 
@@ -31,7 +31,6 @@ public class PluginCite extends JavaPlugin {
     private static ShopManager shopManager;
     private static CDIPlayerManager playerManager;
     private static CDITeamManager teamManager;
-    private static ScoreboardTeamManager scoreboardTeamManager;
     private static HologramsManager hologramsManager;
 
     @Override
@@ -53,7 +52,7 @@ public class PluginCite extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new OnClickInventory(this), this);
         getServer().getPluginManager().registerEvents(new OnInteractWithPlayerSkull(this), this);
 
-        getCommand("admin").setExecutor(new AdminCommand(this));
+        Objects.requireNonNull(getCommand("admin")).setExecutor(new AdminCommand(this));
         try {
             configManager.loadConfig();
         } catch (IOException e) {
@@ -73,7 +72,7 @@ public class PluginCite extends JavaPlugin {
         ScoreboardRunnable scoreboardRunnable = new ScoreboardRunnable();
         scoreboardRunnable.runTaskTimer(this, 0, 10);
 
-        scoreboardTeamManager = new ScoreboardTeamManager(this);
+        ScoreboardTeamManager scoreboardTeamManager = new ScoreboardTeamManager(this);
         scoreboardTeamManager.initAllTeams();
 
         hologramsManager = new HologramsManager();

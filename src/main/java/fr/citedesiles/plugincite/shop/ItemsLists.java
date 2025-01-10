@@ -29,5 +29,14 @@ public class ItemsLists {
         confiserie.put(new ItemStack(Material.SUGAR, 1), 50);
         confiserie.put(new ItemStack(Material.COOKIE, 1), 100);
         putItemsList("confiserie", confiserie);
+
+        createItemsList("upgrade");
+        Map<ItemStack, Integer> upgrade = new HashMap<>();
+        upgrade.put(new ItemStack(Material.STONE, 1), 5000);
+        putItemsList("upgrade", upgrade);
+    }
+
+    public void editPrice(String itemsList, ItemStack item, int price) {
+        itemsLists.get(itemsList).put(item, price);
     }
 }

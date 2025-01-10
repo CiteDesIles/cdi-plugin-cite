@@ -24,8 +24,10 @@ public class OnNPCInteract implements Listener {
 //        Bukkit.broadcastMessage("NPC : " + event.getNpc().getData().getName());
         switch (event.getNpc().getData().getName()) {
             case "cdi-confiseur" -> {
-                ShopManager shopManager = new ShopManager();
-                shopManager.openShop(event.getPlayer(), "confiserie");
+                plugin.shopManager().openShop(event.getPlayer(), "confiserie");
+            }
+            case "cdi-upgrade" -> {
+                plugin.shopManager().openShop(event.getPlayer(), "upgrade");
             }
         }
     }

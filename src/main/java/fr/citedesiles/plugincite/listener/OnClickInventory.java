@@ -29,17 +29,42 @@ public class OnClickInventory implements Listener {
                 return;
             }
             if(!PluginCite.instance().shopManager().isInItemsList(itemList, originalItem)) {
-                event.getWhoClicked().sendMessage("§cCet item n'est pas à vendre.");
+                event.getWhoClicked().sendMessage("§cCet item n'est pas à vendre/à déposer.");
                 return;
             }
             int price = PluginCite.instance().shopManager().getPrice(itemList, originalItem);
             if(price == -1) {
-                event.getWhoClicked().sendMessage("§cErreur lors de la récupération du prix de l'item.");
+                event.getWhoClicked().sendMessage("§cErreur lors de la récupération du prix de l'item/quantité d'objets.");
                 return;
             }
             int count = PluginCite.instance().shopManager().countItemInInventory((Player) event.getWhoClicked(), originalItem);
             if(count == 0) {
                 event.getWhoClicked().sendMessage("§cVous n'avez pas cet item dans votre inventaire.");
+                return;
+            }
+            if(event.getView().getTitle().contains("upgrade")) {
+                if(event.isShiftClick()) {
+                    int total = count;
+                    if(total > price) {
+                        total = price;
+                    }
+                    removeItemAmount((Player) event.getWhoClicked(), originalItem, count);
+                    PluginCite.instance().teamManager().addSPToTeam(PluginCite.instance().playerManager().get((Player) event.getWhoClicked()).getTeam(), total);
+                    event.getWhoClicked().sendMessage("§aVous avez déposé " + total + " " + item.getType().toString() + " §apour §b§l" + total + " SP§a.");
+                    plugin.shopManager().itemsLists().editPrice("upgrade", originalItem, price-total);
+                    return;
+                }
+                if(event.isLeftClick()) {
+                    int total = 1;
+                    if(total > price) {
+                        total = price;
+                    }
+                    removeItemAmount((Player) event.getWhoClicked(), originalItem, total);
+                    PluginCite.instance().teamManager().addSPToTeam(PluginCite.instance().playerManager().get((Player) event.getWhoClicked()).getTeam(), total);
+                    event.getWhoClicked().sendMessage("§aVous avez déposé " + total + " " + item.getType().toString() + " §apour §b§l" + total + " SP§a.");
+                    plugin.shopManager().itemsLists().editPrice("upgrade", originalItem, price-total);
+                    return;
+                }
                 return;
             }
             if(event.isShiftClick()) {

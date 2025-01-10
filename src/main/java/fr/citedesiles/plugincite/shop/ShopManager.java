@@ -26,26 +26,40 @@ public class ShopManager {
                 int price = itemsLists.getItemsList(itemsList).get(item);
                 int count = countItemInInventory(player, item);
                 ItemMeta itemMeta = item.getItemMeta();
-                if(count >= 64) {
-                    itemMeta.setLore(List.of(
-                        "§fPrix Unité: §e" + price + " golds",
-                        "§fQuantité dans votre inventaire: " + count,
-                        "§c ",
-                        "§fClique gauche pour vendre §e1 §funité",
-                        "§fClique droit pour vendre §e64 §funités",
-                        "§fShift-Click pour vendre §eTOUT §fce que vous avez (soit " + count * price + " golds)"
-                    ));
+                if(!itemsList.equals("upgrade")) {
+                    if (count >= 64) {
+                        itemMeta.setLore(List.of(
+                            "§fPrix Unité: §e" + price + " golds",
+                            "§fQuantité dans votre inventaire: " + count,
+                            "§c ",
+                            "§fClique gauche pour vendre §e1 §funité",
+                            "§fClique droit pour vendre §e64 §funités",
+                            "§fShift-Click pour vendre §eTOUT §fce que vous avez (soit " + count * price + " golds)"
+                        ));
+                    } else {
+                        itemMeta.setLore(List.of(
+                            "§fPrix Unité: §e" + price + " golds",
+                            "§fQuantité dans votre inventaire: " + count,
+                            "§c ",
+                            "§fClique gauche pour vendre §e1 §funité",
+                            "§fShift-Click pour vendre §eTOUT §fce que vous avez (soit " + count * price + " golds)"
+                        ));
+                    }
+                    item.setItemMeta(itemMeta);
+                    inv.setItem(i, item);
                 } else {
                     itemMeta.setLore(List.of(
-                        "§fPrix Unité: §e" + price + " golds",
-                        "§fQuantité dans votre inventaire: " + count,
-                        "§c ",
-                        "§fClique gauche pour vendre §e1 §funité",
-                        "§fShift-Click pour vendre §eTOUT §fce que vous avez (soit " + count * price + " golds)"
+                        "§fReste nécessaire: §c§l" + price + " objets",
+                        "§fClique gauche pour déposer §e1 §fobjet",
+                        "§fShift-Click pour déposer §eTOUT §fce que vous avez",
+                        "§f",
+                        "§fCela vous rapportera §b§l1 SP"
                     ));
                 }
-                item.setItemMeta(itemMeta);
-                inv.setItem(i, item);
+                if(price > 0) {
+                    item.setItemMeta(itemMeta);
+                    inv.setItem(i, item);
+                }
             }
         }
         player.openInventory(inv);
@@ -91,6 +105,12 @@ public class ShopManager {
     }
 
     public boolean isSimilar(ItemStack item1, ItemStack item2) {
+        if(item1 == null) {
+            return false;
+        }
+        if(item2 == null) {
+            return false;
+        }
         if(item1.getType() != item2.getType()) {
             //Bukkit.broadcastMessage("§cType");
             return false;
@@ -110,5 +130,9 @@ public class ShopManager {
             }
         }
         return true;
+    }
+
+    public ItemsLists itemsLists() {
+        return itemsLists;
     }
 }
