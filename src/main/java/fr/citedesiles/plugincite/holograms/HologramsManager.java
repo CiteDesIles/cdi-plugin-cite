@@ -3,12 +3,14 @@ package fr.citedesiles.plugincite.holograms;
 public class HologramsManager {
 
     public void initAll() {
-        MainHologram.init();
-        HeadHologram.init();
+        MainRankingHologram.init();
+        HeadRankingHologram.init();
+        SPRankingHologram.init();
     }
 
     public void refreshAll() {
-        MainHologram.refresh();
-        HeadHologram.refresh();
+        MainRankingHologram.refresh();
+        HeadRankingHologram.refresh();
+        SPRankingHologram.refresh();
     }
 }

@@ -14,7 +14,7 @@ import org.joml.Vector3f;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HeadHologram {
+public class HeadRankingHologram {
     public static void init() {
         HologramManager hologramManager = FancyHologramsPlugin.get().getHologramManager();
         TextHologramData textHologramData = new TextHologramData("cdi.headranking", new Location(Bukkit.getWorld("world"), 80.5, 124, -327.5));

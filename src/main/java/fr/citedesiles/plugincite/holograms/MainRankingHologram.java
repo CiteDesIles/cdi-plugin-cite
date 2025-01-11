@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class MainHologram {
+public class MainRankingHologram {
     public static void init() {
         HologramManager manager = FancyHologramsPlugin.get().getHologramManager();
         TextHologramData hologramData = new TextHologramData("cdi.main", new Location(Bukkit.getWorld("world"), 90.5, 134, -349.5, 90, 0));
