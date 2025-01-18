@@ -14,6 +14,7 @@ import fr.citedesiles.plugincite.runnable.RefreshRunnable;
 import fr.citedesiles.plugincite.runnable.ScoreboardRunnable;
 import fr.citedesiles.plugincite.runnable.TeamSyncSaveRunnable;
 import fr.citedesiles.plugincite.shop.ShopManager;
+import fr.citedesiles.plugincite.towerbuilder.WorldLoaderUtility;
 import fr.citedesiles.plugincite.utils.ConfigManager;
 import fr.citedesiles.plugincite.utils.HeadsFileManager;
 import fr.citedesiles.plugincite.utils.ScoreboardTeamManager;
@@ -35,6 +36,9 @@ public class PluginCite extends JavaPlugin {
 
     @Override
     public void onEnable() {
+
+        WorldLoaderUtility.loadWorld("world");
+
         INSTANCE = this;
         npcManager = new NPCManager();
         getLogger().info("PluginCite enabled");
