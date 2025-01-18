@@ -5,13 +5,13 @@ import org.bukkit.World;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class TowerBuildRunnable extends BukkitRunnable {
-    public static int x1 = -535;
+    public static int x1 = -326;
     public static int y1 = 30;
-    public static int z1 = -700;
+    public static int z1 = -595;
 
-    public static int x2 = 550;
+    public static int x2 = 400;
     public static int y2 = 319;
-    public static int z2 = 800;
+    public static int z2 = 80;
 
     public static int currentX = x1;
     public static int currentY = y1;
