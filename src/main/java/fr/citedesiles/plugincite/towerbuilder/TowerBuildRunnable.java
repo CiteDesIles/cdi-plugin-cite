@@ -53,6 +53,6 @@ public class TowerBuildRunnable extends BukkitRunnable {
             }
             currentX = x1;
         }
-        currentY = y1;
+        this.cancel();
     }
 }
