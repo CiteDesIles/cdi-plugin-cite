@@ -55,6 +55,7 @@ public class PluginCite extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new OnPlayerJoin(this), this);
         getServer().getPluginManager().registerEvents(new OnClickInventory(this), this);
         getServer().getPluginManager().registerEvents(new OnInteractWithPlayerSkull(this), this);
+        getServer().getPluginManager().registerEvents(new OnWorldUpdate(), this);
 
         Objects.requireNonNull(getCommand("admin")).setExecutor(new AdminCommand(this));
         try {

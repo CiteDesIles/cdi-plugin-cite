@@ -52,7 +52,7 @@ public class AdminCommand implements CommandExecutor {
                 player.sendMessage("§aVotre équipe est: " + plugin.playerManager().get(player.getUniqueId()).getTeam());
                 break;
             case "copy":
-                CopyTowerFromAnotherWorld.copyTowerFromAnotherWorld(player.getWorld(), Bukkit.getWorld(strings[1]), Integer.parseInt(strings[2]));
+                CopyTowerFromAnotherWorld.copyTowerFromAnotherWorld(player.getWorld(), Bukkit.getWorld(strings[1]), Integer.parseInt(strings[2]), Integer.parseInt(strings[3]), Integer.parseInt(strings[4]));
                 break;
         }
         return true;
