@@ -1,9 +1,8 @@
 package fr.citedesiles.plugincite.commands;
 
 import fr.citedesiles.plugincite.PluginCite;
-import fr.citedesiles.plugincite.customsItems.ItemManager;
 import fr.citedesiles.plugincite.npcs.NPCs;
-import net.kyori.adventure.text.TextComponent;
+import fr.citedesiles.plugincite.towerbuilder.CopyTowerFromAnotherWorld;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -28,6 +27,7 @@ public class AdminCommand implements CommandExecutor {
             commandSender.sendMessage("§cVous n'avez pas la permission d'utiliser cette commande");
             return false;
         }
+        Player player = (Player) commandSender;
         switch (strings[0]) {
             case "spawnNPC":
                 NPCs npcs = new NPCs();
@@ -39,7 +39,6 @@ public class AdminCommand implements CommandExecutor {
                 }
                 break;
             case "index":
-                Player player = (Player) commandSender;
                 Inventory inv = Bukkit.createInventory(null, 54, "Index");
                 for(int i = 0; i < plugin.itemManager().getCustomsItems().size(); i++) {
                     inv.setItem(i, plugin.itemManager().getCustomsItems().get(i));
@@ -50,8 +49,10 @@ public class AdminCommand implements CommandExecutor {
                 plugin.npcManager().removeAllNPC();
                 break;
             case "whatismyteam":
-                Player player1 = (Player) commandSender;
-                player1.sendMessage("§aVotre équipe est: " + plugin.playerManager().get(player1.getUniqueId()).getTeam());
+                player.sendMessage("§aVotre équipe est: " + plugin.playerManager().get(player.getUniqueId()).getTeam());
+                break;
+            case "copy":
+                CopyTowerFromAnotherWorld.copyTowerFromAnotherWorld(player.getWorld(), Bukkit.getWorld(strings[1]), Integer.parseInt(strings[2]));
                 break;
         }
         return true;
