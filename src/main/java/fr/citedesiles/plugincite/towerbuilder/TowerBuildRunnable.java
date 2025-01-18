@@ -28,8 +28,9 @@ public class TowerBuildRunnable extends BukkitRunnable {
         this.blocsPerTick = blocsPerTick;
         this.toWorld = toWorld;
         this.fromWorld = fromWorld;
-        this.y1 = y1;
-        this.y2 = y2;
+        TowerBuildRunnable.y1 = y1;
+        TowerBuildRunnable.currentY = y1;
+        TowerBuildRunnable.y2 = y2;
     }
 
     @Override
