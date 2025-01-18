@@ -1,8 +1,11 @@
 package fr.citedesiles.plugincite.towerbuilder;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Chunk;
+import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class TowerBuildRunnable extends BukkitRunnable {
@@ -55,6 +58,31 @@ public class TowerBuildRunnable extends BukkitRunnable {
             }
             currentX = x1;
         }
+        copyEntities();
         this.cancel();
+    }
+
+
+    public void copyEntities() {
+        // Get all entites in chunk in fromWorld
+        int chunkX = ((int) x1/16);
+        int chunkZ = ((int) z1/16);
+        int chunkX2 = ((int) x2/16);
+        int chunkZ2 = ((int) z2/16);
+        for(int x = chunkX; x < chunkX2; x++) {
+            for(int z = chunkZ; z < chunkZ2; z++) {
+                Chunk chunk = fromWorld.getChunkAt(x, z);
+                chunk.load();
+                for(Entity entity : chunk.getEntities()) {
+                    Bukkit.broadcastMessage(entity.getType().toString());
+                    Location location = entity.getLocation();
+                    if(location.getBlockX() >= x1 && location.getBlockX() <= x2 && location.getBlockY() >= y1 && location.getBlockY() <= y2 && location.getBlockZ() >= z1 && location.getBlockZ() <= z2) {
+                        Bukkit.broadcastMessage("Teleporting entity");
+                        Location newLocation = new Location(toWorld, location.getX(), location.getY(), location.getZ());
+                        entity.teleport(newLocation);
+                    }
+                }
+            }
+        }
     }
 }
