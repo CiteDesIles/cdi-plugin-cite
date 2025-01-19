@@ -39,7 +39,6 @@ public class TowerBuildRunnable extends BukkitRunnable {
 
     @Override
     public void run() {
-        Bukkit.broadcastMessage(currentX + " " + currentY + " " + currentZ);
         for (int y = currentY; y < y2; y++) {
             for (int x = currentX; x < x2; x++) {
                 for (int z = currentZ; z < z2; z++) {
@@ -74,10 +73,8 @@ public class TowerBuildRunnable extends BukkitRunnable {
                 Chunk chunk = fromWorld.getChunkAt(x, z);
                 chunk.load();
                 for(Entity entity : chunk.getEntities()) {
-                    Bukkit.broadcastMessage(entity.getType().toString());
                     Location location = entity.getLocation();
                     if(location.getBlockX() >= x1 && location.getBlockX() <= x2 && location.getBlockY() >= y1 && location.getBlockY() <= y2 && location.getBlockZ() >= z1 && location.getBlockZ() <= z2) {
-                        Bukkit.broadcastMessage("Teleporting entity");
                         Location newLocation = new Location(toWorld, location.getX(), location.getY(), location.getZ());
                         entity.teleport(newLocation);
                     }
