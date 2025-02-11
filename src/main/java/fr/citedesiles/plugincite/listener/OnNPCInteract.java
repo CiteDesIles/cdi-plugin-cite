@@ -4,6 +4,7 @@ import de.oliver.fancynpcs.api.actions.ActionTrigger;
 import de.oliver.fancynpcs.api.events.NpcInteractEvent;
 import fr.citedesiles.plugincite.PluginCite;
 import fr.citedesiles.plugincite.shop.ShopManager;
+import fr.citedesiles.plugincite.shop.UpgradeManager;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -26,8 +27,12 @@ public class OnNPCInteract implements Listener {
             case "cdi-confiseur" -> {
                 plugin.shopManager().openShop(event.getPlayer(), "confiserie");
             }
-            case "cdi-upgrade" -> {
+            case "cdi-repair" -> {
                 plugin.shopManager().openShop(event.getPlayer(), "upgrade");
+            }
+            case "cdi-upgrade" -> {
+                UpgradeManager upgradeManager = new UpgradeManager();
+                upgradeManager.open(event.getPlayer());
             }
         }
     }

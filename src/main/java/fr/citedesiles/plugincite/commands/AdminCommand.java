@@ -33,6 +33,7 @@ public class AdminCommand implements CommandExecutor {
                 NPCs npcs = new NPCs();
                 try {
                     plugin.npcManager().addNPC("cdi-confiseur", npcs.confiseur());
+                    plugin.npcManager().addNPC("cdi-repair", npcs.repair());
                     plugin.npcManager().addNPC("cdi-upgrade", npcs.upgrade());
                 } catch (ExecutionException | InterruptedException e) {
                     throw new RuntimeException(e);
