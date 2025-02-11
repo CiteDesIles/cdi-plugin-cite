@@ -48,6 +48,7 @@ public class OnClickInventory implements Listener {
                 cteam.setMoney(cteam.getMoney() - price);
                 player.sendMessage("§aVous avez acheté un slot supplémentaire pour votre équipe");
                 player.sendMessage("§e§l[-" + price + " G]");
+                player.sendMessage("§o§7Attention, cela peut prendre 30 secondes pour que le changement soit effectif");
                 player.closeInventory();
             }
             return;
