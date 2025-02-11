@@ -31,7 +31,7 @@ public class UpgradeManager {
 
 
     public void open(Player player) {
-        Inventory inv = Bukkit.createInventory(null, 27, "§6§lAméliorer votre équipe");
+        Inventory inv = Bukkit.createInventory(null, 27, "§5§lAméliorer votre équipe");
         // Get player team
         CDITeam cteam = PluginCite.instance().teamManager().getTeam(
             PluginCite.instance().playerManager().get(player).getTeam()
@@ -62,5 +62,9 @@ public class UpgradeManager {
         item.setItemMeta(meta);
         inv.setItem(13, item);
         player.openInventory(inv);
+    }
+
+    public HashMap<Integer, Integer> getSlotUpgradePrices() {
+        return slotUpgradePrices;
     }
 }

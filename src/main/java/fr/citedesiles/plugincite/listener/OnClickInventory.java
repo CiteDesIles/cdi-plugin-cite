@@ -1,7 +1,10 @@
 package fr.citedesiles.plugincite.listener;
 
 import fr.citedesiles.plugincite.PluginCite;
+import fr.citedesiles.plugincite.objects.CDITeam;
 import fr.citedesiles.plugincite.shop.ShopManager;
+import fr.citedesiles.plugincite.shop.UpgradeManager;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,6 +21,38 @@ public class OnClickInventory implements Listener {
 
     @EventHandler
     public void on(InventoryClickEvent event) {
+
+        if(event.getView().getTitle().startsWith("§5")) {
+            event.setCancelled(true);
+            Player player = (Player) event.getWhoClicked();
+            ItemStack item = event.getCurrentItem();
+            if(event.getCurrentItem().getType().equals(Material.DIAMOND)) {
+                CDITeam cteam = PluginCite.instance().teamManager().getTeam(
+                    PluginCite.instance().playerManager().get(player).getTeam()
+                );
+                UpgradeManager upgradeManager = new UpgradeManager();
+                int price = upgradeManager.getSlotUpgradePrices().get(cteam.getSlots() + 1);
+                if(player.getUniqueId() != cteam.getOwner()) {
+                    player.sendMessage("§cVous devez être le propriétaire de l'équipe pour améliorer les slots");
+                    return;
+                }
+                if(cteam.getSlots() >= 16) {
+                    player.sendMessage("§cVotre équipe a déjà atteint le nombre maximum de slots");
+                    return;
+                }
+                if(cteam.getMoney() < price) {
+                    player.sendMessage("§cVotre équipe n'a pas assez d'argent pour acheter un slot supplémentaire");
+                    return;
+                }
+                cteam.setSlots(cteam.getSlots() + 1);
+                cteam.setMoney(cteam.getMoney() - price);
+                player.sendMessage("§aVous avez acheté un slot supplémentaire pour votre équipe");
+                player.sendMessage("§e§l[-" + price + " G]");
+                player.closeInventory();
+            }
+            return;
+        }
+
         if(event.getView().getTitle().startsWith("§6")) {
             event.setCancelled(true);
             String itemList = event.getView().getTitle().replace("§6", "");
