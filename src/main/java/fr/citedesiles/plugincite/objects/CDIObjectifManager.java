@@ -17,4 +17,13 @@ public class CDIObjectifManager {
     public List<CDIObjectif> getObjectifs() {
         return objectifs;
     }
+
+    public CDIObjectif getObjectif(String team, String name) {
+        for (CDIObjectif objectif : objectifs) {
+            if (objectif.getTeam().equals(team) && objectif.getName().equals(name)) {
+                return objectif;
+            }
+        }
+        return null;
+    }
 }
