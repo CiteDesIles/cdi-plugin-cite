@@ -11,6 +11,7 @@ import fr.citedesiles.plugincite.mysql.DatabaseManager;
 import fr.citedesiles.plugincite.objects.CDIObjectifManager;
 import fr.citedesiles.plugincite.objects.CDIPlayerManager;
 import fr.citedesiles.plugincite.objects.CDITeamManager;
+import fr.citedesiles.plugincite.runnable.ObjectifRunnable;
 import fr.citedesiles.plugincite.runnable.RefreshRunnable;
 import fr.citedesiles.plugincite.runnable.ScoreboardRunnable;
 import fr.citedesiles.plugincite.runnable.TeamSyncSaveRunnable;
@@ -82,6 +83,9 @@ public class PluginCite extends JavaPlugin {
 
         ScoreboardRunnable scoreboardRunnable = new ScoreboardRunnable();
         scoreboardRunnable.runTaskTimer(this, 0, 10);
+
+        ObjectifRunnable objectifRunnable = new ObjectifRunnable();
+        objectifRunnable.runTaskTimer(this, 0, 20 * 60 * 2);
 
         ScoreboardTeamManager scoreboardTeamManager = new ScoreboardTeamManager(this);
         scoreboardTeamManager.initAllTeams();
