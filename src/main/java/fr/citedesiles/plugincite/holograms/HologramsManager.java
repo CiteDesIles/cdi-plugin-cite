@@ -7,6 +7,7 @@ public class HologramsManager {
         HeadRankingHologram.init();
         SPRankingHologram.init();
         AngelRankingHologram.init();
+        ArrowShootOnPlayerRankingHologram.init();
     }
 
     public void refreshAll() {
@@ -14,5 +15,6 @@ public class HologramsManager {
         HeadRankingHologram.refresh();
         SPRankingHologram.refresh();
         AngelRankingHologram.refresh();
+        ArrowShootOnPlayerRankingHologram.refresh();
     }
 }

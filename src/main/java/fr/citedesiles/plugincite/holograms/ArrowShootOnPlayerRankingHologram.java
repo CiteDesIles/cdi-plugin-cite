@@ -15,10 +15,10 @@ import org.joml.Vector3f;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AngelRankingHologram {
+public class ArrowShootOnPlayerRankingHologram {
     public static void init() {
         HologramManager hologramManager = FancyHologramsPlugin.get().getHologramManager();
-        TextHologramData textHologramData = new TextHologramData("cdi.angelranking", new Location(Bukkit.getWorld("world"), 0, 100, 0));
+        TextHologramData textHologramData = new TextHologramData("cdi.archerranking", new Location(Bukkit.getWorld("world"), 0, 110, 0));
         textHologramData.setPersistent(false);
         textHologramData.setScale(new Vector3f(0.8f));
         textHologramData.setSeeThrough(false);
@@ -31,19 +31,19 @@ public class AngelRankingHologram {
     public static void refresh() {
         // Faire un classement des meilleurs équipes avec CDIOBjectif qui ont comme noms "angel"
         HologramManager hologramManager = FancyHologramsPlugin.get().getHologramManager();
-        Hologram hologram = hologramManager.getHologram("cdi.angelranking").orElse(null);
+        Hologram hologram = hologramManager.getHologram("cdi.archerranking").orElse(null);
         if (hologram == null) {
             return;
         }
         List<String> lines = new ArrayList<>();
-        lines.add("§6§l§kXXXXXXXXXX XXXXXX");
+        lines.add("§6§l§kXXXXXXXXXX XXXXXXX");
         int position = 1;
         List<CDITeam> teamListalreadysorted = new ArrayList<>();
         for(CDITeam team : PluginCite.instance().teamManager().getTeams()) {
             CDITeam curerentBest = null;
             long bestAngel = Long.MIN_VALUE;
             for (CDITeam _team : PluginCite.instance().teamManager().getTeams()) {
-                CDIObjectif angel = PluginCite.instance().objectifManager().getObjectif(_team.getName(), "angel");
+                CDIObjectif angel = PluginCite.instance().objectifManager().getObjectif(_team.getName(), "arrow_shoot_on_player");
                 if (angel != null && angel.getValue() > bestAngel && !teamListalreadysorted.contains(_team)) {
                     bestAngel = angel.getValue();
                     curerentBest = _team;
