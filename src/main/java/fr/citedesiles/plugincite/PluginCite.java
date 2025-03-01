@@ -8,6 +8,7 @@ import fr.citedesiles.plugincite.mysql.TeamSyncSQL;
 import fr.citedesiles.plugincite.npcs.NPCManager;
 import fr.citedesiles.plugincite.mysql.CheckTable;
 import fr.citedesiles.plugincite.mysql.DatabaseManager;
+import fr.citedesiles.plugincite.objects.CDIObjectifManager;
 import fr.citedesiles.plugincite.objects.CDIPlayerManager;
 import fr.citedesiles.plugincite.objects.CDITeamManager;
 import fr.citedesiles.plugincite.runnable.RefreshRunnable;
@@ -19,6 +20,7 @@ import fr.citedesiles.plugincite.utils.ConfigManager;
 import fr.citedesiles.plugincite.utils.HeadsFileManager;
 import fr.citedesiles.plugincite.utils.ScoreboardTeamManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scoreboard.ScoreboardManager;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -33,6 +35,7 @@ public class PluginCite extends JavaPlugin {
     private static CDIPlayerManager playerManager;
     private static CDITeamManager teamManager;
     private static HologramsManager hologramsManager;
+    private static CDIObjectifManager objectifManager;
 
     @Override
     public void onEnable() {
@@ -46,6 +49,8 @@ public class PluginCite extends JavaPlugin {
 
         itemManager = new ItemManager();
         shopManager = new ShopManager();
+
+        objectifManager = new CDIObjectifManager();
 
         playerManager = new CDIPlayerManager(this);
         teamManager = new CDITeamManager(this);
@@ -123,5 +128,9 @@ public class PluginCite extends JavaPlugin {
 
     public HologramsManager hologramManager() {
         return hologramsManager;
+    }
+
+    public CDIObjectifManager objectifManager() {
+        return objectifManager;
     }
 }
