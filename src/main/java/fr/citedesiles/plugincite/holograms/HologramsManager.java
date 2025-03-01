@@ -8,6 +8,8 @@ public class HologramsManager {
         SPRankingHologram.init();
         AngelRankingHologram.init();
         ArrowShootOnPlayerRankingHologram.init();
+        KillRankingHologram.init();
+        WardenKilledRankingHologram.init();
     }
 
     public void refreshAll() {
@@ -16,5 +18,7 @@ public class HologramsManager {
         SPRankingHologram.refresh();
         AngelRankingHologram.refresh();
         ArrowShootOnPlayerRankingHologram.refresh();
+        KillRankingHologram.refresh();
+        WardenKilledRankingHologram.refresh();
     }
 }
