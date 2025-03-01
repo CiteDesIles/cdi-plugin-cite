@@ -22,6 +22,7 @@ public class SyncObjectif {
                    PluginCite.instance().objectifManager().addObjectif(cdiObjectif);
                }
                PluginCite.instance().getLogger().info("[CDIOBJECTIF] Objectifs loaded from database !");
+               connection.close();
 
            } catch (Exception e) {
                e.printStackTrace();
