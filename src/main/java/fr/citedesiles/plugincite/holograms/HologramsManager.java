@@ -10,6 +10,12 @@ public class HologramsManager {
         ArrowShootOnPlayerRankingHologram.init();
         KillRankingHologram.init();
         WardenKilledRankingHologram.init();
+        BlueAxolotlKilledRankingHologram.init();
+        DeathRankingHologram.init();
+        DigRankingHologram.init();
+        DirtRankingHologram.init();
+        DragonSlayerRankingHologram.init();
+        EnderpearlRankingHologram.init();
     }
 
     public void refreshAll() {
@@ -20,5 +26,11 @@ public class HologramsManager {
         ArrowShootOnPlayerRankingHologram.refresh();
         KillRankingHologram.refresh();
         WardenKilledRankingHologram.refresh();
+        BlueAxolotlKilledRankingHologram.refresh();
+        DeathRankingHologram.refresh();
+        DigRankingHologram.refresh();
+        DirtRankingHologram.refresh();
+        DragonSlayerRankingHologram.refresh();
+        EnderpearlRankingHologram.refresh();
     }
 }
