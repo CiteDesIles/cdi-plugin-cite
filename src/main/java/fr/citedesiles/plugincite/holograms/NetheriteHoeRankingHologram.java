@@ -15,15 +15,15 @@ import org.joml.Vector3f;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AngelRankingHologram {
+public class NetheriteHoeRankingHologram {
     public static void init() {
         HologramManager hologramManager = FancyHologramsPlugin.get().getHologramManager();
-        TextHologramData textHologramData = new TextHologramData("cdi.angelranking", new Location(Bukkit.getWorld("world"), 0, 100, 0));
+        TextHologramData textHologramData = new TextHologramData("cdi.netheriteranking", new Location(Bukkit.getWorld("world"), 0, 220, 0));
         textHologramData.setPersistent(false);
         textHologramData.setScale(new Vector3f(0.8f));
         textHologramData.setSeeThrough(false);
         textHologramData.setBillboard(Display.Billboard.CENTER);
-        textHologramData.setText(List.of("§6§k§lXXXXXXXXXX XXX XXXXX", "§7Loading..."));
+        textHologramData.setText(List.of("§6§k§lXXXXXXXXXX XXX XXXXXX XX XXXX XX XXXXXXXX", "§7Loading..."));
         Hologram prout = hologramManager.create(textHologramData);
         hologramManager.addHologram(prout);
     }
@@ -31,19 +31,19 @@ public class AngelRankingHologram {
     public static void refresh() {
         // Faire un classement des meilleurs équipes avec CDIOBjectif qui ont comme noms "angel"
         HologramManager hologramManager = FancyHologramsPlugin.get().getHologramManager();
-        Hologram hologram = hologramManager.getHologram("cdi.angelranking").orElse(null);
+        Hologram hologram = hologramManager.getHologram("cdi.netheriteranking").orElse(null);
         if (hologram == null) {
             return;
         }
         List<String> lines = new ArrayList<>();
-        lines.add("§6§l§kXXXXXXXXXX XXX XXXXX");
+        lines.add("§6§l§kXXXXXXXXXX XXX XXXXXX XX XXXX XX XXXXXXXX");
         int position = 1;
         List<CDITeam> teamListalreadysorted = new ArrayList<>();
         for(CDITeam team : PluginCite.instance().teamManager().getTeams()) {
             CDITeam curerentBest = null;
             long bestAngel = Long.MIN_VALUE;
             for (CDITeam _team : PluginCite.instance().teamManager().getTeams()) {
-                CDIObjectif angel = PluginCite.instance().objectifManager().getObjectif(_team.getName(), "angel");
+                CDIObjectif angel = PluginCite.instance().objectifManager().getObjectif(_team.getName(), "netherite_houe");
                 if (angel != null && angel.getValue() > bestAngel && !teamListalreadysorted.contains(_team)) {
                     bestAngel = angel.getValue();
                     curerentBest = _team;

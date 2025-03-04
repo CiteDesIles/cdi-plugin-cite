@@ -8,14 +8,18 @@ public class HologramsManager {
         SPRankingHologram.init();
         AngelRankingHologram.init();
         ArrowShootOnPlayerRankingHologram.init();
-        KillRankingHologram.init();
-        WardenKilledRankingHologram.init();
         BlueAxolotlKilledRankingHologram.init();
         DeathRankingHologram.init();
         DigRankingHologram.init();
         DirtRankingHologram.init();
         DragonSlayerRankingHologram.init();
         EnderpearlRankingHologram.init();
+        ApiculteurRankingHologram.init();
+        KillRankingHologram.init();
+        ToolBrokenRankingHologram.init();
+        NetheriteHoeRankingHologram.init();
+        TotemOfUndyingRankingHologram.init();
+        WardenKilledRankingHologram.init();
     }
 
     public void refreshAll() {
@@ -32,5 +36,9 @@ public class HologramsManager {
         DirtRankingHologram.refresh();
         DragonSlayerRankingHologram.refresh();
         EnderpearlRankingHologram.refresh();
+        ToolBrokenRankingHologram.refresh();
+        NetheriteHoeRankingHologram.refresh();
+        ApiculteurRankingHologram.refresh();
+        TotemOfUndyingRankingHologram.refresh();
     }
 }
