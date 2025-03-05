@@ -1,5 +1,6 @@
 package fr.citedesiles.plugincite.commands;
 
+import com.github.t9t.minecraftrconclient.RconClient;
 import fr.citedesiles.plugincite.PluginCite;
 import fr.citedesiles.plugincite.npcs.NPCs;
 import fr.citedesiles.plugincite.towerbuilder.CopyTowerFromAnotherWorld;
@@ -54,6 +55,12 @@ public class AdminCommand implements CommandExecutor {
                 break;
             case "copy":
                 CopyTowerFromAnotherWorld.copyTowerFromAnotherWorld(player.getWorld(), Bukkit.getWorld(strings[1]), Integer.parseInt(strings[2]), Integer.parseInt(strings[3]), Integer.parseInt(strings[4]));
+                break;
+            case "testrcon":
+                try (RconClient client = RconClient.open("localhost", 25575, "jesuisbo")) {
+                    client.sendCommand("say Hello, world depuis Java (CDI-Cite)!");
+                    client.close();
+                }
                 break;
         }
         return true;

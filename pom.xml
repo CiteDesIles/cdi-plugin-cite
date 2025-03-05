@@ -58,6 +58,11 @@
             <version>2.4.1</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.t9t.minecraft-rcon-client</groupId>
+            <artifactId>minecraft-rcon-client</artifactId>
+            <version>1.0.0</version>
+        </dependency>
 
     </dependencies>
 
