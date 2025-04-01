@@ -69,36 +69,36 @@ public class OnClickInventory implements Listener {
                 event.getWhoClicked().sendMessage("§cCet item n'est pas à vendre/à déposer.");
                 return;
             }
-            int price = PluginCite.instance().shopManager().getPrice(itemList, originalItem);
+            long price = PluginCite.instance().shopManager().getPrice(itemList, originalItem);
             if(price == -1) {
                 event.getWhoClicked().sendMessage("§cErreur lors de la récupération du prix de l'item/quantité d'objets.");
                 return;
             }
-            int count = PluginCite.instance().shopManager().countItemInInventory((Player) event.getWhoClicked(), originalItem);
+            long count = PluginCite.instance().shopManager().countItemInInventory((Player) event.getWhoClicked(), originalItem);
             if(count == 0) {
                 event.getWhoClicked().sendMessage("§cVous n'avez pas cet item dans votre inventaire.");
                 return;
             }
             if(event.getView().getTitle().contains("upgrade")) {
                 if(event.isShiftClick()) {
-                    int total = count;
+                    long total = count;
                     if(total > price) {
                         total = price;
                     }
-                    removeItemAmount((Player) event.getWhoClicked(), originalItem, count);
+                    removeItemAmount((Player) event.getWhoClicked(), originalItem, (int) count);
                     PluginCite.instance().teamManager().addSPToTeam(PluginCite.instance().playerManager().get((Player) event.getWhoClicked()).getTeam(), total);
                     event.getWhoClicked().sendMessage("§aVous avez déposé " + total + " " + item.getType().toString() + " §apour §b§l" + total + " SP§a.");
-                    plugin.shopManager().itemsLists().editPrice("upgrade", originalItem, price-total);
+                    plugin.shopManager().itemsLists().editPrice("upgrade", originalItem, (long) price-total);
                     (event.getWhoClicked()).closeInventory();
                     PluginCite.instance().shopManager().openShop((Player) event.getWhoClicked(), "upgrade");
                     return;
                 }
                 if(event.isLeftClick()) {
-                    int total = 1;
+                    long total = 1;
                     if(total > price) {
                         total = price;
                     }
-                    removeItemAmount((Player) event.getWhoClicked(), originalItem, total);
+                    removeItemAmount((Player) event.getWhoClicked(), originalItem, (int) total);
                     PluginCite.instance().teamManager().addSPToTeam(PluginCite.instance().playerManager().get((Player) event.getWhoClicked()).getTeam(), total);
                     event.getWhoClicked().sendMessage("§aVous avez déposé " + total + " " + item.getType().toString() + " §apour §b§l" + total + " SP§a.");
                     plugin.shopManager().itemsLists().editPrice("upgrade", originalItem, price-total);
@@ -109,8 +109,8 @@ public class OnClickInventory implements Listener {
                 return;
             }
             if(event.isShiftClick()) {
-                int total = count * price;
-                removeItemAmount((Player) event.getWhoClicked(), originalItem, count);
+                long total = count * price;
+                removeItemAmount((Player) event.getWhoClicked(), originalItem, (int) count);
                 String team = PluginCite.instance().playerManager().get((Player) event.getWhoClicked()).getTeam();
                 PluginCite.instance().teamManager().addGoldToTeam(team, total);
                 if(originalItem.getItemMeta().hasDisplayName()) {

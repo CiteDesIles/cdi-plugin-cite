@@ -23,8 +23,8 @@ public class ShopManager {
         for(int i = 0; i < 54; i++) {
             if(itemsLists.getItemsList(itemsList).size() > i) {
                 ItemStack item = ((ItemStack) itemsLists.getItemsList(itemsList).keySet().toArray()[i]).clone();
-                int price = itemsLists.getItemsList(itemsList).get(item);
-                int count = countItemInInventory(player, item);
+                long price = itemsLists.getItemsList(itemsList).get(item);
+                long count = countItemInInventory(player, item);
                 ItemMeta itemMeta = item.getItemMeta();
                 if(!itemsList.equals("upgrade")) {
                     if (count >= 64) {
@@ -66,8 +66,8 @@ public class ShopManager {
     }
 
 
-    public int countItemInInventory(Player player, ItemStack item) {
-        int count = 0;
+    public long countItemInInventory(Player player, ItemStack item) {
+        long count = 0;
         for(ItemStack itemStack : player.getInventory().getContents()) {
             if(itemStack != null && itemStack.isSimilar(item)) {
                 count += itemStack.getAmount();
@@ -95,7 +95,7 @@ public class ShopManager {
         return found;
     }
 
-    public int getPrice(String itemsList, ItemStack item) {
+    public long getPrice(String itemsList, ItemStack item) {
         for(ItemStack itemStack : itemsLists.getItemsList(itemsList).keySet()) {
             if(isSimilar(item, itemStack)) {
                 return itemsLists.getItemsList(itemsList).get(itemStack);

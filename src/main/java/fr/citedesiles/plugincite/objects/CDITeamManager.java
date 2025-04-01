@@ -30,10 +30,10 @@ public class CDITeamManager {
         }
     }
 
-    public void addSPToTeam(String teamName, int amount) {
+    public void addSPToTeam(String teamName, long amount) {
         for (CDITeam team : teams) {
             if (team.getName().equals(teamName)) {
-                team.setSupportPoints(team.getSupportPoints() + amount);
+                team.setSupportPoints(team.getSupportPoints() + (int) amount);
             }
         }
     }
