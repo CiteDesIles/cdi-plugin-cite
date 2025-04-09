@@ -13,20 +13,20 @@ import java.util.HashMap;
 import java.util.List;
 
 public class UpgradeManager {
-    HashMap<Integer, Integer> slotUpgradePrices = new HashMap<>();
+    HashMap<Integer, Long> slotUpgradePrices = new HashMap<>();
 
     public UpgradeManager() {
-        slotUpgradePrices.put(6,   10000);
-        slotUpgradePrices.put(7,   50000);
-        slotUpgradePrices.put(8,   100000);
-        slotUpgradePrices.put(9,   500000);
-        slotUpgradePrices.put(10,  1000000);
-        slotUpgradePrices.put(11,  5000000);
-        slotUpgradePrices.put(12,  10000000);
-        slotUpgradePrices.put(13,  50000000);
-        slotUpgradePrices.put(14,  100000000);
-        slotUpgradePrices.put(15,  500000000);
-        slotUpgradePrices.put(16,  Integer.MAX_VALUE-1);
+        slotUpgradePrices.put(6,   10000L);
+        slotUpgradePrices.put(7,   50000L);
+        slotUpgradePrices.put(8,   100000L);
+        slotUpgradePrices.put(9,   500000L);
+        slotUpgradePrices.put(10,  1000000L);
+        slotUpgradePrices.put(11,  5000000L);
+        slotUpgradePrices.put(12,  10000000L);
+        slotUpgradePrices.put(13,  50000000L);
+        slotUpgradePrices.put(14,  100000000L);
+        slotUpgradePrices.put(15,  500000000L);
+        slotUpgradePrices.put(16,  Long.MAX_VALUE-1);
     }
 
 
@@ -40,7 +40,7 @@ public class UpgradeManager {
         int slot = cteam.getSlots();
         // Get upgrade price
 
-        if(player.getUniqueId() != cteam.getOwner()) {
+        if(!player.getUniqueId().equals(cteam.getOwner())) {
             player.sendMessage("§cVous devez être le propriétaire de l'équipe pour améliorer les slots");
             return;
         }
@@ -48,14 +48,14 @@ public class UpgradeManager {
             player.sendMessage("§cVotre équipe a déjà atteint le nombre maximum de slots");
             return;
         }
-        int price = slotUpgradePrices.get(slot+1);
+        long price = slotUpgradePrices.get(slot+1);
         ItemStack item = new ItemStack(Material.DIAMOND);
         item.setAmount(slot+1);
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName("§a§lSlot d'équipe supplémentaire");
         meta.setLore(
             List.of(
-                "§7Prix: §6"+price+" §7$",
+                "§7Prix: §e§l"+price+" golds",
                 "§7Cliquez pour acheter"
             )
         );
@@ -64,7 +64,7 @@ public class UpgradeManager {
         player.openInventory(inv);
     }
 
-    public HashMap<Integer, Integer> getSlotUpgradePrices() {
+    public HashMap<Integer, Long> getSlotUpgradePrices() {
         return slotUpgradePrices;
     }
 }

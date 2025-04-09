@@ -59,7 +59,7 @@ public class MainRankingHologram {
         Hologram hologram2 = ohologram2.get();
 
         List<String> text = new ArrayList<>();
-        text.add("§6§lCité des îles");
+        text.add("§8§l--- §6§lCité des îles §8§l---");
         List<CDITeam> rankedTeams = new ArrayList<>();
         int positiona = 1;
         for(CDITeam team : PluginCite.instance().teamManager().getTeams()) {

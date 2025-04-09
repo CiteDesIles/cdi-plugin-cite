@@ -31,8 +31,8 @@ public class OnClickInventory implements Listener {
                     PluginCite.instance().playerManager().get(player).getTeam()
                 );
                 UpgradeManager upgradeManager = new UpgradeManager();
-                int price = upgradeManager.getSlotUpgradePrices().get(cteam.getSlots() + 1);
-                if(player.getUniqueId() != cteam.getOwner()) {
+                long price = upgradeManager.getSlotUpgradePrices().get(cteam.getSlots() + 1);
+                if(!player.getUniqueId().equals(cteam.getOwner())) {
                     player.sendMessage("§cVous devez être le propriétaire de l'équipe pour améliorer les slots");
                     return;
                 }
@@ -48,7 +48,7 @@ public class OnClickInventory implements Listener {
                 cteam.setMoney(cteam.getMoney() - price);
                 player.sendMessage("§aVous avez acheté un slot supplémentaire pour votre équipe");
                 player.sendMessage("§e§l[-" + price + " G]");
-                player.sendMessage("§o§7Attention, cela peut prendre 30 secondes pour que le changement soit effectif");
+                player.sendMessage("§c§lAttention, cela peut prendre 30 secondes pour que le changement soit effectif");
                 player.closeInventory();
             }
             return;
