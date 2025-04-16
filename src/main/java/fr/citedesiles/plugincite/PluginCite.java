@@ -81,7 +81,7 @@ public class PluginCite extends JavaPlugin {
         RefreshRunnable refreshRunnable = new RefreshRunnable();
         refreshRunnable.runTaskTimer(this, 0, 20 * 5);
 
-        ScoreboardRunnable scoreboardRunnable = new ScoreboardRunnable();
+        ScoreboardRunnable scoreboardRunnable = new ScoreboardRunnable(this);
         scoreboardRunnable.runTaskTimer(this, 0, 10);
 
         ObjectifRunnable objectifRunnable = new ObjectifRunnable();
