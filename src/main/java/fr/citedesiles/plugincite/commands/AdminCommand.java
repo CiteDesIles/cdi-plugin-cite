@@ -5,6 +5,7 @@ import fr.citedesiles.plugincite.PluginCite;
 import fr.citedesiles.plugincite.npcs.NPCs;
 import fr.citedesiles.plugincite.towerbuilder.CopyTowerFromAnotherWorld;
 import org.bukkit.Bukkit;
+import org.bukkit.WorldCreator;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -54,13 +55,20 @@ public class AdminCommand implements CommandExecutor {
                 player.sendMessage("§aVotre équipe est: " + plugin.playerManager().get(player.getUniqueId()).getTeam());
                 break;
             case "copy":
-                CopyTowerFromAnotherWorld.copyTowerFromAnotherWorld(player.getWorld(), Bukkit.getWorld(strings[1]), Integer.parseInt(strings[2]), Integer.parseInt(strings[3]), Integer.parseInt(strings[4]));
+                CopyTowerFromAnotherWorld.copyTowerFromAnotherWorld(player.getWorld(), strings[1], Integer.parseInt(strings[2]), Integer.parseInt(strings[3]), Integer.parseInt(strings[4]));
                 break;
             case "testrcon":
                 try (RconClient client = RconClient.open("localhost", 25575, "jesuisbo")) {
                     client.sendCommand("say Hello, world depuis Java (CDI-Cite)!");
                     client.close();
                 }
+                break;
+            case "loadWorld":
+                WorldCreator creator = new WorldCreator(strings[1]);
+                creator.createWorld();
+                break;
+            case "unloadWorld":
+                Bukkit.unloadWorld(strings[1], true);
                 break;
         }
         return true;
