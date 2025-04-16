@@ -51,7 +51,7 @@ public class ScoreboardRunnable extends BukkitRunnable {
         }
 
         // Remove boards for offline players
-        boards.entrySet().removeIf(entry -> !Bukkit.getPlayer(entry.getKey()).isOnline());
+        boards.entrySet().removeIf(entry -> Bukkit.getPlayer(entry.getKey()) == null);
     }
 
     public void onDisable() {
