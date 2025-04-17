@@ -14,7 +14,7 @@ public class NPCs {
     private final UUID uuid = UUID.randomUUID();
 
     public Npc confiseur() throws ExecutionException, InterruptedException {
-        Location location = new Location(Bukkit.getWorld("world"), 0, 90, 0);
+        Location location = new Location(Bukkit.getWorld("world"), 94.5, 129, -330.5, 180, 0);
         NpcData npcData = new NpcData("cdi-confiseur", uuid, location);
         //CompletableFuture<SkinFetcher.SkinData> skin = SkinFetcher.fetchSkinByURL("https://minesk.in/3ae2a67a962345c8ba049242ee7fc102");
         //npcData.setSkin(skin.get());
@@ -40,7 +40,7 @@ public class NPCs {
     }
 
     public Npc upgrade() throws ExecutionException, InterruptedException {
-        Location location = new Location(Bukkit.getWorld("world"), 0, 96, 0);
+        Location location = new Location(Bukkit.getWorld("world"), 118.5, 139, -339.5, 90, 0);
         NpcData npcData = new NpcData("cdi-upgrade", uuid, location);
         npcData.setDisplayName("§6Améliorateur de l'équipe");
         //CompletableFuture<SkinFetcher.SkinData> skin = SkinFetcher.fetchSkinByURL("https://minesk.in/3ae2a67a962345c8ba049242ee7fc102");

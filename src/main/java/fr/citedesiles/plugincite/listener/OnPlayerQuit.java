@@ -9,7 +9,7 @@ import net.kyori.adventure.text.Component;
 public class OnPlayerQuit implements Listener {
     @EventHandler
     public void on(PlayerQuitEvent event) {
-        event.setQuitMessage("§7(§c+§7) " + event.getPlayer().getName());
+        event.setQuitMessage("§7(§c-§7) " + event.getPlayer().getName());
     }
     
 }
