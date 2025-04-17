@@ -51,7 +51,7 @@ public class BoatRaceBuildRunnable extends BukkitRunnable {
         for (int y = currentY; y < y2; y++) {
             for (int x = currentX; x < x2; x++) {
                 for (int z = currentZ; z < z2; z++) {
-                    if(fromWorld.getBlockAt(x, y, y).getType().toString().contains("AIR") || fromWorld.getBlockAt(x, y, z).getType().toString().contains("LIGHT")) {
+                    if(fromWorld.getBlockAt(x, y, z).getType().toString().contains("AIR") || fromWorld.getBlockAt(x, y, z).getType().toString().contains("LIGHT")) {
                         blocks++;
                         continue;
                     }
