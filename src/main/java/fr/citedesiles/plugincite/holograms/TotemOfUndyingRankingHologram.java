@@ -18,7 +18,7 @@ import java.util.List;
 public class TotemOfUndyingRankingHologram {
     public static void init() {
         HologramManager hologramManager = FancyHologramsPlugin.get().getHologramManager();
-        TextHologramData textHologramData = new TextHologramData("cdi.totemranking", new Location(Bukkit.getWorld("world"), 0, 220, 0));
+        TextHologramData textHologramData = new TextHologramData("cdi.totemranking", new Location(Bukkit.getWorld("world"), 103.5, 111, -329.5));
         textHologramData.setPersistent(false);
         textHologramData.setScale(new Vector3f(0.8f));
         textHologramData.setSeeThrough(false);

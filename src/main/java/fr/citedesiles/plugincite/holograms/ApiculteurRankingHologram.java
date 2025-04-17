@@ -18,7 +18,7 @@ import java.util.List;
 public class ApiculteurRankingHologram {
     public static void init() {
         HologramManager hologramManager = FancyHologramsPlugin.get().getHologramManager();
-        TextHologramData textHologramData = new TextHologramData("cdi.asmielranking", new Location(Bukkit.getWorld("world"), 0, 210, 0));
+        TextHologramData textHologramData = new TextHologramData("cdi.asmielranking", new Location(Bukkit.getWorld("world"), 80.5, 97, -371.5));
         textHologramData.setPersistent(false);
         textHologramData.setScale(new Vector3f(0.8f));
         textHologramData.setSeeThrough(false);

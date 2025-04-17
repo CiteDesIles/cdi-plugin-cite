@@ -18,7 +18,7 @@ import java.util.List;
 public class BlueAxolotlKilledRankingHologram {
     public static void init() {
         HologramManager hologramManager = FancyHologramsPlugin.get().getHologramManager();
-        TextHologramData textHologramData = new TextHologramData("cdi.blueaxolotlranking", new Location(Bukkit.getWorld("world"), 0, 150, 0));
+        TextHologramData textHologramData = new TextHologramData("cdi.blueaxolotlranking", new Location(Bukkit.getWorld("world"), 112.5, 97, -359.5));
         textHologramData.setPersistent(false);
         textHologramData.setScale(new Vector3f(0.8f));
         textHologramData.setSeeThrough(false);

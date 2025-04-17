@@ -18,7 +18,7 @@ import java.util.List;
 public class AngelRankingHologram {
     public static void init() {
         HologramManager hologramManager = FancyHologramsPlugin.get().getHologramManager();
-        TextHologramData textHologramData = new TextHologramData("cdi.angelranking", new Location(Bukkit.getWorld("world"), 0, 100, 0));
+        TextHologramData textHologramData = new TextHologramData("cdi.angelranking", new Location(Bukkit.getWorld("world"), 68.5, 97, -359.5));
         textHologramData.setPersistent(false);
         textHologramData.setScale(new Vector3f(0.8f));
         textHologramData.setSeeThrough(false);

@@ -18,7 +18,7 @@ import java.util.List;
 public class EnderpearlRankingHologram {
     public static void init() {
         HologramManager hologramManager = FancyHologramsPlugin.get().getHologramManager();
-        TextHologramData textHologramData = new TextHologramData("cdi.enderranking", new Location(Bukkit.getWorld("world"), 0, 190, 0));
+        TextHologramData textHologramData = new TextHologramData("cdi.enderranking", new Location(Bukkit.getWorld("world"), 70.5, 111, -362.5));
         textHologramData.setPersistent(false);
         textHologramData.setScale(new Vector3f(0.8f));
         textHologramData.setSeeThrough(false);

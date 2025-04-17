@@ -18,7 +18,7 @@ import java.util.List;
 public class DeathRankingHologram {
     public static void init() {
         HologramManager hologramManager = FancyHologramsPlugin.get().getHologramManager();
-        TextHologramData textHologramData = new TextHologramData("cdi.deathranking", new Location(Bukkit.getWorld("world"), 0, 160, 0));
+        TextHologramData textHologramData = new TextHologramData("cdi.deathranking", new Location(Bukkit.getWorld("world"), 112.5, 97, -339.5));
         textHologramData.setPersistent(false);
         textHologramData.setScale(new Vector3f(0.8f));
         textHologramData.setSeeThrough(false);

@@ -18,7 +18,7 @@ import java.util.List;
 public class ToolBrokenRankingHologram {
     public static void init() {
         HologramManager hologramManager = FancyHologramsPlugin.get().getHologramManager();
-        TextHologramData textHologramData = new TextHologramData("cdi.toolbrokeranking", new Location(Bukkit.getWorld("world"), 0, 140, 0));
+        TextHologramData textHologramData = new TextHologramData("cdi.toolbrokeranking", new Location(Bukkit.getWorld("world"), 110.5, 111, -336.5));
         textHologramData.setPersistent(false);
         textHologramData.setScale(new Vector3f(0.8f));
         textHologramData.setSeeThrough(false);

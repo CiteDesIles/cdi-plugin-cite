@@ -18,7 +18,7 @@ import java.util.List;
 public class WardenKilledRankingHologram {
     public static void init() {
         HologramManager hologramManager = FancyHologramsPlugin.get().getHologramManager();
-        TextHologramData textHologramData = new TextHologramData("cdi.wardenkillranking", new Location(Bukkit.getWorld("world"), 0, 130, 0));
+        TextHologramData textHologramData = new TextHologramData("cdi.wardenkillranking", new Location(Bukkit.getWorld("world"), 77.5, 111, -329.5));
         textHologramData.setPersistent(false);
         textHologramData.setScale(new Vector3f(0.8f));
         textHologramData.setSeeThrough(false);

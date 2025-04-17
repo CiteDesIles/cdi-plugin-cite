@@ -17,7 +17,7 @@ import java.util.List;
 public class SPRankingHologram {
     public static void init() {
         HologramManager hologramManager = FancyHologramsPlugin.get().getHologramManager();
-        TextHologramData textHologramData = new TextHologramData("cdi.spranking", new Location(Bukkit.getWorld("world"), 68.5, 124, -339.5));
+        TextHologramData textHologramData = new TextHologramData("cdi.spranking", new Location(Bukkit.getWorld("world"), 80.5, 97, -327.5));
         textHologramData.setPersistent(false);
         textHologramData.setScale(new Vector3f(0.8f));
         textHologramData.setSeeThrough(false);

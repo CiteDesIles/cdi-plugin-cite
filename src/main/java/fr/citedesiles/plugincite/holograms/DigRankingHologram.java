@@ -18,7 +18,7 @@ import java.util.List;
 public class DigRankingHologram {
     public static void init() {
         HologramManager hologramManager = FancyHologramsPlugin.get().getHologramManager();
-        TextHologramData textHologramData = new TextHologramData("cdi.digranking", new Location(Bukkit.getWorld("world"), 0, 170, 0));
+        TextHologramData textHologramData = new TextHologramData("cdi.digranking", new Location(Bukkit.getWorld("world"), 100.5, 97, -327.5));
         textHologramData.setPersistent(false);
         textHologramData.setScale(new Vector3f(0.8f));
         textHologramData.setSeeThrough(false);

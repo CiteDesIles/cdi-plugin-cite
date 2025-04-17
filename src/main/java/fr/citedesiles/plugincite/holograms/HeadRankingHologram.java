@@ -17,7 +17,7 @@ import java.util.List;
 public class HeadRankingHologram {
     public static void init() {
         HologramManager hologramManager = FancyHologramsPlugin.get().getHologramManager();
-        TextHologramData textHologramData = new TextHologramData("cdi.headranking", new Location(Bukkit.getWorld("world"), 80.5, 124, -327.5));
+        TextHologramData textHologramData = new TextHologramData("cdi.headranking", new Location(Bukkit.getWorld("world"), 68.5, 97, -339.5));
         textHologramData.setPersistent(false);
         textHologramData.setScale(new Vector3f(0.8f));
         textHologramData.setSeeThrough(false);

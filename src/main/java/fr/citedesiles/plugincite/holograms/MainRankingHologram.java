@@ -20,7 +20,7 @@ import java.util.Optional;
 public class MainRankingHologram {
     public static void init() {
         HologramManager manager = FancyHologramsPlugin.get().getHologramManager();
-        TextHologramData hologramData = new TextHologramData("cdi.main", new Location(Bukkit.getWorld("world"), 90.5, 134, -349.5, 90, 0));
+        TextHologramData hologramData = new TextHologramData("cdi.main", new Location(Bukkit.getWorld("world"), 90.5, 106, -349.5, 0, 0));
         hologramData.setBackground(Color.fromRGB(80, 10, 9));
         hologramData.setPersistent(false);
         hologramData.setBillboard(Display.Billboard.FIXED);
@@ -31,7 +31,7 @@ public class MainRankingHologram {
         Hologram hologram = manager.create(hologramData);
         manager.addHologram(hologram);
 
-        TextHologramData hologramData2 = new TextHologramData("cdi.main2", new Location(Bukkit.getWorld("world"), 90.5, 134, -349.5, -90, 0));
+        TextHologramData hologramData2 = new TextHologramData("cdi.main2", new Location(Bukkit.getWorld("world"), 90.5, 106, -349.5, -180, 0));
         hologramData2.setBackground(Color.fromRGB(80, 10, 9));
         hologramData2.setPersistent(false);
         hologramData2.setScale(new Vector3f(1.2f));

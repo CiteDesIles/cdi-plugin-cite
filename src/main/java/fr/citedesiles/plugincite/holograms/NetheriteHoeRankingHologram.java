@@ -18,7 +18,7 @@ import java.util.List;
 public class NetheriteHoeRankingHologram {
     public static void init() {
         HologramManager hologramManager = FancyHologramsPlugin.get().getHologramManager();
-        TextHologramData textHologramData = new TextHologramData("cdi.netheriteranking", new Location(Bukkit.getWorld("world"), 0, 220, 0));
+        TextHologramData textHologramData = new TextHologramData("cdi.netheriteranking", new Location(Bukkit.getWorld("world"), 110.5, 111, -362.5));
         textHologramData.setPersistent(false);
         textHologramData.setScale(new Vector3f(0.8f));
         textHologramData.setSeeThrough(false);
