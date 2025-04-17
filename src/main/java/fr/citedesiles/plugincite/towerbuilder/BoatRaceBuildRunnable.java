@@ -14,13 +14,13 @@ import org.bukkit.profile.PlayerTextures;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class BoatRaceBuildRunnable extends BukkitRunnable {
-    public static int x1 = -360;
+    public static int x1 = -370;
     public static int y1 = 30;
-    public static int z1 = -625;
+    public static int z1 = -574;
 
     public static int x2 = 600;
     public static int y2 = 319;
-    public static int z2 = -140;
+    public static int z2 = -120;
 
     public static int currentX = x1;
     public static int currentY = y1;
@@ -38,12 +38,12 @@ public class BoatRaceBuildRunnable extends BukkitRunnable {
     public static World fromWorld;
 
     public BoatRaceBuildRunnable(int blocsPerTick, World toWorld, World fromWorld, int y1, int y2) {
-        this.blocsPerTick = blocsPerTick;
-        this.toWorld = toWorld;
-        this.fromWorld = fromWorld;
-        TowerBuildRunnable.y1 = y1;
-        TowerBuildRunnable.currentY = y1;
-        TowerBuildRunnable.y2 = y2;
+        BoatRaceBuildRunnable.blocsPerTick = blocsPerTick;
+        BoatRaceBuildRunnable.toWorld = toWorld;
+        BoatRaceBuildRunnable.fromWorld = fromWorld;
+        BoatRaceBuildRunnable.y1 = y1;
+        BoatRaceBuildRunnable.currentY = y1;
+        BoatRaceBuildRunnable.y2 = y2;
     }
 
     @Override
@@ -51,7 +51,7 @@ public class BoatRaceBuildRunnable extends BukkitRunnable {
         for (int y = currentY; y < y2; y++) {
             for (int x = currentX; x < x2; x++) {
                 for (int z = currentZ; z < z2; z++) {
-                    if(fromWorld.getBlockAt(z, x, y).getType().toString().contains("AIR")) {
+                    if(fromWorld.getBlockAt(z, x, y).getType().toString().contains("AIR") || fromWorld.getBlockAt(z, x, y).getType().toString().contains("LIGHT")) {
                         blocks++;
                         continue;
                     }
