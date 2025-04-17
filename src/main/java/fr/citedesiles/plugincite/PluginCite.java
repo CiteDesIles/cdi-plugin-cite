@@ -19,6 +19,7 @@ import fr.citedesiles.plugincite.shop.ShopManager;
 import fr.citedesiles.plugincite.towerbuilder.WorldLoaderUtility;
 import fr.citedesiles.plugincite.utils.ConfigManager;
 import fr.citedesiles.plugincite.utils.HeadsFileManager;
+import fr.citedesiles.plugincite.utils.IslandManager;
 import fr.citedesiles.plugincite.utils.ScoreboardTeamManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.ScoreboardManager;
@@ -37,6 +38,9 @@ public class PluginCite extends JavaPlugin {
     private static CDITeamManager teamManager;
     private static HologramsManager hologramsManager;
     private static CDIObjectifManager objectifManager;
+    private static IslandManager islandManager;
+
+    public static boolean islandEnable = false;
 
     @Override
     public void onEnable() {
@@ -55,6 +59,8 @@ public class PluginCite extends JavaPlugin {
 
         playerManager = new CDIPlayerManager(this);
         teamManager = new CDITeamManager(this);
+
+        islandManager = new IslandManager();
 
         getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 
@@ -141,5 +147,9 @@ public class PluginCite extends JavaPlugin {
 
     public CDIObjectifManager objectifManager() {
         return objectifManager;
+    }
+
+    public IslandManager islandManager() {
+        return islandManager;
     }
 }

@@ -114,6 +114,18 @@ public class AdminCommand implements CommandExecutor {
                         player.sendMessage("§cLe nom de l'NPC est incorrect");
                         break;
                 }
+                break;
+            case "enableIsland":
+                if(strings[1].equalsIgnoreCase("true")) {
+                    PluginCite.islandEnable = true;
+                    player.sendMessage("§aLes îles sont activées");
+                } else if(strings[1].equalsIgnoreCase("false")) {
+                    PluginCite.islandEnable = false;
+                    player.sendMessage("§aLes îles sont désactivées");
+                } else {
+                    player.sendMessage("§cLa valeur doit être true ou false");
+                }
+                break;
         }
         return true;
     }
