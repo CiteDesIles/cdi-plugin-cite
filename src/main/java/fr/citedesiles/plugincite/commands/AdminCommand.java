@@ -40,6 +40,16 @@ public class AdminCommand implements CommandExecutor {
                     plugin.npcManager().addNPC("cdi-repair", npcs.repair());
                     plugin.npcManager().addNPC("cdi-upgrade", npcs.upgrade());
                     plugin.npcManager().addNPC("cdi-change-server", npcs.changeServer());
+                    plugin.npcManager().addNPC("cdi-mineur", npcs.mineur());
+                    plugin.npcManager().addNPC("cdi-coppernic", npcs.coppernic());
+                    plugin.npcManager().addNPC("cdi-sakura", npcs.sakura());
+                    plugin.npcManager().addNPC("cdi-gefroid", npcs.gefroid());
+                    plugin.npcManager().addNPC("cdi-fechaud", npcs.fechaud());
+                    plugin.npcManager().addNPC("cdi-warden", npcs.warden());
+                    plugin.npcManager().addNPC("cdi-enderitefox", npcs.enderitefox());
+                    plugin.npcManager().addNPC("cdi-begaydocrime", npcs.begaydocrime());
+                    plugin.npcManager().addNPC("cdi-poisson", npcs.poisson());
+                    plugin.npcManager().addNPC("cdi-fildrong", npcs.fildrong());
                 } catch (ExecutionException | InterruptedException e) {
                     throw new RuntimeException(e);
                 }
@@ -107,6 +117,76 @@ public class AdminCommand implements CommandExecutor {
                     case "change-server":
                         try {
                             plugin.npcManager().addNPC("cdi-change-server", new NPCs().changeServer());
+                        } catch (ExecutionException | InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                        break;
+                    case "mineur":
+                        try {
+                            plugin.npcManager().addNPC("cdi-mineur", new NPCs().mineur());
+                        } catch (ExecutionException | InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                        break;
+                    case "coppernic":
+                        try {
+                            plugin.npcManager().addNPC("cdi-coppernic", new NPCs().coppernic());
+                        } catch (ExecutionException | InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                        break;
+                    case "sakura":
+                        try {
+                            plugin.npcManager().addNPC("cdi-sakura", new NPCs().sakura());
+                        } catch (ExecutionException | InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                        break;
+                    case "gefroid":
+                        try {
+                            plugin.npcManager().addNPC("cdi-gefroid", new NPCs().gefroid());
+                        } catch (ExecutionException | InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                        break;
+                    case "fechaud":
+                        try {
+                            plugin.npcManager().addNPC("cdi-fechaud", new NPCs().fechaud());
+                        } catch (ExecutionException | InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                        break;
+                    case "warden":
+                        try {
+                            plugin.npcManager().addNPC("cdi-warden", new NPCs().warden());
+                        } catch (ExecutionException | InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                        break;
+                    case "enderitefox":
+                        try {
+                            plugin.npcManager().addNPC("cdi-enderitefox", new NPCs().enderitefox());
+                        } catch (ExecutionException | InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                        break;
+                    case "begaydocrime":
+                        try {
+                            plugin.npcManager().addNPC("cdi-begaydocrime", new NPCs().begaydocrime());
+                        } catch (ExecutionException | InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                        break;
+                    case "poisson":
+                        try {
+                            plugin.npcManager().addNPC("cdi-poisson", new NPCs().poisson());
+                        } catch (ExecutionException | InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                        break;
+                    case "fildrong":
+                        try {
+                            plugin.npcManager().addNPC("cdi-fildrong", new NPCs().fildrong());
                         } catch (ExecutionException | InterruptedException e) {
                             throw new RuntimeException(e);
                         }
