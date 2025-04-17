@@ -4,6 +4,7 @@ import com.github.t9t.minecraftrconclient.RconClient;
 import fr.citedesiles.plugincite.PluginCite;
 import fr.citedesiles.plugincite.npcs.NPCs;
 import fr.citedesiles.plugincite.towerbuilder.CopyTowerFromAnotherWorld;
+import fr.citedesiles.plugincite.utils.TNTUtility;
 import org.bukkit.Bukkit;
 import org.bukkit.WorldCreator;
 import org.bukkit.command.Command;
@@ -31,12 +32,13 @@ public class AdminCommand implements CommandExecutor {
         }
         Player player = (Player) commandSender;
         switch (strings[0]) {
-            case "spawnNPC":
+            case "spawnAllNPC":
                 NPCs npcs = new NPCs();
                 try {
                     plugin.npcManager().addNPC("cdi-confiseur", npcs.confiseur());
                     plugin.npcManager().addNPC("cdi-repair", npcs.repair());
                     plugin.npcManager().addNPC("cdi-upgrade", npcs.upgrade());
+                    plugin.npcManager().addNPC("cdi-change-server", npcs.changeServer());
                 } catch (ExecutionException | InterruptedException e) {
                     throw new RuntimeException(e);
                 }
@@ -70,6 +72,48 @@ public class AdminCommand implements CommandExecutor {
             case "unloadWorld":
                 Bukkit.unloadWorld(strings[1], true);
                 break;
+            case "runCinematic":
+                for(Player target : Bukkit.getOnlinePlayers()) {
+                    PluginCite.instance().getServer().dispatchCommand(commandSender, "cinema play trailer " + target.getName());
+                }
+                break;
+            case "tnt":
+                TNTUtility.explode();
+                break;
+            case "spawnNPC":
+                switch (strings[1]) {
+                    case "confiseur":
+                        try {
+                            plugin.npcManager().addNPC("cdi-confiseur", new NPCs().confiseur());
+                        } catch (ExecutionException | InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                        break;
+                    case "repair":
+                        try {
+                            plugin.npcManager().addNPC("cdi-repair", new NPCs().repair());
+                        } catch (ExecutionException | InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                        break;
+                    case "upgrade":
+                        try {
+                            plugin.npcManager().addNPC("cdi-upgrade", new NPCs().upgrade());
+                        } catch (ExecutionException | InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                        break;
+                    case "change-server":
+                        try {
+                            plugin.npcManager().addNPC("cdi-change-server", new NPCs().changeServer());
+                        } catch (ExecutionException | InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                        break;
+                    default:
+                        player.sendMessage("§cLe nom de l'NPC est incorrect");
+                        break;
+                }
         }
         return true;
     }

@@ -56,6 +56,8 @@ public class PluginCite extends JavaPlugin {
         playerManager = new CDIPlayerManager(this);
         teamManager = new CDITeamManager(this);
 
+        getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+
         getServer().getPluginManager().registerEvents(new OnPlayerChat(this), this);
         getServer().getPluginManager().registerEvents(new OnNPCInteract(this), this);
         getServer().getPluginManager().registerEvents(new OnPlayerJoin(this), this);
@@ -64,6 +66,7 @@ public class PluginCite extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new OnWorldUpdate(), this);
         getServer().getPluginManager().registerEvents(new OnBlockPhysics(), this);
         getServer().getPluginManager().registerEvents(new OnBackFromTo(), this);
+        getServer().getPluginManager().registerEvents(new OnDamage(), this);
 
         Objects.requireNonNull(getCommand("admin")).setExecutor(new AdminCommand(this));
         try {

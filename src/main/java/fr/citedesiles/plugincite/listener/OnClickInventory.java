@@ -4,6 +4,7 @@ import fr.citedesiles.plugincite.PluginCite;
 import fr.citedesiles.plugincite.objects.CDITeam;
 import fr.citedesiles.plugincite.shop.ShopManager;
 import fr.citedesiles.plugincite.shop.UpgradeManager;
+import fr.citedesiles.plugincite.utils.JoinFunctionUtility;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -21,6 +22,25 @@ public class OnClickInventory implements Listener {
 
     @EventHandler
     public void on(InventoryClickEvent event) {
+
+        if(event.getView().getTitle().startsWith("§c§lChanger de serveur")) {
+            event.setCancelled(true);
+            if(event.getCurrentItem() == null) {
+                return;
+            }
+            if(event.getCurrentItem().getType().equals(Material.YELLOW_CONCRETE)) {
+                event.getWhoClicked().sendMessage("§fVous allez être redirigé vers le serveur §e§lLumen");
+                JoinFunctionUtility.connect("lumen", (Player) event.getWhoClicked());
+                event.getWhoClicked().closeInventory();
+                return;
+            }
+            if(event.getCurrentItem().getType().equals(Material.PURPLE_CONCRETE)) {
+                event.getWhoClicked().sendMessage("§fVous allez être redirigé vers le serveur §5§lKaelum");
+                JoinFunctionUtility.connect("kaelum", (Player) event.getWhoClicked());
+                event.getWhoClicked().closeInventory();
+                return;
+            }
+        }
 
         if(event.getView().getTitle().startsWith("§5")) {
             event.setCancelled(true);

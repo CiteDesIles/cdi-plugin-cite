@@ -27,7 +27,7 @@ public class NPCs {
     }
 
     public Npc repair() throws ExecutionException, InterruptedException {
-        Location location = new Location(Bukkit.getWorld("world"), 0, 93, 0);
+        Location location = new Location(Bukkit.getWorld("world"), 60.5, 91, -291.5, -30, 0);
         NpcData npcData = new NpcData("cdi-repair", uuid, location);
         npcData.setDisplayName("§6Reconstructeur de la Tour");
         //CompletableFuture<SkinFetcher.SkinData> skin = SkinFetcher.fetchSkinByURL("https://minesk.in/3ae2a67a962345c8ba049242ee7fc102");
@@ -43,6 +43,19 @@ public class NPCs {
         Location location = new Location(Bukkit.getWorld("world"), 0, 96, 0);
         NpcData npcData = new NpcData("cdi-upgrade", uuid, location);
         npcData.setDisplayName("§6Améliorateur de l'équipe");
+        //CompletableFuture<SkinFetcher.SkinData> skin = SkinFetcher.fetchSkinByURL("https://minesk.in/3ae2a67a962345c8ba049242ee7fc102");
+        //npcData.setSkin(skin.get());
+        Npc npc = FancyNpcsPlugin.get().getNpcAdapter().apply(npcData);
+        FancyNpcsPlugin.get().getNpcManager().registerNpc(npc);
+        npc.create();
+        npc.spawnForAll();
+        return npc;
+    }
+
+    public Npc changeServer() throws ExecutionException, InterruptedException {
+        Location location = new Location(Bukkit.getWorld("world"), 163.5, 64, -259.5, -60, 0);
+        NpcData npcData = new NpcData("cdi-change-server", uuid, location);
+        npcData.setDisplayName("§6Changer de serveur");
         //CompletableFuture<SkinFetcher.SkinData> skin = SkinFetcher.fetchSkinByURL("https://minesk.in/3ae2a67a962345c8ba049242ee7fc102");
         //npcData.setSkin(skin.get());
         Npc npc = FancyNpcsPlugin.get().getNpcAdapter().apply(npcData);

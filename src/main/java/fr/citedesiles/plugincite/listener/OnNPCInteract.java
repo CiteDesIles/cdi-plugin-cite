@@ -5,6 +5,7 @@ import de.oliver.fancynpcs.api.events.NpcInteractEvent;
 import fr.citedesiles.plugincite.PluginCite;
 import fr.citedesiles.plugincite.shop.ShopManager;
 import fr.citedesiles.plugincite.shop.UpgradeManager;
+import fr.citedesiles.plugincite.utils.ChangeServerMenu;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -33,6 +34,10 @@ public class OnNPCInteract implements Listener {
             case "cdi-upgrade" -> {
                 UpgradeManager upgradeManager = new UpgradeManager();
                 upgradeManager.open(event.getPlayer());
+            }
+            case "cdi-change-server" -> {
+                ChangeServerMenu changeServerMenu = new ChangeServerMenu();
+                changeServerMenu.open(event.getPlayer());
             }
         }
     }

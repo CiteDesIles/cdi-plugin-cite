@@ -1,9 +1,6 @@
 package fr.citedesiles.plugincite.towerbuilder;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Chunk;
-import org.bukkit.Location;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -44,6 +41,12 @@ public class TowerBuildRunnable extends BukkitRunnable {
                 for (int z = currentZ; z < z2; z++) {
                     toWorld.getBlockAt(x, y, z).setType(fromWorld.getBlockAt(x, y, z).getType());
                     toWorld.getBlockAt(x, y, z).setBlockData(fromWorld.getBlockAt(x, y, z).getBlockData());
+                    if(toWorld.getBlockAt(x, y, z).getType() == Material.PLAYER_HEAD) {
+                        
+                    }
+                    if(toWorld.getBlockAt(x, y, z).getType() == Material.PLAYER_WALL_HEAD) {
+
+                    }
                     blocks++;
                     if (blocks >= blocsPerTick) {
                         currentX = x;
