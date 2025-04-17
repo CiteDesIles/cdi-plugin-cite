@@ -3,6 +3,7 @@ package fr.citedesiles.plugincite.commands;
 import com.github.t9t.minecraftrconclient.RconClient;
 import fr.citedesiles.plugincite.PluginCite;
 import fr.citedesiles.plugincite.npcs.NPCs;
+import fr.citedesiles.plugincite.towerbuilder.CopyIceRaceFromAnotherWorld;
 import fr.citedesiles.plugincite.towerbuilder.CopyTowerFromAnotherWorld;
 import fr.citedesiles.plugincite.utils.TNTUtility;
 import org.bukkit.Bukkit;
@@ -125,6 +126,9 @@ public class AdminCommand implements CommandExecutor {
                 } else {
                     player.sendMessage("§cLa valeur doit être true ou false");
                 }
+                break;
+            case "iceRaceCopy":
+                CopyIceRaceFromAnotherWorld.copyTowerFromAnotherWorld(player.getWorld(), strings[1], Integer.parseInt(strings[2]), Integer.parseInt(strings[3]), Integer.parseInt(strings[4]));
                 break;
         }
         return true;

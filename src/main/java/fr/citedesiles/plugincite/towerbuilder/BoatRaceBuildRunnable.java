@@ -51,11 +51,19 @@ public class BoatRaceBuildRunnable extends BukkitRunnable {
         for (int y = currentY; y < y2; y++) {
             for (int x = currentX; x < x2; x++) {
                 for (int z = currentZ; z < z2; z++) {
-                    if(fromWorld.getBlockAt(z, x, y).getType().equals(Material.AIR)) {
+                    if(fromWorld.getBlockAt(z, x, y).getType().toString().contains("AIR")) {
+                        blocks++;
                         continue;
                     }
-                    toWorld.getBlockAt(x, y, z).setType(fromWorld.getBlockAt(x, y, z).getType());
-                    toWorld.getBlockAt(x, y, z).setBlockData(fromWorld.getBlockAt(x, y, z).getBlockData());
+                    if(!(fromWorld.getBlockAt(x,y,z).getType().toString().contains("AIR"))) {
+                        if(fromWorld.getBlockAt(z, x, y) == null) {
+                            blocks++;
+                            continue;
+                        }
+                        toWorld.getBlockAt(x, y, z).setType(fromWorld.getBlockAt(x, y, z).getType());
+                        toWorld.getBlockAt(x, y, z).setBlockData(fromWorld.getBlockAt(x, y, z).getBlockData());
+                        //Bukkit.broadcastMessage(fromWorld.getBlockAt(x, y, z).getType().toString());
+                    }
                     blocks++;
                     if (blocks >= blocsPerTick) {
                         currentX = x;
