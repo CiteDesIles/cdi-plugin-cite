@@ -14,13 +14,13 @@ import org.bukkit.profile.PlayerTextures;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class BoatRaceBuildRunnable extends BukkitRunnable {
-    public static int x1 = -370;
+    public static int x1 = -360;
     public static int y1 = 30;
-    public static int z1 = -595;
+    public static int z1 = -625;
 
-    public static int x2 = 520;
+    public static int x2 = 600;
     public static int y2 = 319;
-    public static int z2 = 80;
+    public static int z2 = -140;
 
     public static int currentX = x1;
     public static int currentY = y1;
