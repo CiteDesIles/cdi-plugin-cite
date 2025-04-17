@@ -38,7 +38,7 @@ public class OnPlayerChat implements Listener {
         String playerName = player.getName();
         String message = event.signedMessage().message();
         String chat = "";
-        chat+= teamColor + " " + playerName + "§7: §f" + message;
+        chat+= teamColor + playerName + "§7: §f" + message;
         for(Player target : Bukkit.getOnlinePlayers()) {
             target.sendMessage(chat);
         }

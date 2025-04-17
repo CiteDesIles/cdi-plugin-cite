@@ -11,6 +11,7 @@ import fr.citedesiles.plugincite.mysql.DatabaseManager;
 import fr.citedesiles.plugincite.objects.CDIObjectifManager;
 import fr.citedesiles.plugincite.objects.CDIPlayerManager;
 import fr.citedesiles.plugincite.objects.CDITeamManager;
+import fr.citedesiles.plugincite.runnable.GameModeRunnable;
 import fr.citedesiles.plugincite.runnable.ObjectifRunnable;
 import fr.citedesiles.plugincite.runnable.RefreshRunnable;
 import fr.citedesiles.plugincite.runnable.ScoreboardRunnable;
@@ -74,6 +75,7 @@ public class PluginCite extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new OnBackFromTo(), this);
         getServer().getPluginManager().registerEvents(new OnDamage(), this);
         getServer().getPluginManager().registerEvents(new OnBlockFade(), this);
+        getServer().getPluginManager().registerEvents(new OnPlayerQuit(), this);
 
         Objects.requireNonNull(getCommand("admin")).setExecutor(new AdminCommand(this));
         try {
@@ -97,6 +99,9 @@ public class PluginCite extends JavaPlugin {
 
         ObjectifRunnable objectifRunnable = new ObjectifRunnable();
         objectifRunnable.runTaskTimerAsynchronously(this, 0, 20 * 60 * 5);
+
+        GameModeRunnable gameModeRunnable = new GameModeRunnable();
+        gameModeRunnable.runTaskTimer(this, 0, 0);
 
         ScoreboardTeamManager scoreboardTeamManager = new ScoreboardTeamManager(this);
         scoreboardTeamManager.initAllTeams();
