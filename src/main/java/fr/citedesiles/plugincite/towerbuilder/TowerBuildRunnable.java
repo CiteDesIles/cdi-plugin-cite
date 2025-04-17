@@ -1,8 +1,16 @@
 package fr.citedesiles.plugincite.towerbuilder;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Base64;
+import java.util.UUID;
+
 import org.bukkit.*;
 import org.bukkit.block.Block;
+import org.bukkit.block.Skull;
 import org.bukkit.entity.Entity;
+import org.bukkit.profile.PlayerProfile;
+import org.bukkit.profile.PlayerTextures;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class TowerBuildRunnable extends BukkitRunnable {
@@ -21,6 +29,10 @@ public class TowerBuildRunnable extends BukkitRunnable {
     public static int blocks = 0;
 
     public static int blocsPerTick = 100;
+
+    private static final UUID RANDOM_UUID = UUID.fromString("92864445-51c5-4c3b-9039-517c9927d1b4");
+
+    String url = "http://textures.minecraft.net/texture/ac906d688e65802569d9705b579bce56edc86ea5c36bdd6d6fc35516a77d4";
 
     public static World toWorld;
     public static World fromWorld;
@@ -41,11 +53,13 @@ public class TowerBuildRunnable extends BukkitRunnable {
                 for (int z = currentZ; z < z2; z++) {
                     toWorld.getBlockAt(x, y, z).setType(fromWorld.getBlockAt(x, y, z).getType());
                     toWorld.getBlockAt(x, y, z).setBlockData(fromWorld.getBlockAt(x, y, z).getBlockData());
-                    if(toWorld.getBlockAt(x, y, z).getType() == Material.PLAYER_HEAD) {
-                        
-                    }
-                    if(toWorld.getBlockAt(x, y, z).getType() == Material.PLAYER_WALL_HEAD) {
-
+                    if(toWorld.getBlockAt(x, y, z).getType() == Material.PLAYER_HEAD || toWorld.getBlockAt(x, y, z).getType() == Material.PLAYER_WALL_HEAD) {
+                        Block block = toWorld.getBlockAt(x, y, z);
+                        //block.setType(Material.PLAYER_HEAD);
+                        Skull skull = (Skull) block.getState();
+                        PlayerProfile profile = getProfile(url);
+                        skull.setOwnerProfile(profile);
+                        skull.update(false);
                     }
                     blocks++;
                     if (blocks >= blocsPerTick) {
@@ -85,4 +99,24 @@ public class TowerBuildRunnable extends BukkitRunnable {
             }
         }
     }
+    public static URL getUrlFromBase64(String base64) throws MalformedURLException {
+        String decoded = new String(Base64.getDecoder().decode(base64));
+        // We simply remove the "beginning" and "ending" part of the JSON, so we're left with only the URL. You could use a proper
+        // JSON parser for this, but that's not worth it. The String will always start exactly with this stuff anyway
+        return new URL(decoded.substring("{\"textures\":{\"SKIN\":{\"url\":\"".length(), decoded.length() - "\"}}}".length()));
+    }
+
+    private static PlayerProfile getProfile(String url) {
+    PlayerProfile profile = Bukkit.createPlayerProfile(RANDOM_UUID); // Get a new player profile
+    PlayerTextures textures = profile.getTextures();
+    URL urlObject;
+    try {
+        urlObject = new URL(url); // The URL to the skin, for example: https://textures.minecraft.net/texture/18813764b2abc94ec3c3bc67b9147c21be850cdf996679703157f4555997ea63a
+    } catch (MalformedURLException exception) {
+        throw new RuntimeException("Invalid URL", exception);
+    }
+    textures.setSkin(urlObject); // Set the skin of the player profile to the URL
+    profile.setTextures(textures); // Set the textures back to the profile
+    return profile;
+}
 }

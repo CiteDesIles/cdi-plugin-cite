@@ -91,6 +91,7 @@ public class FastBoard extends FastBoardBase<String> {
         super.updateLines(lines);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     protected void sendLineChange(int score) throws Throwable {
         int maxLength = hasLinesMaxLength() ? 16 : 1024;
@@ -104,17 +105,21 @@ public class FastBoard extends FastBoardBase<String> {
             prefix = line;
         } else {
             // Prevent splitting color codes
+            @SuppressWarnings("deprecation")
             int index = line.charAt(maxLength - 1) == ChatColor.COLOR_CHAR
                     ? (maxLength - 1) : maxLength;
             prefix = line.substring(0, index);
             String suffixTmp = line.substring(index);
+            @SuppressWarnings("deprecation")
             ChatColor chatColor = null;
 
             if (suffixTmp.length() >= 2 && suffixTmp.charAt(0) == ChatColor.COLOR_CHAR) {
                 chatColor = ChatColor.getByChar(suffixTmp.charAt(1));
             }
 
+            @SuppressWarnings("deprecation")
             String color = ChatColor.getLastColors(prefix);
+            @SuppressWarnings("deprecation")
             boolean addColor = chatColor == null || chatColor.isFormat();
 
             suffix = (addColor ? (color.isEmpty() ? ChatColor.RESET.toString() : color) : "") + suffixTmp;
