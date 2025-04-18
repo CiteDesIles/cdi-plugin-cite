@@ -18,6 +18,7 @@ public class TransactionsManager {
             statement.setString(2, cdiTeam.getName());
             statement.executeUpdate();
             connection.commit();
+            connection.close();
             return true;
         } catch (SQLException e) {
             PluginCite.instance().getLogger().severe("Error while adding money to team " + cdiTeam.getName());
@@ -33,6 +34,7 @@ public class TransactionsManager {
             statement.setString(2, cdiTeam.getName());
             statement.executeUpdate();
             connection.commit();
+            connection.close();
             return true;
         } catch (SQLException e) {
             PluginCite.instance().getLogger().severe("Error while removing money from team " + cdiTeam.getName());
@@ -48,6 +50,7 @@ public class TransactionsManager {
             statement.setString(2, cdiTeam.getName());
             statement.executeUpdate();
             connection.commit();
+            connection.close();
             return true;
         } catch (SQLException e) {
             PluginCite.instance().getLogger().severe("Error while setting money for team " + cdiTeam.getName());
@@ -63,6 +66,7 @@ public class TransactionsManager {
             statement.setString(2, cdiTeam.getName());
             statement.executeUpdate();
             connection.commit();
+            connection.close();
             return true;
         } catch (SQLException e) {
             PluginCite.instance().getLogger().severe("Error while adding support points to team " + cdiTeam.getName());
@@ -78,6 +82,7 @@ public class TransactionsManager {
             statement.setString(2, cdiTeam.getName());
             statement.executeUpdate();
             connection.commit();
+            connection.close();
             return true;
         } catch (SQLException e) {
             PluginCite.instance().getLogger().severe("Error while removing support points from team " + cdiTeam.getName());
@@ -93,6 +98,7 @@ public class TransactionsManager {
             statement.setString(2, cdiTeam.getName());
             statement.executeUpdate();
             connection.commit();
+            connection.close();
             return true;
         } catch (SQLException e) {
             PluginCite.instance().getLogger().severe("Error while setting support points for team " + cdiTeam.getName());

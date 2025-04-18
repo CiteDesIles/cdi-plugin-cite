@@ -121,6 +121,7 @@ public class CheckTable {
             Connection connection = DatabaseManager.MAIN_DB.getDatabaseAccess().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("CREATE TABLE PLAYER (uuid VARCHAR(255) PRIMARY KEY, discordID VARCHAR(255), team VARCHAR(255))");
             preparedStatement.execute();
+            connection.close();
             PluginCite.instance().getLogger().info("Table PLAYER has been created");
         } catch (SQLException e) {
             PluginCite.instance().getLogger().severe("Error while creating table PLAYER" + e.getMessage());

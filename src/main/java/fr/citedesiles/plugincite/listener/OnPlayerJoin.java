@@ -45,6 +45,7 @@ public class OnPlayerJoin implements Listener {
                 event.getPlayer().kickPlayer("Vous n'êtes pas enregistré dans la base de données");
                 return;
             }
+            connection.close();
         } catch (SQLException e) {
             event.getPlayer().kickPlayer("Erreur de connexion à la base de données");
             e.printStackTrace();

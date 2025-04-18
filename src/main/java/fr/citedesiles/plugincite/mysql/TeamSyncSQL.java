@@ -31,6 +31,7 @@ public class TeamSyncSQL {
                 Connection connectionPlayer = DatabaseManager.MAIN_DB.getDatabaseAccess().getConnection();
                 PreparedStatement preparedStatementPlayer = connectionPlayer.prepareStatement("SELECT * FROM PLAYER WHERE team = ?");
                 preparedStatementPlayer.setString(1, name);
+                connectionPlayer.close();
                 ResultSet resultSetPlayer = preparedStatementPlayer.executeQuery();
                 while (resultSetPlayer.next()) {
                     UUID uuid = UUID.fromString(resultSetPlayer.getString("uuid"));
