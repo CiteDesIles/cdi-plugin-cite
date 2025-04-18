@@ -32,7 +32,11 @@ public class ItemsLists {
 
         createItemsList("upgrade");
         Map<ItemStack, Long> upgrade = new HashMap<>();
-        upgrade.put(new ItemStack(Material.STONE, 1), 5000L);
+        upgrade.put(new ItemStack(Material.COBBLESTONE, 1), 2500L);
+        upgrade.put(new ItemStack(Material.OAK_LOG, 1), 500L);
+        upgrade.put(new ItemStack(Material.SAND, 1), 256L);
+        upgrade.put(new ItemStack(Material.RED_TERRACOTTA, 1), 64L);
+        upgrade.put(new ItemStack(Material.DIAMOND, 1), 1L);
         putItemsList("upgrade", upgrade);
     }
 

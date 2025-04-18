@@ -1,6 +1,8 @@
 package fr.citedesiles.plugincite;
 
 import fr.citedesiles.plugincite.commands.AdminCommand;
+import fr.citedesiles.plugincite.commands.EcoCommand;
+import fr.citedesiles.plugincite.commands.PayCommand;
 import fr.citedesiles.plugincite.customsItems.ItemManager;
 import fr.citedesiles.plugincite.holograms.HologramsManager;
 import fr.citedesiles.plugincite.listener.*;
@@ -78,6 +80,8 @@ public class PluginCite extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new OnPlayerQuit(), this);
 
         Objects.requireNonNull(getCommand("admin")).setExecutor(new AdminCommand(this));
+        Objects.requireNonNull(getCommand("eco")).setExecutor(new EcoCommand());
+        Objects.requireNonNull(getCommand("pay")).setExecutor(new PayCommand());
         try {
             configManager.loadConfig();
         } catch (IOException e) {

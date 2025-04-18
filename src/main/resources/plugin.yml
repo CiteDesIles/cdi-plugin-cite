@@ -9,3 +9,9 @@ commands:
   admin:
     description: Commande d'administration
     usage: /admin <commande>
+  eco:
+    description: Commande d'eco
+    usage: /eco <commande>
+  pay:
+    description: Commande de paiement
+    usage: /pay <joueur> <montant>
