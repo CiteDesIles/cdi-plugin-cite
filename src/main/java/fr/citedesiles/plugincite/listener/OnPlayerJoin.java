@@ -3,6 +3,7 @@ package fr.citedesiles.plugincite.listener;
 import fr.citedesiles.plugincite.PluginCite;
 import fr.citedesiles.plugincite.mysql.DatabaseManager;
 import fr.citedesiles.plugincite.objects.CDIPlayer;
+import fr.citedesiles.plugincite.utils.GiveKitUtility;
 import net.kyori.adventure.text.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -54,5 +55,9 @@ public class OnPlayerJoin implements Listener {
         Player player = event.getPlayer();
         Bukkit.getScoreboardManager().getMainScoreboard().getTeam(plugin.playerManager().get(player).getTeam())
             .addPlayer(player);
+        if(!event.getPlayer().hasPlayedBefore()) {
+            event.getPlayer().sendMessage("§fBienvenue sur la cité des îles, Bon jeu!");
+            GiveKitUtility.giveKit(event.getPlayer());
+        }
     }
 }
