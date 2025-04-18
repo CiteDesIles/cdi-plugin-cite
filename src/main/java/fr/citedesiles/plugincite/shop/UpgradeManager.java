@@ -16,16 +16,16 @@ public class UpgradeManager {
     HashMap<Integer, Long> slotUpgradePrices = new HashMap<>();
 
     public UpgradeManager() {
-        slotUpgradePrices.put(6,   10000L);
-        slotUpgradePrices.put(7,   50000L);
-        slotUpgradePrices.put(8,   100000L);
-        slotUpgradePrices.put(9,   500000L);
-        slotUpgradePrices.put(10,  1000000L);
-        slotUpgradePrices.put(11,  5000000L);
-        slotUpgradePrices.put(12,  10000000L);
-        slotUpgradePrices.put(13,  50000000L);
-        slotUpgradePrices.put(14,  100000000L);
-        slotUpgradePrices.put(15,  500000000L);
+        slotUpgradePrices.put(6,   100000L);
+        slotUpgradePrices.put(7,   500000L);
+        slotUpgradePrices.put(8,   1000000L);
+        slotUpgradePrices.put(9,   5000000L);
+        slotUpgradePrices.put(10,  10000000L);
+        slotUpgradePrices.put(11,  50000000L);
+        slotUpgradePrices.put(12,  1000000000L);
+        slotUpgradePrices.put(13,  5000000000L);
+        slotUpgradePrices.put(14,  10000000000L);
+        slotUpgradePrices.put(15,  50000000000L);
         slotUpgradePrices.put(16,  Long.MAX_VALUE-1);
     }
 

@@ -26,7 +26,7 @@ public class NPCs {
     }
 
     public Npc repair() throws ExecutionException, InterruptedException {
-        Location location = new Location(Bukkit.getWorld("world"), 60.5, 91, -291.5, -30, 0);
+        Location location = new Location(Bukkit.getWorld("world"), 87.5, 93, -349.5, -90, 0);
         NpcData npcData = new NpcData("cdi-repair", uuid, location);
         npcData.setDisplayName("§6Reconstructeur de la Tour");
         //CompletableFuture<SkinFetcher.SkinData> skin = SkinFetcher.fetchSkinByURL("https://minesk.in/3ae2a67a962345c8ba049242ee7fc102");

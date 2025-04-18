@@ -20,10 +20,7 @@ import fr.citedesiles.plugincite.runnable.ScoreboardRunnable;
 import fr.citedesiles.plugincite.runnable.TeamSyncSaveRunnable;
 import fr.citedesiles.plugincite.shop.ShopManager;
 import fr.citedesiles.plugincite.towerbuilder.WorldLoaderUtility;
-import fr.citedesiles.plugincite.utils.ConfigManager;
-import fr.citedesiles.plugincite.utils.HeadsFileManager;
-import fr.citedesiles.plugincite.utils.IslandManager;
-import fr.citedesiles.plugincite.utils.ScoreboardTeamManager;
+import fr.citedesiles.plugincite.utils.*;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.ScoreboardManager;
 
@@ -52,6 +49,9 @@ public class PluginCite extends JavaPlugin {
     public void onEnable() {
 
         WorldLoaderUtility.loadWorld("world");
+
+        CustomCraftUtility customCraftUtility = new CustomCraftUtility();
+        customCraftUtility.registerCustomCrafts();
 
         INSTANCE = this;
         npcManager = new NPCManager();

@@ -39,6 +39,10 @@ public class OnNPCInteract implements Listener {
                 ChangeServerMenu changeServerMenu = new ChangeServerMenu();
                 changeServerMenu.open(event.getPlayer());
             }
+
+            case "cdi-mineur" -> {
+                plugin.shopManager().openShop(event.getPlayer(), "mineur");
+            }
         }
     }
 }
