@@ -3,6 +3,7 @@ package fr.citedesiles.plugincite.commands;
 import fr.citedesiles.plugincite.PluginCite;
 import fr.citedesiles.plugincite.objects.CDIPlayer;
 import fr.citedesiles.plugincite.objects.CDITeam;
+import fr.citedesiles.plugincite.utils.DiscordWebhooksUtility;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -83,6 +84,10 @@ public class PayCommand implements CommandExecutor {
                 }
             }
 
+            DiscordWebhooksUtility discordWebhooksUtility = new DiscordWebhooksUtility(PluginCite.instance());
+            discordWebhooksUtility.sendCustomMessage("/pay",
+                "§f" + player.getName() + "(" + cteam.getName() + ")" + "a donné à la team " + other.getName() + " la somme de §e§l" + amount + " Golds"
+            );
         }
 
         return true;

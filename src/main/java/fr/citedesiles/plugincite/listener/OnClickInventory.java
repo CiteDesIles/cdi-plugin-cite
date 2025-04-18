@@ -4,6 +4,7 @@ import fr.citedesiles.plugincite.PluginCite;
 import fr.citedesiles.plugincite.objects.CDITeam;
 import fr.citedesiles.plugincite.shop.ShopManager;
 import fr.citedesiles.plugincite.shop.UpgradeManager;
+import fr.citedesiles.plugincite.utils.DiscordWebhooksUtility;
 import fr.citedesiles.plugincite.utils.JoinFunctionUtility;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -69,6 +70,10 @@ public class OnClickInventory implements Listener {
                 player.sendMessage("§aVous avez acheté un slot supplémentaire pour votre équipe");
                 player.sendMessage("§e§l[-" + price + " G]");
                 player.sendMessage("§c§lAttention, cela peut prendre 30 secondes pour que le changement soit effectif");
+
+                DiscordWebhooksUtility discordWebhooksUtility = new DiscordWebhooksUtility(PluginCite.instance());
+                discordWebhooksUtility.sendCustomMessage("Achat Slot", "§a" + player.getName() + " a acheté un slot supplémentaire pour son équipe " + cteam.getName() + " pour " + price + " golds");
+
                 player.closeInventory();
             }
             return;
@@ -111,6 +116,14 @@ public class OnClickInventory implements Listener {
                     plugin.shopManager().itemsLists().editPrice("upgrade", originalItem, (long) price-total);
                     (event.getWhoClicked()).closeInventory();
                     PluginCite.instance().shopManager().openShop((Player) event.getWhoClicked(), "upgrade");
+
+                    DiscordWebhooksUtility discordWebhooksUtility = new DiscordWebhooksUtility(PluginCite.instance());
+                    discordWebhooksUtility.sendCustomMessage("Dépot SP", "§a" + event.getWhoClicked().getName() + " a déposé " + total + " " + item.getType().toString() + " pour " + total + " SP");
+
+                    if(!needItemForUpgrade()) {
+                        discordWebhooksUtility.sendCustomMessage("Amélioration Tour", "@everyone la tour doit être améliorée, il n'y a plus d'items à déposer");
+                    }
+
                     return;
                 }
                 if(event.isLeftClick()) {
@@ -124,6 +137,13 @@ public class OnClickInventory implements Listener {
                     plugin.shopManager().itemsLists().editPrice("upgrade", originalItem, price-total);
                     (event.getWhoClicked()).closeInventory();
                     PluginCite.instance().shopManager().openShop((Player) event.getWhoClicked(), "upgrade");
+
+                    DiscordWebhooksUtility discordWebhooksUtility = new DiscordWebhooksUtility(PluginCite.instance());
+                    discordWebhooksUtility.sendCustomMessage("Dépot SP", "§a" + event.getWhoClicked().getName() + " a déposé " + total + " " + item.getType().toString() + " pour " + total + " SP");
+
+                    if(!needItemForUpgrade()) {
+                        discordWebhooksUtility.sendCustomMessage("Amélioration Tour", "@everyone la tour doit être améliorée, il n'y a plus d'items à déposer");
+                    }
                     return;
                 }
                 return;
@@ -135,8 +155,13 @@ public class OnClickInventory implements Listener {
                 PluginCite.instance().teamManager().addGoldToTeam(team, total);
                 if(originalItem.getItemMeta().hasDisplayName()) {
                     event.getWhoClicked().sendMessage("§aVous avez vendu " + count + " " + item.getItemMeta().getDisplayName() + " §apour §e§l" + price * count + " golds§a.");
+
+                    DiscordWebhooksUtility discordWebhooksUtility = new DiscordWebhooksUtility(plugin);
+                    discordWebhooksUtility.sendCustomMessage("Vente d'items", "§a" + event.getWhoClicked().getName() + " a vendu " + count + " " + item.getItemMeta().getDisplayName() + " pour " + price * count + " golds");
                 } else {
                     event.getWhoClicked().sendMessage("§aVous avez vendu " + count + " " + item.getType().toString() + " §apour §e§l" + price * count + " golds§a.");
+                    DiscordWebhooksUtility discordWebhooksUtility = new DiscordWebhooksUtility(plugin);
+                    discordWebhooksUtility.sendCustomMessage("Vente d'items", "§a" + event.getWhoClicked().getName() + " a vendu " + count + " " + item.getType().toString() + " pour " + price * count + " golds");
                 }
                 return;
             }
@@ -147,8 +172,12 @@ public class OnClickInventory implements Listener {
                     PluginCite.instance().teamManager().addGoldToTeam(team, 64 * price);
                     if(originalItem.getItemMeta().hasDisplayName()) {
                         event.getWhoClicked().sendMessage("§aVous avez vendu 64 " + item.getItemMeta().getDisplayName() + " §apour §e§l" + 64 * price + " golds§a.");
+                        DiscordWebhooksUtility discordWebhooksUtility = new DiscordWebhooksUtility(plugin);
+                        discordWebhooksUtility.sendCustomMessage("Vente d'items", "§a" + event.getWhoClicked().getName() + " a vendu 64 " + item.getItemMeta().getDisplayName() + " pour " + 64 * price + " golds");
                     } else {
                         event.getWhoClicked().sendMessage("§aVous avez vendu 64 " + item.getType().toString() + " §apour §e§l" + 64 * price + " golds§a.");
+                        DiscordWebhooksUtility discordWebhooksUtility = new DiscordWebhooksUtility(plugin);
+                        discordWebhooksUtility.sendCustomMessage("Vente d'items", "§a" + event.getWhoClicked().getName() + " a vendu 64 " + item.getType().toString() + " pour " + 64 * price + " golds");
                     }
                     return;
                 } else {
@@ -162,8 +191,12 @@ public class OnClickInventory implements Listener {
                 PluginCite.instance().teamManager().addGoldToTeam(team, price);
                 if(originalItem.getItemMeta().hasDisplayName()) {
                     event.getWhoClicked().sendMessage("§aVous avez vendu 1 " + item.getItemMeta().getDisplayName() + " §apour §e§l" + price + " golds§a.");
+                    DiscordWebhooksUtility discordWebhooksUtility = new DiscordWebhooksUtility(plugin);
+                    discordWebhooksUtility.sendCustomMessage("Vente d'items", "§a" + event.getWhoClicked().getName() + " a vendu 1 " + item.getItemMeta().getDisplayName() + " pour " + price + " golds");
                 } else {
                     event.getWhoClicked().sendMessage("§aVous avez vendu 1 " + item.getType().toString() + " §apour §e§l" + price + " golds§a.");
+                    DiscordWebhooksUtility discordWebhooksUtility = new DiscordWebhooksUtility(plugin);
+                    discordWebhooksUtility.sendCustomMessage("Vente d'items", "§a" + event.getWhoClicked().getName() + " a vendu 1 " + item.getType().toString() + " pour " + price + " golds");
                 }
             }
 
@@ -186,5 +219,15 @@ public class OnClickInventory implements Listener {
                 }
             }
         }
+    }
+
+    public boolean needItemForUpgrade() {
+        boolean needItem = false;
+        for(ItemStack item : PluginCite.instance().shopManager().itemsLists().getItemsList("upgrade").keySet()) {
+            if(PluginCite.instance().shopManager().itemsLists().getItemsList("upgrade").get(item) > 0) {
+                needItem = true;
+            }
+        }
+        return false;
     }
 }
