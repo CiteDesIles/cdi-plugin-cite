@@ -58,6 +58,14 @@ public class MainRankingHologram {
         Hologram hologram1 = ohologram1.get();
         Hologram hologram2 = ohologram2.get();
 
+        if(!PluginCite.shouldShowMainScoreboard) {
+            List<String> lines = new ArrayList<>();
+            lines.add("§7Cassé...");
+            ((TextHologramData) hologram1.getData()).setText(lines);
+            ((TextHologramData) hologram2.getData()).setText(lines);
+            return;
+        }
+
         List<String> text = new ArrayList<>();
         text.add("§8§l--- §6§lCité des îles §8§l---");
         List<CDITeam> rankedTeams = new ArrayList<>();

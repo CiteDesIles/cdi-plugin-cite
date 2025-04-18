@@ -35,6 +35,14 @@ public class NetheriteHoeRankingHologram {
         if (hologram == null) {
             return;
         }
+
+        if(!PluginCite.shouldShowObjectifScore) {
+            List<String> lines = new ArrayList<>();
+            lines.add("§7Cassé...");
+            ((TextHologramData) hologram.getData()).setText(lines);
+            return;
+        }
+
         List<String> lines = new ArrayList<>();
         lines.add("§6§l§kXXXXXXXXXX XXX XXXXXX XX XXXX XX XXXXXXXX");
         int position = 1;

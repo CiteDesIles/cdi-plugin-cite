@@ -43,6 +43,9 @@ public class PluginCite extends JavaPlugin {
     private static CDIObjectifManager objectifManager;
     private static IslandManager islandManager;
 
+    public static boolean shouldShowMainScoreboard = false;
+    public static boolean shouldShowObjectifScore = false;
+
     public static boolean islandEnable = false;
 
     @Override

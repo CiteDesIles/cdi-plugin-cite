@@ -110,6 +110,9 @@ public class OnClickInventory implements Listener {
                     if(total > price) {
                         total = price;
                     }
+                    if(count > price) {
+                        count = price;
+                    }
                     removeItemAmount((Player) event.getWhoClicked(), originalItem, (int) count);
                     PluginCite.instance().teamManager().addSPToTeam(PluginCite.instance().playerManager().get((Player) event.getWhoClicked()).getTeam(), total);
                     event.getWhoClicked().sendMessage("§aVous avez déposé " + total + " " + item.getType().toString() + " §apour §b§l" + total + " SP§a.");
@@ -120,7 +123,7 @@ public class OnClickInventory implements Listener {
                     DiscordWebhooksUtility discordWebhooksUtility = new DiscordWebhooksUtility(PluginCite.instance());
                     discordWebhooksUtility.sendCustomMessage("Dépot SP", "§a" + event.getWhoClicked().getName() + " a déposé " + total + " " + item.getType().toString() + " pour " + total + " SP");
 
-                    if(!needItemForUpgrade()) {
+                    if(needItemForUpgrade()) {
                         discordWebhooksUtility.sendCustomMessage("Amélioration Tour", "@everyone la tour doit être améliorée, il n'y a plus d'items à déposer");
                     }
 
@@ -130,6 +133,9 @@ public class OnClickInventory implements Listener {
                     long total = 1;
                     if(total > price) {
                         total = price;
+                    }
+                    if(count > total) {
+                        count = total;
                     }
                     removeItemAmount((Player) event.getWhoClicked(), originalItem, (int) total);
                     PluginCite.instance().teamManager().addSPToTeam(PluginCite.instance().playerManager().get((Player) event.getWhoClicked()).getTeam(), total);
@@ -141,9 +147,9 @@ public class OnClickInventory implements Listener {
                     DiscordWebhooksUtility discordWebhooksUtility = new DiscordWebhooksUtility(PluginCite.instance());
                     discordWebhooksUtility.sendCustomMessage("Dépot SP", "§a" + event.getWhoClicked().getName() + " a déposé " + total + " " + item.getType().toString() + " pour " + total + " SP");
 
-                    if(!needItemForUpgrade()) {
-                        discordWebhooksUtility.sendCustomMessage("Amélioration Tour", "@everyone la tour doit être améliorée, il n'y a plus d'items à déposer");
-                    }
+//                    if(needItemForUpgrade()) {
+//                        discordWebhooksUtility.sendCustomMessage("Amélioration Tour", "@everyone la tour doit être améliorée, il n'y a plus d'items à déposer");
+//                    }
                     return;
                 }
                 return;
@@ -224,7 +230,7 @@ public class OnClickInventory implements Listener {
     public boolean needItemForUpgrade() {
         boolean needItem = false;
         for(ItemStack item : PluginCite.instance().shopManager().itemsLists().getItemsList("upgrade").keySet()) {
-            if(PluginCite.instance().shopManager().itemsLists().getItemsList("upgrade").get(item) > 0) {
+            if(PluginCite.instance().shopManager().itemsLists().getItemsList("upgrade").get(item) < 0) {
                 needItem = true;
             }
         }

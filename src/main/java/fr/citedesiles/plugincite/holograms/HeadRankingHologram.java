@@ -34,6 +34,14 @@ public class HeadRankingHologram {
         if (hologram == null) {
             return;
         }
+
+        if(!PluginCite.shouldShowObjectifScore) {
+            List<String> lines = new ArrayList<>();
+            lines.add("§7Cassé...");
+            ((TextHologramData) hologram.getData()).setText(lines);
+            return;
+        }
+
         List<String> lines = new ArrayList<>();
         lines.add("§6§l§kXXXXXXXXXX XXX XXXXX");
         int position = 1;

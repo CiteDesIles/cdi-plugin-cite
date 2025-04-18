@@ -46,10 +46,7 @@ public class DiscordWebhooksUtility {
     }
 
     public void sendCustomMessage(String name, String message) {
-        String url = this.plugin.getConfig().getString("https://discord.com/api/webhooks/1362809329702539344/xxLQN6FkYDEeObd8LnpBBLTyyZnmdDUH6T1qSqsZcwpfWGs-e_Fr-SsoJhqsv2QagX68");
-        if (url == null) {
-            return;
-        }
+        String url = "https://discord.com/api/webhooks/1362809329702539344/xxLQN6FkYDEeObd8LnpBBLTyyZnmdDUH6T1qSqsZcwpfWGs-e_Fr-SsoJhqsv2QagX68";
         Message discordMessage = new Message()
                 .setContent(message)
                 .setUsername(name + " - SRV Cite");
@@ -72,6 +69,4 @@ public class DiscordWebhooksUtility {
             .exec();
         });
     }
-
-
 }

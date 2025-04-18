@@ -210,6 +210,30 @@ public class AdminCommand implements CommandExecutor {
             case "iceRaceCopy":
                 CopyIceRaceFromAnotherWorld.copyTowerFromAnotherWorld(player.getWorld(), strings[1], Integer.parseInt(strings[2]), Integer.parseInt(strings[3]), Integer.parseInt(strings[4]));
                 break;
+            case "mainScoreboard":
+                if(strings[1].equalsIgnoreCase("true")) {
+                    PluginCite.shouldShowMainScoreboard = true;
+                    player.sendMessage("§aLe scoreboard principal est activé");
+                }
+                else if(strings[1].equalsIgnoreCase("false")) {
+                    PluginCite.shouldShowMainScoreboard = false;
+                    player.sendMessage("§aLe scoreboard principal est désactivé");
+                } else {
+                    player.sendMessage("§cLa valeur doit être true ou false");
+                }
+                break;
+            case "objectifScoreboard":
+                if(strings[1].equalsIgnoreCase("true")) {
+                    PluginCite.shouldShowObjectifScore = true;
+                    player.sendMessage("§aLe scoreboard objectif est activé");
+                }
+                else if(strings[1].equalsIgnoreCase("false")) {
+                    PluginCite.shouldShowObjectifScore = false;
+                    player.sendMessage("§aLe scoreboard objectif est désactivé");
+                } else {
+                    player.sendMessage("§cLa valeur doit être true ou false");
+                }
+                break;
         }
         return true;
     }
