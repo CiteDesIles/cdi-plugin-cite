@@ -43,7 +43,7 @@ public class PluginCite extends JavaPlugin {
     public static boolean shouldShowMainScoreboard = true;
     public static boolean shouldShowObjectifScore = true;
 
-    public static boolean islandEnable = false;
+    public static boolean islandEnable = true;
 
     @Override
     public void onEnable() {
