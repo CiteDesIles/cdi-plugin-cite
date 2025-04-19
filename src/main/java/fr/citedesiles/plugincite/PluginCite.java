@@ -22,7 +22,6 @@ import fr.citedesiles.plugincite.shop.ShopManager;
 import fr.citedesiles.plugincite.towerbuilder.WorldLoaderUtility;
 import fr.citedesiles.plugincite.utils.*;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scoreboard.ScoreboardManager;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -52,7 +51,6 @@ public class PluginCite extends JavaPlugin {
 
         INSTANCE = this;
         npcManager = new NPCManager();
-        getLogger().info("PluginCite enabled");
         configManager = new ConfigManager(this);
 
         itemManager = new ItemManager();
@@ -116,6 +114,10 @@ public class PluginCite extends JavaPlugin {
         hologramsManager = new HologramsManager();
         hologramsManager.initAll();
         HeadsFileManager.loadHeads();
+
+        getServer().getScheduler().runTaskTimerAsynchronously(this, HeadsFileManager::saveHeads, 20 * 60 * 5, 20 * 60 * 5);
+
+        getLogger().info("PluginCite enabled");
     }
 
     @Override
