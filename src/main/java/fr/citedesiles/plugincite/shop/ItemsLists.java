@@ -33,7 +33,7 @@ public class ItemsLists {
         confiserie.put(new ItemStack(Material.PUMPKIN_PIE, 1), 300L);
         confiserie.put(new ItemStack(Material.CAKE, 1), 500L);
         confiserie.put(new ItemStack(Material.CHORUS_FRUIT, 1), 50L);
-        confiserie.put(new ItemStack(Material.MELON, 1), 200L);
+        confiserie.put(new ItemStack(Material.MELON, 1), 75L);
         confiserie.put(new ItemStack(Material.GOLDEN_APPLE, 1), 500L);
         confiserie.put(new ItemStack(Material.ENCHANTED_GOLDEN_APPLE, 1), 10000L);
         confiserie.put(new ItemStack(Material.HONEY_BOTTLE, 1), 300L);
