@@ -2,7 +2,6 @@ package fr.citedesiles.plugincite.listener;
 
 import fr.citedesiles.plugincite.PluginCite;
 import fr.citedesiles.plugincite.objects.CDITeam;
-import fr.citedesiles.plugincite.shop.ShopManager;
 import fr.citedesiles.plugincite.shop.UpgradeManager;
 import fr.citedesiles.plugincite.utils.DiscordWebhooksUtility;
 import fr.citedesiles.plugincite.utils.JoinFunctionUtility;
@@ -105,53 +104,20 @@ public class OnClickInventory implements Listener {
                 return;
             }
             if(event.getView().getTitle().contains("upgrade")) {
-                if(event.isShiftClick()) {
-                    long total = count;
-                    if(total > price) {
-                        total = price;
-                    }
-                    if(count > price) {
-                        count = price;
-                    }
-                    removeItemAmount((Player) event.getWhoClicked(), originalItem, (int) count);
-                    PluginCite.instance().teamManager().addSPToTeam(PluginCite.instance().playerManager().get((Player) event.getWhoClicked()).getTeam(), total);
-                    event.getWhoClicked().sendMessage("§aVous avez déposé " + total + " " + item.getType().toString() + " §apour §b§l" + total + " SP§a.");
-                    plugin.shopManager().itemsLists().editPrice("upgrade", originalItem, (long) price-total);
-                    (event.getWhoClicked()).closeInventory();
-                    PluginCite.instance().shopManager().openShop((Player) event.getWhoClicked(), "upgrade");
+                if (event.isLeftClick() && !event.isShiftClick()) count = 1;
+                else if (!event.isShiftClick()) return;
+                if (count > price) count = price;
+                if (count == 0) return;
 
-                    DiscordWebhooksUtility discordWebhooksUtility = new DiscordWebhooksUtility(PluginCite.instance());
-                    discordWebhooksUtility.sendCustomMessage("Dépot SP", "§a" + event.getWhoClicked().getName() + " a déposé " + total + " " + item.getType().toString() + " pour " + total + " SP");
+                removeItemAmount((Player) event.getWhoClicked(), originalItem, (int) count);
+                PluginCite.instance().teamManager().addSPToTeam(PluginCite.instance().playerManager().get((Player) event.getWhoClicked()).getTeam(), count);
+                event.getWhoClicked().sendMessage("§aVous avez déposé " + count + " " + item.getType() + " §apour §b§l" + count + " SP§a.");
+                plugin.shopManager().itemsLists().editPrice("upgrade", originalItem, price - count);
+                PluginCite.instance().shopManager().openShop((Player) event.getWhoClicked(), "upgrade");
 
-                    if(needItemForUpgrade()) {
-                        discordWebhooksUtility.sendCustomMessage("Amélioration Tour", "@everyone la tour doit être améliorée, il n'y a plus d'items à déposer");
-                    }
-
-                    return;
-                }
-                if(event.isLeftClick()) {
-                    long total = 1;
-                    if(total > price) {
-                        total = price;
-                    }
-                    if(count > total) {
-                        count = total;
-                    }
-                    removeItemAmount((Player) event.getWhoClicked(), originalItem, (int) total);
-                    PluginCite.instance().teamManager().addSPToTeam(PluginCite.instance().playerManager().get((Player) event.getWhoClicked()).getTeam(), total);
-                    event.getWhoClicked().sendMessage("§aVous avez déposé " + total + " " + item.getType().toString() + " §apour §b§l" + total + " SP§a.");
-                    plugin.shopManager().itemsLists().editPrice("upgrade", originalItem, price-total);
-                    (event.getWhoClicked()).closeInventory();
-                    PluginCite.instance().shopManager().openShop((Player) event.getWhoClicked(), "upgrade");
-
-                    DiscordWebhooksUtility discordWebhooksUtility = new DiscordWebhooksUtility(PluginCite.instance());
-                    discordWebhooksUtility.sendCustomMessage("Dépot SP", "§a" + event.getWhoClicked().getName() + " a déposé " + total + " " + item.getType().toString() + " pour " + total + " SP");
-
-//                    if(needItemForUpgrade()) {
-//                        discordWebhooksUtility.sendCustomMessage("Amélioration Tour", "@everyone la tour doit être améliorée, il n'y a plus d'items à déposer");
-//                    }
-                    return;
-                }
+                DiscordWebhooksUtility discordWebhooksUtility = new DiscordWebhooksUtility(PluginCite.instance());
+                discordWebhooksUtility.sendCustomMessage("Dépot SP", "§a" + event.getWhoClicked().getName() + " a déposé " + count + " " + item.getType() + " pour " + count + " SP");
+                if (!needItemForUpgrade()) discordWebhooksUtility.sendCustomMessage("Amélioration Tour", "@everyone la tour doit être améliorée, il n'y a plus d'items à déposer");
                 return;
             }
             if(event.isShiftClick()) {
@@ -211,29 +177,23 @@ public class OnClickInventory implements Listener {
     }
 
     public void removeItemAmount(Player player, ItemStack item, int amount) {
-        for(ItemStack itemStack : player.getInventory().getContents()) {
-            if(itemStack != null && itemStack.isSimilar(item)) {
-                if(itemStack.getAmount() > amount) {
+        for (ItemStack itemStack : player.getInventory().getContents()) {
+            if (itemStack != null && itemStack.isSimilar(item)) {
+                if (itemStack.getAmount() >= amount) {
                     itemStack.setAmount(itemStack.getAmount() - amount);
-                    return;
-                } else if(itemStack.getAmount() == amount) {
-                    player.getInventory().remove(itemStack);
                     return;
                 } else {
                     amount -= itemStack.getAmount();
-                    player.getInventory().remove(itemStack);
+                    itemStack.setAmount(0);
                 }
             }
         }
     }
 
     public boolean needItemForUpgrade() {
-        boolean needItem = false;
-        for(ItemStack item : PluginCite.instance().shopManager().itemsLists().getItemsList("upgrade").keySet()) {
-            if(PluginCite.instance().shopManager().itemsLists().getItemsList("upgrade").get(item) < 0) {
-                needItem = true;
-            }
-        }
+        for (Long item : PluginCite.instance().shopManager().itemsLists().getItemsList("upgrade").values())
+            if (item > 0)
+                return true;
         return false;
     }
 }
