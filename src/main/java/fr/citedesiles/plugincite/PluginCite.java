@@ -50,9 +50,6 @@ public class PluginCite extends JavaPlugin {
 
         WorldLoaderUtility.loadWorld("world");
 
-        CustomCraftUtility customCraftUtility = new CustomCraftUtility();
-        customCraftUtility.registerCustomCrafts();
-
         INSTANCE = this;
         npcManager = new NPCManager();
         getLogger().info("PluginCite enabled");
@@ -67,6 +64,9 @@ public class PluginCite extends JavaPlugin {
         teamManager = new CDITeamManager(this);
 
         islandManager = new IslandManager();
+
+        CustomCraftUtility customCraftUtility = new CustomCraftUtility();
+        customCraftUtility.registerCustomCrafts();
 
         getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 
