@@ -31,7 +31,6 @@ public class AdminCommand implements CommandExecutor {
             commandSender.sendMessage("§cVous n'avez pas la permission d'utiliser cette commande");
             return false;
         }
-        Player player = (Player) commandSender;
         switch (strings[0]) {
             case "spawnAllNPC":
                 NPCs npcs = new NPCs();
@@ -54,21 +53,25 @@ public class AdminCommand implements CommandExecutor {
                     throw new RuntimeException(e);
                 }
                 break;
-            case "index":
+            case "index": {
+                Player player = (Player) commandSender;
                 Inventory inv = Bukkit.createInventory(null, 54, "Index");
                 for(int i = 0; i < plugin.itemManager().getCustomsItems().size(); i++) {
                     inv.setItem(i, plugin.itemManager().getCustomsItems().get(i));
                 }
                 player.openInventory(inv);
                 break;
+            }
             case "removeAllNPC":
                 plugin.npcManager().removeAllNPC();
                 break;
-            case "whatismyteam":
+            case "whatismyteam": {
+                Player player = (Player) commandSender;
                 player.sendMessage("§aVotre équipe est: " + plugin.playerManager().get(player.getUniqueId()).getTeam());
                 break;
+            }
             case "copy":
-                CopyTowerFromAnotherWorld.copyTowerFromAnotherWorld(player.getWorld(), strings[1], Integer.parseInt(strings[2]), Integer.parseInt(strings[3]), Integer.parseInt(strings[4]));
+                CopyTowerFromAnotherWorld.copyTowerFromAnotherWorld(Bukkit.getWorld("world"), strings[1], Integer.parseInt(strings[2]), Integer.parseInt(strings[3]), Integer.parseInt(strings[4]));
                 break;
             case "testrcon":
                 try (RconClient client = RconClient.open("localhost", 25575, "jesuisbo")) {
@@ -192,46 +195,46 @@ public class AdminCommand implements CommandExecutor {
                         }
                         break;
                     default:
-                        player.sendMessage("§cLe nom de l'NPC est incorrect");
+                        commandSender.sendMessage("§cLe nom de l'NPC est incorrect");
                         break;
                 }
                 break;
             case "enableIsland":
                 if(strings[1].equalsIgnoreCase("true")) {
                     PluginCite.islandEnable = true;
-                    player.sendMessage("§aLes îles sont activées");
+                    commandSender.sendMessage("§aLes îles sont activées");
                 } else if(strings[1].equalsIgnoreCase("false")) {
                     PluginCite.islandEnable = false;
-                    player.sendMessage("§aLes îles sont désactivées");
+                    commandSender.sendMessage("§aLes îles sont désactivées");
                 } else {
-                    player.sendMessage("§cLa valeur doit être true ou false");
+                    commandSender.sendMessage("§cLa valeur doit être true ou false");
                 }
                 break;
             case "iceRaceCopy":
-                CopyIceRaceFromAnotherWorld.copyTowerFromAnotherWorld(player.getWorld(), strings[1], Integer.parseInt(strings[2]), Integer.parseInt(strings[3]), Integer.parseInt(strings[4]));
+                CopyIceRaceFromAnotherWorld.copyTowerFromAnotherWorld(Bukkit.getWorld("world"), strings[1], Integer.parseInt(strings[2]), Integer.parseInt(strings[3]), Integer.parseInt(strings[4]));
                 break;
             case "mainScoreboard":
                 if(strings[1].equalsIgnoreCase("true")) {
                     PluginCite.shouldShowMainScoreboard = true;
-                    player.sendMessage("§aLe scoreboard principal est activé");
+                    commandSender.sendMessage("§aLe scoreboard principal est activé");
                 }
                 else if(strings[1].equalsIgnoreCase("false")) {
                     PluginCite.shouldShowMainScoreboard = false;
-                    player.sendMessage("§aLe scoreboard principal est désactivé");
+                    commandSender.sendMessage("§aLe scoreboard principal est désactivé");
                 } else {
-                    player.sendMessage("§cLa valeur doit être true ou false");
+                    commandSender.sendMessage("§cLa valeur doit être true ou false");
                 }
                 break;
             case "objectifScoreboard":
                 if(strings[1].equalsIgnoreCase("true")) {
                     PluginCite.shouldShowObjectifScore = true;
-                    player.sendMessage("§aLe scoreboard objectif est activé");
+                    commandSender.sendMessage("§aLe scoreboard objectif est activé");
                 }
                 else if(strings[1].equalsIgnoreCase("false")) {
                     PluginCite.shouldShowObjectifScore = false;
-                    player.sendMessage("§aLe scoreboard objectif est désactivé");
+                    commandSender.sendMessage("§aLe scoreboard objectif est désactivé");
                 } else {
-                    player.sendMessage("§cLa valeur doit être true ou false");
+                    commandSender.sendMessage("§cLa valeur doit être true ou false");
                 }
                 break;
         }
