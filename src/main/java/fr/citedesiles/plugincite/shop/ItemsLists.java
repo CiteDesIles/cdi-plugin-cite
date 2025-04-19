@@ -42,21 +42,24 @@ public class ItemsLists {
 
         createItemsList("upgrade");
         Map<ItemStack, Long> upgrade = new HashMap<>();
-        upgrade.put(new ItemStack(Material.NETHERRACK, 1), 5000L);
-        upgrade.put(new ItemStack(Material.STRIPPED_SPRUCE_LOG, 1), 1000L);
-        upgrade.put(new ItemStack(Material.RED_TERRACOTTA, 1), 500L);
-        upgrade.put(new ItemStack(Material.RED_CONCRETE_POWDER, 1), 500L);
-        upgrade.put(new ItemStack(Material.BRICK, 1), 500L);
-        upgrade.put(new ItemStack(Material.COPPER_BLOCK, 1), 64L);
-        upgrade.put(new ItemStack(Material.LANTERN, 1), 32L);
-        upgrade.put(new ItemStack(Material.DIAMOND, 1), 10L);
-        upgrade.put(new ItemStack(Material.REDSTONE_LAMP, 1), 1000L);
-        upgrade.put(new ItemStack(Material.LIGHT_GRAY_WOOL, 1), 500L);
-        upgrade.put(new ItemStack(Material.CHISELED_TUFF, 1), 500L);
-        upgrade.put(new ItemStack(Material.MUD_BRICK_WALL, 1), 300L);
-        upgrade.put(new ItemStack(Material.LECTERN, 1), 20L);
-        upgrade.put(new ItemStack(Material.POLISHED_DIORITE, 1), 500L);
-        upgrade.put(new ItemStack(Material.DARK_OAK_PLANKS, 1), 500L);
+        upgrade.put(new ItemStack(Material.POLISHED_ANDESITE, 1), 10000L);
+        upgrade.put(new ItemStack(Material.CHISELED_BOOKSHELF, 1), 500L);
+        upgrade.put(new ItemStack(Material.LIGHT_GRAY_GLAZED_TERRACOTTA, 1), 1000L);
+        upgrade.put(new ItemStack(Material.DIAMOND_ORE, 1), 100L);
+        upgrade.put(new ItemStack(Material.BROWN_MUSHROOM, 1), 1000L);
+        upgrade.put(new ItemStack(Material.CHERRY_LOG, 1), 5000L);
+        upgrade.put(new ItemStack(Material.PRISMARINE, 1), 100L);
+        upgrade.put(new ItemStack(Material.DRIED_KELP_BLOCK, 1), 1000L);
+        upgrade.put(new ItemStack(Material.IRON_TRAPDOOR, 1), 100L);
+        upgrade.put(new ItemStack(Material.STRIPPED_BAMBOO_BLOCK, 1), 1000L);
+        upgrade.put(new ItemStack(Material.TUFF, 1), 5000L);
+        upgrade.put(new ItemStack(Material.CLAY, 1), 500L);
+        upgrade.put(new ItemStack(Material.REDSTONE_BLOCK, 1), 50L);
+        upgrade.put(new ItemStack(Material.NETHERITE_BLOCK, 1), 10L);
+        upgrade.put(new ItemStack(Material.CALCITE, 1), 1000L);
+        upgrade.put(new ItemStack(Material.ICE, 1), 1000L);
+        upgrade.put(new ItemStack(Material.CRIMSON_PLANKS, 1), 5000L);
+        upgrade.put(new ItemStack(Material.RED_BANNER, 1), 500L);
         putItemsList("upgrade", upgrade);
 
         createItemsList("mineur");
@@ -75,7 +78,7 @@ public class ItemsLists {
         mineur.put(new ItemStack(Material.DEEPSLATE_DIAMOND_ORE, 1), 400L);
         mineur.put(new ItemStack(Material.DEEPSLATE_EMERALD_ORE, 1), 800L);
         mineur.put(new ItemStack(Material.COAL, 1), 15L);
-        mineur.put(new ItemStack(Material.COPPER_INGOT, 1), 40L);
+        mineur.put(new ItemStack(Material.COPPER_INGOT, 1), 20L);
         mineur.put(new ItemStack(Material.IRON_INGOT, 1), 50L);
         mineur.put(new ItemStack(Material.GOLD_INGOT, 1), 60L);
         mineur.put(new ItemStack(Material.DIAMOND, 1), 200L);
@@ -83,8 +86,37 @@ public class ItemsLists {
         mineur.put(new ItemStack(Material.NETHERITE_INGOT, 1), 1000L);
         mineur.put(new ItemStack(Material.REDSTONE, 1), 20L);
         mineur.put(new ItemStack(Material.LAPIS_LAZULI, 1), 25L);
-
         putItemsList("mineur", mineur);
+
+        createItemsList("coppernic");
+        Map<ItemStack, Long> coppernic = new HashMap<>();
+        coppernic.put(new ItemStack(Material.COPPER_INGOT, 1), 50L);
+        coppernic.put(new ItemStack(Material.COPPER_BLOCK, 1), 500L);
+        coppernic.put(new ItemStack(Material.COPPER_BULB, 1), 500L);
+        coppernic.put(new ItemStack(Material.WAXED_COPPER_BLOCK, 1), 550L);
+        coppernic.put(new ItemStack(Material.OXIDIZED_COPPER, 1), 600L);
+        coppernic.put(new ItemStack(Material.WAXED_OXIDIZED_COPPER_DOOR, 1), 600L);
+        putItemsList("coppernic", coppernic);
+
+        createItemsList("gefroid");
+        Map<ItemStack, Long> gefroid = new HashMap<>();
+        gefroid.put(new ItemStack(Material.ICE, 1), 50L);
+        gefroid.put(new ItemStack(Material.PACKED_ICE, 1), 75L);
+        gefroid.put(new ItemStack(Material.BLUE_ICE, 1), 100L);
+        gefroid.put(new ItemStack(Material.SNOW_BLOCK, 1), 50L);
+        gefroid.put(new ItemStack(Material.SNOWBALL, 1), 10L);
+        putItemsList("gefroid", gefroid);
+
+        createItemsList("sakura");
+        Map<ItemStack, Long> sakura = new HashMap<>();
+        sakura.put(new ItemStack(Material.CHERRY_LOG, 1), 50L);
+        sakura.put(new ItemStack(Material.CHERRY_PLANKS, 1), 15L);
+        sakura.put(new ItemStack(Material.CHERRY_SAPLING, 1), 150L);
+        sakura.put(new ItemStack(Material.CHERRY_LEAVES, 1), 100L);
+        sakura.put(new ItemStack(Material.CHERRY_SIGN, 1), 50L);
+        sakura.put(new ItemStack(Material.CHERRY_DOOR, 1), 150L);
+        sakura.put(new ItemStack(Material.CHERRY_FENCE, 1), 50L);
+        putItemsList("sakura", sakura);
 
     }
 
