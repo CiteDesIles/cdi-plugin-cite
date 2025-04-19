@@ -116,61 +116,51 @@ public class OnClickInventory implements Listener {
                 DiscordWebhooksUtility discordWebhooksUtility = new DiscordWebhooksUtility(PluginCite.instance());
                 discordWebhooksUtility.sendCustomMessage("Dépot SP", "§a" + event.getWhoClicked().getName() + " a déposé " + count + " " + originalItem.getType() + " pour " + count + " SP");
                 if (!needItemForUpgrade()) discordWebhooksUtility.sendCustomMessage("Amélioration Tour", "@everyone la tour doit être améliorée, il n'y a plus d'items à déposer");
-                return;
-            }
-            if (event.isShiftClick()) {
-                long total = count * price;
-                removeItemAmount((Player) event.getWhoClicked(), originalItem, (int) count);
-                String team = PluginCite.instance().playerManager().get((Player) event.getWhoClicked()).getTeam();
-                PluginCite.instance().teamManager().addGoldToTeam(team, total);
-                if (originalItem.getItemMeta().hasDisplayName()) {
-                    event.getWhoClicked().sendMessage("§aVous avez vendu " + count + " " + item.getItemMeta().getDisplayName() + " §apour §e§l" + price * count + " golds§a.");
+            } else {
 
-                    DiscordWebhooksUtility discordWebhooksUtility = new DiscordWebhooksUtility(plugin);
-                    discordWebhooksUtility.sendCustomMessage("Vente d'items", "§a" + event.getWhoClicked().getName() + " a vendu " + count + " " + item.getItemMeta().getDisplayName() + " pour " + price * count + " golds");
-                } else {
-                    event.getWhoClicked().sendMessage("§aVous avez vendu " + count + " " + item.getType().toString() + " §apour §e§l" + price * count + " golds§a.");
-                    DiscordWebhooksUtility discordWebhooksUtility = new DiscordWebhooksUtility(plugin);
-                    discordWebhooksUtility.sendCustomMessage("Vente d'items", "§a" + event.getWhoClicked().getName() + " a vendu " + count + " " + item.getType().toString() + " pour " + price * count + " golds");
-                }
-                return;
-            }
-            if (event.isRightClick()) {
-                if (count >= 64) {
-                    removeItemAmount((Player) event.getWhoClicked(), originalItem, 64);
+                if (event.isShiftClick()) {
+                    removeItemAmount((Player) event.getWhoClicked(), originalItem, (int) count);
                     String team = PluginCite.instance().playerManager().get((Player) event.getWhoClicked()).getTeam();
-                    PluginCite.instance().teamManager().addGoldToTeam(team, 64 * price);
+                    PluginCite.instance().teamManager().addGoldToTeam(team, count * price);
                     if (originalItem.getItemMeta().hasDisplayName()) {
-                        event.getWhoClicked().sendMessage("§aVous avez vendu 64 " + item.getItemMeta().getDisplayName() + " §apour §e§l" + 64 * price + " golds§a.");
+                        event.getWhoClicked().sendMessage("§aVous avez vendu " + count + " " + item.getItemMeta().getDisplayName() + " §apour §e§l" + count * price + " golds§a.");
                         DiscordWebhooksUtility discordWebhooksUtility = new DiscordWebhooksUtility(plugin);
-                        discordWebhooksUtility.sendCustomMessage("Vente d'items", "§a" + event.getWhoClicked().getName() + " a vendu 64 " + item.getItemMeta().getDisplayName() + " pour " + 64 * price + " golds");
+                        discordWebhooksUtility.sendCustomMessage("Vente d'items", "§a" + event.getWhoClicked().getName() + " a vendu " + count + " " + item.getItemMeta().getDisplayName() + " pour " + count * price + " golds");
                     } else {
-                        event.getWhoClicked().sendMessage("§aVous avez vendu 64 " + item.getType().toString() + " §apour §e§l" + 64 * price + " golds§a.");
+                        event.getWhoClicked().sendMessage("§aVous avez vendu " + count + " " + item.getType() + " §apour §e§l" + count * price + " golds§a.");
                         DiscordWebhooksUtility discordWebhooksUtility = new DiscordWebhooksUtility(plugin);
-                        discordWebhooksUtility.sendCustomMessage("Vente d'items", "§a" + event.getWhoClicked().getName() + " a vendu 64 " + item.getType().toString() + " pour " + 64 * price + " golds");
+                        discordWebhooksUtility.sendCustomMessage("Vente d'items", "§a" + event.getWhoClicked().getName() + " a vendu " + count + " " + item.getType() + " pour " + count * price + " golds");
                     }
-                    return;
-                } else {
-                    event.getWhoClicked().sendMessage("§cVous n'avez pas assez d'items dans votre inventaire.");
-                    return;
+                } else if (event.isRightClick()) {
+                    if (count > 64) count = 64;
+                    removeItemAmount((Player) event.getWhoClicked(), originalItem, (int) count);
+                    String team = PluginCite.instance().playerManager().get((Player) event.getWhoClicked()).getTeam();
+                    PluginCite.instance().teamManager().addGoldToTeam(team, count * price);
+                    if (originalItem.getItemMeta().hasDisplayName()) {
+                        event.getWhoClicked().sendMessage("§aVous avez vendu " + count + " " + item.getItemMeta().getDisplayName() + " §apour §e§l" + count * price + " golds§a.");
+                        DiscordWebhooksUtility discordWebhooksUtility = new DiscordWebhooksUtility(plugin);
+                        discordWebhooksUtility.sendCustomMessage("Vente d'items", "§a" + event.getWhoClicked().getName() + " a vendu " + count + " " + item.getItemMeta().getDisplayName() + " pour " + count * price + " golds");
+                    } else {
+                        event.getWhoClicked().sendMessage("§aVous avez vendu " + count + " " + item.getType() + " §apour §e§l" + count * price + " golds§a.");
+                        DiscordWebhooksUtility discordWebhooksUtility = new DiscordWebhooksUtility(plugin);
+                        discordWebhooksUtility.sendCustomMessage("Vente d'items", "§a" + event.getWhoClicked().getName() + " a vendu " + count + " " + item.getType() + " pour " + count * price + " golds");
+                    }
+                } else if (event.isLeftClick()) {
+                    count = 1;
+                    removeItemAmount((Player) event.getWhoClicked(), originalItem, (int) count);
+                    String team = PluginCite.instance().playerManager().get((Player) event.getWhoClicked()).getTeam();
+                    PluginCite.instance().teamManager().addGoldToTeam(team, count * price);
+                    if (originalItem.getItemMeta().hasDisplayName()) {
+                        event.getWhoClicked().sendMessage("§aVous avez vendu " + count + " " + item.getItemMeta().getDisplayName() + " §apour §e§l" + count * price + " golds§a.");
+                        DiscordWebhooksUtility discordWebhooksUtility = new DiscordWebhooksUtility(plugin);
+                        discordWebhooksUtility.sendCustomMessage("Vente d'items", "§a" + event.getWhoClicked().getName() + " a vendu " + count + " " + item.getItemMeta().getDisplayName() + " pour " + count * price + " golds");
+                    } else {
+                        event.getWhoClicked().sendMessage("§aVous avez vendu " + count + " " + item.getType() + " §apour §e§l" + count * price + " golds§a.");
+                        DiscordWebhooksUtility discordWebhooksUtility = new DiscordWebhooksUtility(plugin);
+                        discordWebhooksUtility.sendCustomMessage("Vente d'items", "§a" + event.getWhoClicked().getName() + " a vendu " + count + " " + item.getType() + " pour " + count * price + " golds");
+                    }
                 }
             }
-            if (event.isLeftClick()) {
-                removeItemAmount((Player) event.getWhoClicked(), originalItem, 1);
-                String team = PluginCite.instance().playerManager().get((Player) event.getWhoClicked()).getTeam();
-                PluginCite.instance().teamManager().addGoldToTeam(team, price);
-                if (originalItem.getItemMeta().hasDisplayName()) {
-                    event.getWhoClicked().sendMessage("§aVous avez vendu 1 " + item.getItemMeta().getDisplayName() + " §apour §e§l" + price + " golds§a.");
-                    DiscordWebhooksUtility discordWebhooksUtility = new DiscordWebhooksUtility(plugin);
-                    discordWebhooksUtility.sendCustomMessage("Vente d'items", "§a" + event.getWhoClicked().getName() + " a vendu 1 " + item.getItemMeta().getDisplayName() + " pour " + price + " golds");
-                } else {
-                    event.getWhoClicked().sendMessage("§aVous avez vendu 1 " + item.getType().toString() + " §apour §e§l" + price + " golds§a.");
-                    DiscordWebhooksUtility discordWebhooksUtility = new DiscordWebhooksUtility(plugin);
-                    discordWebhooksUtility.sendCustomMessage("Vente d'items", "§a" + event.getWhoClicked().getName() + " a vendu 1 " + item.getType().toString() + " pour " + price + " golds");
-                }
-            }
-
-
         }
     }
 
