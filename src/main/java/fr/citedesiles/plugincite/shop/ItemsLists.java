@@ -43,13 +43,20 @@ public class ItemsLists {
         createItemsList("upgrade");
         Map<ItemStack, Long> upgrade = new HashMap<>();
         upgrade.put(new ItemStack(Material.NETHERRACK, 1), 5000L);
-        upgrade.put(new ItemStack(Material.SPRUCE_LOG, 1), 1000L);
+        upgrade.put(new ItemStack(Material.STRIPPED_SPRUCE_LOG, 1), 1000L);
         upgrade.put(new ItemStack(Material.RED_TERRACOTTA, 1), 500L);
         upgrade.put(new ItemStack(Material.RED_CONCRETE_POWDER, 1), 500L);
         upgrade.put(new ItemStack(Material.BRICK, 1), 500L);
         upgrade.put(new ItemStack(Material.COPPER_BLOCK, 1), 64L);
         upgrade.put(new ItemStack(Material.LANTERN, 1), 32L);
-        upgrade.put(new ItemStack(Material.DIAMOND, 1), 1L);
+        upgrade.put(new ItemStack(Material.DIAMOND, 1), 10L);
+        upgrade.put(new ItemStack(Material.REDSTONE_LAMP, 1), 1000L);
+        upgrade.put(new ItemStack(Material.LIGHT_GRAY_WOOL, 1), 500L);
+        upgrade.put(new ItemStack(Material.CHISELED_TUFF, 1), 500L);
+        upgrade.put(new ItemStack(Material.MUD_BRICK_WALL, 1), 300L);
+        upgrade.put(new ItemStack(Material.LECTERN, 1), 20L);
+        upgrade.put(new ItemStack(Material.POLISHED_DIORITE, 1), 500L);
+        upgrade.put(new ItemStack(Material.DARK_OAK_PLANKS, 1), 500L);
         putItemsList("upgrade", upgrade);
 
         createItemsList("mineur");
