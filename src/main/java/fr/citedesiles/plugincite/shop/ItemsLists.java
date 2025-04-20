@@ -57,7 +57,7 @@ public class ItemsLists {
         upgrade.put(new ItemStack(Material.BOOKSHELF), 200L);
         upgrade.put(new ItemStack(Material.CHEST), 150L);
         upgrade.put(new ItemStack(Material.RED_NETHER_BRICKS), 100L);
-        upgrade.put(new ItemStack(Material.RED_BED), 100L);
+        upgrade.put(new ItemStack(Material.GREEN_BED), 100L);
         upgrade.put(new ItemStack(Material.CAULDRON), 100L);
         upgrade.put(new ItemStack(Material.REPEATER), 100L);
         upgrade.put(new ItemStack(Material.WHITE_CANDLE), 100L);
