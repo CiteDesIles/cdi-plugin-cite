@@ -39,11 +39,9 @@ public class OnNPCInteract implements Listener {
                 ChangeServerMenu changeServerMenu = new ChangeServerMenu();
                 changeServerMenu.open(event.getPlayer());
             }
-
             case "cdi-mineur" -> {
                 plugin.shopManager().openShop(event.getPlayer(), "mineur");
             }
-
             case "cdi-coppernic" -> {
                 plugin.shopManager().openShop(event.getPlayer(), "coppernic");
             }
@@ -53,6 +51,9 @@ public class OnNPCInteract implements Listener {
             case "cdi-gefroid" -> {
                 plugin.shopManager().openShop(event.getPlayer(), "gefroid");
             }
+            case "cdi-fechaud" -> plugin.shopManager().openShop(event.getPlayer(), "fechaud");
+            case "cdi-warden" -> plugin.shopManager().openShop(event.getPlayer(), "warden");
+            case "cdi-enderitefox" -> plugin.shopManager().openShop(event.getPlayer(), "enderitefox");
         }
     }
 }
