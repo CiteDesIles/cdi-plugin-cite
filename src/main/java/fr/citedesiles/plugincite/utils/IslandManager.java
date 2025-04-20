@@ -59,6 +59,11 @@ public class IslandManager {
         return false;
     }
 
+    public boolean isInIsland(Location loc) {
+        for (int i = 0; i < 8; i++)
+            if (isInIsland("team" + (i + 1), loc)) return true;
+        return false;
+    }
 
     public double min(double d, double de) {
         return Math.min(d, de);
