@@ -36,7 +36,7 @@ public class OnBlockUpdate implements Listener {
     public void onPlayerInteract(PlayerInteractEvent event) {
         if (event.getClickedBlock() == null) return;
         String team = PluginCite.instance().islandManager().getIsland(event.getClickedBlock().getLocation());
-        if (team == null) return;
+        if (team == null || event.getPlayer().isOp()) return;
         CDIPlayer cdiPlayer = PluginCite.instance().playerManager().get(event.getPlayer().getUniqueId());
         if (!team.equals(cdiPlayer.getTeam())) event.setCancelled(true);
     }
