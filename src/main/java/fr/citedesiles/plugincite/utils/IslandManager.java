@@ -59,10 +59,14 @@ public class IslandManager {
         return false;
     }
 
-    public boolean isInIsland(Location loc) {
+    public String getIsland(Location loc) {
         for (int i = 0; i < 8; i++)
-            if (isInIsland("team" + (i + 1), loc)) return true;
-        return false;
+            if (isInIsland("team" + (i + 1), loc)) return "team" + (i + 1);
+        return null;
+    }
+
+    public boolean isInIsland(Location loc) {
+        return getIsland(loc) != null;
     }
 
     public double min(double d, double de) {
