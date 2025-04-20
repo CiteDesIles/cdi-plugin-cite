@@ -15,9 +15,8 @@ public class GameModeRunnable extends BukkitRunnable {
 
     @Override
     public void run() {
-        if(!PluginCite.islandEnable) {
+        if(!PluginCite.islandEnable)
             return;
-        }
         for(Player player : Bukkit.getOnlinePlayers()) {
             if(player.isOp()) {
                 continue;
