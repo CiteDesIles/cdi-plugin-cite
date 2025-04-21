@@ -1,6 +1,7 @@
 package fr.citedesiles.plugincite;
 
 import fr.citedesiles.plugincite.commands.AdminCommand;
+import fr.citedesiles.plugincite.commands.BoatCommand;
 import fr.citedesiles.plugincite.commands.EcoCommand;
 import fr.citedesiles.plugincite.commands.PayCommand;
 import fr.citedesiles.plugincite.customsItems.ItemManager;
@@ -21,6 +22,7 @@ import fr.citedesiles.plugincite.runnable.TeamSyncSaveRunnable;
 import fr.citedesiles.plugincite.shop.ShopManager;
 import fr.citedesiles.plugincite.towerbuilder.WorldLoaderUtility;
 import fr.citedesiles.plugincite.utils.*;
+import org.bukkit.entity.Boat;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
@@ -76,10 +78,12 @@ public class PluginCite extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new OnBlockUpdate(), this);
         getServer().getPluginManager().registerEvents(new OnDamage(), this);
         getServer().getPluginManager().registerEvents(new OnPlayerQuit(), this);
+        getServer().getPluginManager().registerEvents(new OnPlayerLeaveVehicleListener(), this);
 
         Objects.requireNonNull(getCommand("admin")).setExecutor(new AdminCommand(this));
         Objects.requireNonNull(getCommand("eco")).setExecutor(new EcoCommand());
         Objects.requireNonNull(getCommand("pay")).setExecutor(new PayCommand());
+        Objects.requireNonNull(getCommand("boat")).setExecutor(new BoatCommand());
         try {
             configManager.loadConfig();
         } catch (IOException e) {
