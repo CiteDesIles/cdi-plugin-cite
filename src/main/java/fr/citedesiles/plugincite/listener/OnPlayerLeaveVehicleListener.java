@@ -12,7 +12,7 @@ public class OnPlayerLeaveVehicleListener implements Listener {
     public void on(VehicleExitEvent event) {
         if(event.getExited() instanceof Player player) {
             // Detect if player is in boat mode and then delete the boat if true
-            if(player.getVehicle() != null && event.getVehicle().getVehicle() instanceof OakBoat) {
+            if(event.getVehicle() instanceof OakBoat) {
                 if(BoatRaceUtility.isInBoatRace.containsKey(player.getUniqueId())) {
                     if (BoatRaceUtility.isInBoatRace.get(player.getUniqueId())) {
                         BoatRaceUtility.quitBoatRace(player.getUniqueId());

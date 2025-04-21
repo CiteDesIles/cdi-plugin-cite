@@ -42,28 +42,19 @@ public class ItemsLists {
 
         createItemsList("upgrade");
         Map<ItemStack, Long> upgrade = new HashMap<>();
-        upgrade.put(new ItemStack(Material.GLASS_PANE), 5000L);
         upgrade.put(new ItemStack(Material.PODZOL), 2000L);
-        upgrade.put(new ItemStack(Material.MOSS_BLOCK), 2000L);
-        upgrade.put(new ItemStack(Material.DRIPSTONE_BLOCK), 800L);
-        upgrade.put(new ItemStack(Material.BLACKSTONE), 800L);
-        upgrade.put(new ItemStack(Material.SANDSTONE_WALL), 800L);
-        upgrade.put(new ItemStack(Material.POLISHED_BASALT), 500L);
-        upgrade.put(new ItemStack(Material.MOSSY_COBBLESTONE), 500L);
-        upgrade.put(new ItemStack(Material.DRIED_KELP_BLOCK), 500L);
-        upgrade.put(new ItemStack(Material.WAXED_OXIDIZED_COPPER_TRAPDOOR), 500L);
-        upgrade.put(new ItemStack(Material.END_ROD), 400L);
-        upgrade.put(new ItemStack(Material.GLOW_BERRIES), 300L);
-        upgrade.put(new ItemStack(Material.BOOKSHELF), 200L);
-        upgrade.put(new ItemStack(Material.CHEST), 150L);
+        upgrade.put(new ItemStack(Material.MOSS_BLOCK), 1144L);
+        upgrade.put(new ItemStack(Material.DRIPSTONE_BLOCK), 207L);
+        upgrade.put(new ItemStack(Material.WAXED_OXIDIZED_COPPER_TRAPDOOR), 498L);
+        upgrade.put(new ItemStack(Material.END_ROD), 399L);
+        upgrade.put(new ItemStack(Material.GLOW_BERRIES), 269L);
+        upgrade.put(new ItemStack(Material.BOOKSHELF), 168L);
         upgrade.put(new ItemStack(Material.RED_NETHER_BRICKS), 100L);
-        upgrade.put(new ItemStack(Material.GREEN_BED), 100L);
         upgrade.put(new ItemStack(Material.CAULDRON), 100L);
-        upgrade.put(new ItemStack(Material.REPEATER), 100L);
+        upgrade.put(new ItemStack(Material.REPEATER), 85L);
         upgrade.put(new ItemStack(Material.WHITE_CANDLE), 100L);
-        upgrade.put(new ItemStack(Material.BEEHIVE), 25L);
+        upgrade.put(new ItemStack(Material.BEEHIVE), 13L);
         upgrade.put(new ItemStack(Material.HEAVY_CORE), 1L);
-        upgrade.put(new ItemStack(Material.ANCIENT_DEBRIS), 1L);
         putItemsList("upgrade", upgrade);
 
         createItemsList("mineur");
