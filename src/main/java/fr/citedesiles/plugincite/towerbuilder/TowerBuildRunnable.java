@@ -14,7 +14,7 @@ import org.bukkit.profile.PlayerTextures;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class TowerBuildRunnable extends BukkitRunnable {
-    public static int x1 = -326;
+    public static int x1 = -200;
     public static int y1 = 30;
     public static int z1 = -595;
 
