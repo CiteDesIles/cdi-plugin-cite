@@ -54,6 +54,9 @@ public class OnNPCInteract implements Listener {
             case "cdi-fechaud" -> plugin.shopManager().openShop(event.getPlayer(), "fechaud");
             case "cdi-warden" -> plugin.shopManager().openShop(event.getPlayer(), "warden");
             case "cdi-enderitefox" -> plugin.shopManager().openShop(event.getPlayer(), "enderitefox");
+            case "cdi-begaydocrime" -> plugin.shopManager().openShop(event.getPlayer(), "begaydocrime");
+            case "cdi-poisson" -> plugin.shopManager().openShop(event.getPlayer(), "poisson");
+            case "cdi-fildrong" -> plugin.shopManager().openShop(event.getPlayer(), "fildrong");
         }
     }
 }
