@@ -5,6 +5,7 @@ import fr.citedesiles.plugincite.PluginCite;
 import fr.citedesiles.plugincite.npcs.NPCs;
 import fr.citedesiles.plugincite.towerbuilder.CopyIceRaceFromAnotherWorld;
 import fr.citedesiles.plugincite.towerbuilder.CopyTowerFromAnotherWorld;
+import fr.citedesiles.plugincite.utils.BoatRaceUtility;
 import fr.citedesiles.plugincite.utils.TNTUtility;
 import org.bukkit.Bukkit;
 import org.bukkit.WorldCreator;
@@ -233,6 +234,17 @@ public class AdminCommand implements CommandExecutor {
                 else if(strings[1].equalsIgnoreCase("false")) {
                     PluginCite.shouldShowObjectifScore = false;
                     commandSender.sendMessage("§aLe scoreboard objectif est désactivé");
+                } else {
+                    commandSender.sendMessage("§cLa valeur doit être true ou false");
+                }
+                break;
+            case "boatRaceMode":
+                if(strings[1].equalsIgnoreCase("true")) {
+                    BoatRaceUtility.boatRaceMode = true;
+                    commandSender.sendMessage("§aLe mode bateau est activé");
+                } else if(strings[1].equalsIgnoreCase("false")) {
+                    BoatRaceUtility.boatRaceMode = false;
+                    commandSender.sendMessage("§aLe mode bateau est désactivé");
                 } else {
                     commandSender.sendMessage("§cLa valeur doit être true ou false");
                 }
