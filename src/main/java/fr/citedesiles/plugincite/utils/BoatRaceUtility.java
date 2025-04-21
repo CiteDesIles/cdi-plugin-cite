@@ -37,5 +37,13 @@ public class BoatRaceUtility {
         time.remove(playerUUID);
     }
 
+     public void finishBoatRace(Player player) {
+        isInBoatRace.put(player.getUniqueId(), false);
+        for(Player target : Bukkit.getOnlinePlayers()) {
+            target.sendMessage("§6§l" + player.getName() + " §ea fini la course en " + String.format("%02d:%02d.%02d", (time.get(player.getUniqueId()) / 60000), (time.get(player.getUniqueId()) / 1000) % 60, (time.get(player.getUniqueId()) % 1000) / 10));
+        }
+        isInBoatRace.remove(player.getUniqueId());
+     }
+
 
 }
