@@ -25,5 +25,9 @@ public class CustomCraftUtility {
         slimeballrecipe.addIngredient(new ItemStack(Material.ROTTEN_FLESH));
         PluginCite.instance().getServer().addRecipe(slimeballrecipe);
 
+        NamespacedKey oxidizedTrapdoor = new NamespacedKey(PluginCite.instance(), "oxidized_trapdoor");
+        ShapelessRecipe oxidizedTrapdoorRecipe = new ShapelessRecipe(oxidizedTrapdoor, new ItemStack(Material.OXIDIZED_COPPER_TRAPDOOR));
+        oxidizedTrapdoorRecipe.addIngredient(new ItemStack(Material.OXIDIZED_COPPER, 6));
+        PluginCite.instance().getServer().addRecipe(oxidizedTrapdoorRecipe);
     }
 }
