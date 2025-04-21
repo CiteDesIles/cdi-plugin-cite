@@ -10,5 +10,7 @@ public class IceBoatRunnable extends BukkitRunnable {
 
         // Detecter si un joueur est sur les barrier
         BoatRaceUtility.removePlayerOnBarrier();
+
+        BoatRaceUtility.detectFinishLineForAllPlayers();
     }
 }

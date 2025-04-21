@@ -44,7 +44,10 @@ public class BoatRaceUtility {
      public static void finishBoatRace(Player player) {
         isInBoatRace.put(player.getUniqueId(), false);
         for(Player target : Bukkit.getOnlinePlayers()) {
-            target.sendMessage("§6§l" + player.getName() + " §ea fini la course en " + String.format("%02d:%02d.%02d", (time.get(player.getUniqueId()) / 60000), (time.get(player.getUniqueId()) / 1000) % 60, (time.get(player.getUniqueId()) % 1000) / 10));
+            long startTime = time.get(player.getUniqueId());
+            long currentTime = System.currentTimeMillis();
+            long elapsedTime = currentTime - startTime;
+            target.sendMessage("§6§l" + player.getName() + " §ea fini la course en " + String.format("%02d:%02d.%02d", (elapsedTime / 60000), (elapsedTime / 1000) % 60, (elapsedTime % 1000) / 10));
         }
         isInBoatRace.remove(player.getUniqueId());
      }
@@ -62,16 +65,19 @@ public class BoatRaceUtility {
         }
      }
 
-     public void detectFinishLineForAllPlayers() {
-        Location cornerOne = new Location(Bukkit.getWorld("world"), 86, 92, -314);
-        Location cornerTwo = new Location(Bukkit.getWorld("world"), 84, 96, -314);
+     public static void detectFinishLineForAllPlayers() {
+        Location cornerOne = new Location(Bukkit.getWorld("world"), 86, 92, -317);
+        Location cornerTwo = new Location(Bukkit.getWorld("world"), 94, 96, -313);
         for(Player player : Bukkit.getOnlinePlayers()) {
             if(isInBoatRace.containsKey(player.getUniqueId())) {
                 if(isInBoatRace.get(player.getUniqueId())) {
-                    if(player.getLocation().getBlockX() >= cornerOne.getBlockX() && player.getLocation().getBlockX() <= cornerTwo.getBlockX()) {
-                        if(player.getLocation().getBlockZ() >= cornerOne.getBlockZ() && player.getLocation().getBlockZ() <= cornerTwo.getBlockZ()) {
-                            finishBoatRace(player);
-                        }
+                    if(player.getLocation().getBlockX() >= Math.min(cornerOne.getBlockX(), cornerTwo.getBlockX()) &&
+                       player.getLocation().getBlockX() <= Math.max(cornerOne.getBlockX(), cornerTwo.getBlockX()) &&
+                       player.getLocation().getBlockY() >= Math.min(cornerOne.getBlockY(), cornerTwo.getBlockY()) &&
+                       player.getLocation().getBlockY() <= Math.max(cornerOne.getBlockY(), cornerTwo.getBlockY()) &&
+                       player.getLocation().getBlockZ() >= Math.min(cornerOne.getBlockZ(), cornerTwo.getBlockZ()) &&
+                       player.getLocation().getBlockZ() <= Math.max(cornerOne.getBlockZ(), cornerTwo.getBlockZ())) {
+                        finishBoatRace(player);
                     }
                 }
             }
