@@ -3,6 +3,7 @@ package fr.citedesiles.plugincite.utils;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
@@ -45,6 +46,19 @@ public class BoatRaceUtility {
             target.sendMessage("§6§l" + player.getName() + " §ea fini la course en " + String.format("%02d:%02d.%02d", (time.get(player.getUniqueId()) / 60000), (time.get(player.getUniqueId()) / 1000) % 60, (time.get(player.getUniqueId()) % 1000) / 10));
         }
         isInBoatRace.remove(player.getUniqueId());
+     }
+
+     public static void removePlayerOnBarrier() {
+        for(Player player : Bukkit.getOnlinePlayers()) {
+            if(isInBoatRace.containsKey(player.getUniqueId())) {
+                if(isInBoatRace.get(player.getUniqueId())) {
+                    if(player.getLocation().add(0,-1,0).getBlock().getType().equals(Material.BARRIER)) {
+                        player.sendMessage("§cVous avez touché un mur invisible");
+                        player.leaveVehicle();
+                    }
+                }
+            }
+        }
      }
 
 

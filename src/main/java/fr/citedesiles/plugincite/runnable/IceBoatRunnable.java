@@ -7,5 +7,8 @@ public class IceBoatRunnable extends BukkitRunnable {
     @Override
     public void run() {
         BoatRaceUtility.showRaceTimeToAll();
+
+        // Detecter si un joueur est sur les barrier
+        BoatRaceUtility.removePlayerOnBarrier();
     }
 }
