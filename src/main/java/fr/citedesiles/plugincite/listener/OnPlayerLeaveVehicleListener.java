@@ -17,6 +17,7 @@ public class OnPlayerLeaveVehicleListener implements Listener {
                     if (BoatRaceUtility.isInBoatRace.get(player.getUniqueId())) {
                         BoatRaceUtility.quitBoatRace(player.getUniqueId());
                         player.sendMessage("§cVous avez quitté la course.");
+                        event.getVehicle().remove();
                     }
                 }
             }
