@@ -238,7 +238,7 @@ public class AdminCommand implements CommandExecutor {
                     commandSender.sendMessage("§cLa valeur doit être true ou false");
                 }
                 break;
-            case "boatRaceModet":
+            case "boatRaceMode":
                 if(strings[1].equalsIgnoreCase("true")) {
                     BoatRaceUtility.boatRaceMode = true;
                     commandSender.sendMessage("§aLe mode bateau est activé");
