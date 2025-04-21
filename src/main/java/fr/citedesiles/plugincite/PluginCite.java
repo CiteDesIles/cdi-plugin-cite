@@ -14,11 +14,7 @@ import fr.citedesiles.plugincite.mysql.DatabaseManager;
 import fr.citedesiles.plugincite.objects.CDIObjectifManager;
 import fr.citedesiles.plugincite.objects.CDIPlayerManager;
 import fr.citedesiles.plugincite.objects.CDITeamManager;
-import fr.citedesiles.plugincite.runnable.GameModeRunnable;
-import fr.citedesiles.plugincite.runnable.ObjectifRunnable;
-import fr.citedesiles.plugincite.runnable.RefreshRunnable;
-import fr.citedesiles.plugincite.runnable.ScoreboardRunnable;
-import fr.citedesiles.plugincite.runnable.TeamSyncSaveRunnable;
+import fr.citedesiles.plugincite.runnable.*;
 import fr.citedesiles.plugincite.shop.ShopManager;
 import fr.citedesiles.plugincite.towerbuilder.WorldLoaderUtility;
 import fr.citedesiles.plugincite.utils.*;
@@ -84,6 +80,8 @@ public class PluginCite extends JavaPlugin {
         Objects.requireNonNull(getCommand("eco")).setExecutor(new EcoCommand());
         Objects.requireNonNull(getCommand("pay")).setExecutor(new PayCommand());
         Objects.requireNonNull(getCommand("boat")).setExecutor(new BoatCommand());
+
+
         try {
             configManager.loadConfig();
         } catch (IOException e) {
@@ -115,6 +113,9 @@ public class PluginCite extends JavaPlugin {
         hologramsManager = new HologramsManager();
         hologramsManager.initAll();
         HeadsFileManager.loadHeads();
+
+        IceBoatRunnable iceBoatRunnable = new IceBoatRunnable();
+        iceBoatRunnable.runTaskTimer(this, 0, 0);
 
         getServer().getScheduler().runTaskTimerAsynchronously(this, HeadsFileManager::saveHeads, 20 * 60 * 5, 20 * 60 * 5);
 
