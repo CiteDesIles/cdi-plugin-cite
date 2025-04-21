@@ -29,11 +29,13 @@ public class BoatCommand implements CommandExecutor {
             return true;
         }
 
+        Player player = (Player) commandSender;
+
         switch (strings[0]) {
             case "spawn" -> {
                 commandSender.sendMessage("Bonne course!");
                 // Logic to spawn a boat if player is 10 players away from the point
-                Player player = (Player) commandSender;
+
                 if(player.getLocation().distance(new Location(Bukkit.getWorld("world"), x, y, z)) > 10) {
                     player.sendMessage("§cVous devez être proche du point de départ.");
                     return true;
@@ -43,13 +45,21 @@ public class BoatCommand implements CommandExecutor {
                 BoatRaceUtility.startBoatRaceTime(player.getUniqueId());
             }
             case "teleport" -> {
-                Player player = (Player) commandSender;
                 if(BoatRaceUtility.isInBoatRace.containsKey(player.getUniqueId())) {
                     BoatRaceUtility.quitBoatRace(player.getUniqueId());
                 }
                 commandSender.sendMessage("Boat teleported!");
                 player.teleport(new Location(Bukkit.getWorld("world"), x, y+10, z));
                 // Logic to teleport a boat
+            }
+            case "restart" -> {
+                if(BoatRaceUtility.isInBoatRace.containsKey(player.getUniqueId())) {
+                    BoatRaceUtility.quitBoatRace(player.getUniqueId());
+                }
+                player.teleport(new Location(Bukkit.getWorld("world"), x, y+10, z));
+                OakBoat boat = player.getWorld().spawn(player.getLocation(), OakBoat.class);
+                boat.addPassenger(player);
+                BoatRaceUtility.startBoatRaceTime(player.getUniqueId());
             }
         }
         return true;
