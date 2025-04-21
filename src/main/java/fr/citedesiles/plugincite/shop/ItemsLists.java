@@ -42,19 +42,25 @@ public class ItemsLists {
 
         createItemsList("upgrade");
         Map<ItemStack, Long> upgrade = new HashMap<>();
-        upgrade.put(new ItemStack(Material.PODZOL), 2000L);
-        upgrade.put(new ItemStack(Material.MOSS_BLOCK), 1144L);
-        upgrade.put(new ItemStack(Material.DRIPSTONE_BLOCK), 207L);
-        upgrade.put(new ItemStack(Material.WAXED_OXIDIZED_COPPER_TRAPDOOR), 498L);
-        upgrade.put(new ItemStack(Material.END_ROD), 399L);
-        upgrade.put(new ItemStack(Material.GLOW_BERRIES), 269L);
-        upgrade.put(new ItemStack(Material.BOOKSHELF), 168L);
-        upgrade.put(new ItemStack(Material.RED_NETHER_BRICKS), 100L);
-        upgrade.put(new ItemStack(Material.CAULDRON), 100L);
-        upgrade.put(new ItemStack(Material.REPEATER), 85L);
-        upgrade.put(new ItemStack(Material.WHITE_CANDLE), 100L);
-        upgrade.put(new ItemStack(Material.BEEHIVE), 13L);
-        upgrade.put(new ItemStack(Material.HEAVY_CORE), 1L);
+        upgrade.put(new ItemStack(Material.LEVER), 5000L);
+        upgrade.put(new ItemStack(Material.IRON_BARS), 3000L);
+        upgrade.put(new ItemStack(Material.SPRUCE_TRAPDOOR), 1000L);
+        upgrade.put(new ItemStack(Material.MELON), 1000L);
+        upgrade.put(new ItemStack(Material.BAMBOO_BLOCK), 500L);
+        upgrade.put(new ItemStack(Material.SMITHING_TABLE), 500L);
+        upgrade.put(new ItemStack(Material.DEEPSLATE_BRICKS), 500L);
+        upgrade.put(new ItemStack(Material.RED_STAINED_GLASS), 300L);
+        upgrade.put(new ItemStack(Material.BLACK_STAINED_GLASS), 300L);
+        upgrade.put(new ItemStack(Material.YELLOW_STAINED_GLASS), 300L);
+        upgrade.put(new ItemStack(Material.MOSSY_STONE_BRICKS), 200L);
+        upgrade.put(new ItemStack(Material.HAY_BLOCK), 200L);
+        upgrade.put(new ItemStack(Material.BLAST_FURNACE), 150L);
+        upgrade.put(new ItemStack(Material.STICKY_PISTON), 100L);
+        upgrade.put(new ItemStack(Material.COAL_BLOCK), 100L);
+        upgrade.put(new ItemStack(Material.GOLD_BLOCK), 100L);
+        upgrade.put(new ItemStack(Material.NETHER_WART), 100L);
+        upgrade.put(new ItemStack(Material.CAKE), 25L);
+        upgrade.put(new ItemStack(Material.COBWEB), 25L);
         putItemsList("upgrade", upgrade);
 
         createItemsList("mineur");
@@ -149,6 +155,39 @@ public class ItemsLists {
         enderitefox.put(new ItemStack(Material.END_CRYSTAL), 550L);
         putItemsList("enderitefox", enderitefox);
 
+        createItemsList("begaydocrime");
+        Map<ItemStack, Long> begaydocrime = new HashMap<>();
+        begaydocrime.put(new ItemStack(Material.END_STONE), 0L);
+        putItemsList("begaydocrime", begaydocrime);
+
+        createItemsList("poisson");
+        Map<ItemStack, Long> poisson = new HashMap<>();
+        poisson.put(new ItemStack(Material.HEART_OF_THE_SEA), 5000L);
+        poisson.put(new ItemStack(Material.TURTLE_HELMET), 1000L);
+        poisson.put(new ItemStack(Material.TRIDENT), 500L);
+        poisson.put(new ItemStack(Material.SPONGE), 450L);
+        poisson.put(new ItemStack(Material.WATER_BUCKET), 400L);
+        poisson.put(new ItemStack(Material.SEA_LANTERN), 275L);
+        poisson.put(new ItemStack(Material.DARK_PRISMARINE_STAIRS), 200L);
+        poisson.put(new ItemStack(Material.PUFFERFISH), 150L);
+        poisson.put(new ItemStack(Material.PRISMARINE_WALL), 100L);
+        poisson.put(new ItemStack(Material.COOKED_SALMON), 80L);
+        putItemsList("poisson", poisson);
+
+        createItemsList("fildrong");
+        Map<ItemStack, Long> fildrong = new HashMap<>();
+        fildrong.put(new ItemStack(Material.IRON_HORSE_ARMOR), 5000L);
+        fildrong.put(new ItemStack(Material.ANVIL), 2000L);
+        fildrong.put(new ItemStack(Material.IRON_BLOCK), 550L);
+        fildrong.put(new ItemStack(Material.CAULDRON), 500L);
+        fildrong.put(new ItemStack(Material.MINECART), 400L);
+        fildrong.put(new ItemStack(Material.IRON_TRAPDOOR), 300L);
+        fildrong.put(new ItemStack(Material.COMPASS), 300L);
+        fildrong.put(new ItemStack(Material.IRON_DOOR), 250L);
+        fildrong.put(new ItemStack(Material.HOPPER), 150L);
+        fildrong.put(new ItemStack(Material.HEAVY_WEIGHTED_PRESSURE_PLATE), 150L);
+        fildrong.put(new ItemStack(Material.RAIL), 100L);
+        putItemsList("fildrong", fildrong);
     }
 
     public void editPrice(String itemsList, ItemStack item, long price) {
