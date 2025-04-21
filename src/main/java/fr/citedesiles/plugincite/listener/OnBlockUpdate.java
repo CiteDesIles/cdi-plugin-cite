@@ -3,11 +3,13 @@ package fr.citedesiles.plugincite.listener;
 import fr.citedesiles.plugincite.PluginCite;
 import fr.citedesiles.plugincite.objects.CDIPlayer;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockFadeEvent;
 import org.bukkit.event.block.BlockFromToEvent;
 import org.bukkit.event.block.BlockPhysicsEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
@@ -30,6 +32,12 @@ public class OnBlockUpdate implements Listener {
     @EventHandler
     public void onEntityChangeBlock(EntityChangeBlockEvent event) {
         if (areUpdatesDisabled(event.getBlock().getLocation())) event.setCancelled(true);
+    }
+
+    @EventHandler
+    public void onBlockPlace(BlockPlaceEvent event) {
+        if (event.getPlayer().isOp()) return;
+        if (event.getBlock().getType() == Material.PLAYER_HEAD) event.setCancelled(true);
     }
 
     @EventHandler
