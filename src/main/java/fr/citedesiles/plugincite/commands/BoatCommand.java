@@ -8,6 +8,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Boat;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.boat.OakBoat;
 import org.jetbrains.annotations.NotNull;
 
 public class BoatCommand implements CommandExecutor {
@@ -32,7 +33,7 @@ public class BoatCommand implements CommandExecutor {
                     player.sendMessage("§cVous devez être proche du point de départ.");
                     return true;
                 }
-                Boat boat = commandSender.getServer().getWorld("world").spawn(player.getLocation(), Boat.class);
+                OakBoat boat = player.getWorld().spawn(player.getLocation(), OakBoat.class);
                 boat.addPassenger(player);
                 BoatRaceUtility.startBoatRaceTime(player.getUniqueId());
             }
