@@ -157,7 +157,34 @@ public class ItemsLists {
 
         createItemsList("begaydocrime");
         Map<ItemStack, Long> begaydocrime = new HashMap<>();
-        begaydocrime.put(new ItemStack(Material.END_STONE), 0L);
+        begaydocrime.put(new ItemStack(Material.BEACON), 10000L);
+        begaydocrime.put(new ItemStack(Material.TOTEM_OF_UNDYING), 1000L);
+        begaydocrime.put(new ItemStack(Material.GRAY_BANNER), 50L);
+        begaydocrime.put(new ItemStack(Material.MAGENTA_CARPET), 10L);
+        begaydocrime.put(new ItemStack(Material.CYAN_BUNDLE), 100L);
+        begaydocrime.put(new ItemStack(Material.YELLOW_CONCRETE_POWDER), 60L);
+        begaydocrime.put(new ItemStack(Material.LIME_CANDLE), 70L);
+        begaydocrime.put(new ItemStack(Material.PINK_STAINED_GLASS_PANE), 20L);
+        begaydocrime.put(new ItemStack(Material.MUSIC_DISC_OTHERSIDE), 20000L);
+        begaydocrime.put(new ItemStack(Material.MUSIC_DISC_CREATOR), 20000L);
+        begaydocrime.put(new ItemStack(Material.MUSIC_DISC_CREATOR_MUSIC_BOX), 20000L);
+        begaydocrime.put(new ItemStack(Material.PURPLE_STAINED_GLASS), 80L);
+        begaydocrime.put(new ItemStack(Material.BLUE_GLAZED_TERRACOTTA), 70L);
+        begaydocrime.put(new ItemStack(Material.LIME_TERRACOTTA), 60L);
+        begaydocrime.put(new ItemStack(Material.ORANGE_CONCRETE), 60L);
+        begaydocrime.put(new ItemStack(Material.RED_WOOL), 50L);
+        begaydocrime.put(new ItemStack(Material.CAMPFIRE), 60L);
+        begaydocrime.put(new ItemStack(Material.RESIN_BLOCK), 80L);
+        begaydocrime.put(new ItemStack(Material.WHITE_SHULKER_BOX), 500L);
+        begaydocrime.put(new ItemStack(Material.TNT), 100L);
+        begaydocrime.put(new ItemStack(Material.TRIPWIRE_HOOK), 60L);
+        begaydocrime.put(new ItemStack(Material.LEATHER), 50L);
+        begaydocrime.put(new ItemStack(Material.BARREL), 150L);
+        begaydocrime.put(new ItemStack(Material.BREEZE_ROD), 100L);
+        begaydocrime.put(new ItemStack(Material.EGG), 25L);
+        begaydocrime.put(new ItemStack(Material.SLIME_BALL), 150L);
+        begaydocrime.put(new ItemStack(Material.HONEY_BOTTLE), 400L);
+        begaydocrime.put(new ItemStack(Material.TROPICAL_FISH), 200L);
         putItemsList("begaydocrime", begaydocrime);
 
         createItemsList("poisson");
