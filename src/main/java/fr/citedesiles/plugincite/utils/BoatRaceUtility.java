@@ -1,5 +1,7 @@
 package fr.citedesiles.plugincite.utils;
 
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -26,7 +28,7 @@ public class BoatRaceUtility {
                     long currentTime = System.currentTimeMillis();
                     long elapsedTime = currentTime - startTime;
                     // Format: Temps: 00:00.00
-                    player.sendMessage("§a§lTemps: " + String.format("%02d:%02d.%02d", (elapsedTime / 60000), (elapsedTime / 1000) % 60, (elapsedTime % 1000) / 10));
+                    player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText("§a§lTemps: " + String.format("%02d:%02d.%02d", (elapsedTime / 60000), (elapsedTime / 1000) % 60, (elapsedTime % 1000) / 10)));
                 }
             }
         }

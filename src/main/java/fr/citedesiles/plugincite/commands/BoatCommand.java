@@ -24,7 +24,7 @@ public class BoatCommand implements CommandExecutor {
             return true;
         }
 
-        if(!BoatRaceUtility.isInBoatRace) {
+        if(!BoatRaceUtility.boatRaceMode) {
             commandSender.sendMessage("§La course n'est pas active.");
             return true;
         }
