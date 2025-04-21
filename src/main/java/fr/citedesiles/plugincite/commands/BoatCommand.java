@@ -49,14 +49,14 @@ public class BoatCommand implements CommandExecutor {
                     BoatRaceUtility.quitBoatRace(player.getUniqueId());
                 }
                 commandSender.sendMessage("Boat teleported!");
-                player.teleport(new Location(Bukkit.getWorld("world"), x, y+10, z));
+                player.teleport(new Location(Bukkit.getWorld("world"), x, y+10, z, -90, 0));
                 // Logic to teleport a boat
             }
             case "restart" -> {
                 if(BoatRaceUtility.isInBoatRace.containsKey(player.getUniqueId())) {
                     BoatRaceUtility.quitBoatRace(player.getUniqueId());
                 }
-                player.teleport(new Location(Bukkit.getWorld("world"), x, y+10, z));
+                player.teleport(new Location(Bukkit.getWorld("world"), x, y+10, z, -90, 0));
                 OakBoat boat = player.getWorld().spawn(player.getLocation(), OakBoat.class);
                 boat.addPassenger(player);
                 BoatRaceUtility.startBoatRaceTime(player.getUniqueId());
