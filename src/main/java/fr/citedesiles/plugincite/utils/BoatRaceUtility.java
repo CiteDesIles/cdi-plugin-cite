@@ -3,6 +3,7 @@ package fr.citedesiles.plugincite.utils;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
@@ -55,6 +56,22 @@ public class BoatRaceUtility {
                     if(player.getLocation().add(0,-1,0).getBlock().getType().equals(Material.BARRIER)) {
                         player.sendMessage("§cVous avez touché un mur invisible");
                         player.leaveVehicle();
+                    }
+                }
+            }
+        }
+     }
+
+     public void detectFinishLineForAllPlayers() {
+        Location cornerOne = new Location(Bukkit.getWorld("world"), 86, 92, -314);
+        Location cornerTwo = new Location(Bukkit.getWorld("world"), 84, 96, -314);
+        for(Player player : Bukkit.getOnlinePlayers()) {
+            if(isInBoatRace.containsKey(player.getUniqueId())) {
+                if(isInBoatRace.get(player.getUniqueId())) {
+                    if(player.getLocation().getBlockX() >= cornerOne.getBlockX() && player.getLocation().getBlockX() <= cornerTwo.getBlockX()) {
+                        if(player.getLocation().getBlockZ() >= cornerOne.getBlockZ() && player.getLocation().getBlockZ() <= cornerTwo.getBlockZ()) {
+                            finishBoatRace(player);
+                        }
                     }
                 }
             }
