@@ -68,6 +68,7 @@ public class MainRankingHologram {
 
         List<String> text = new ArrayList<>();
         text.add("§8§l--- §6§lCité des îles §8§l---");
+        text.add("§70e. §3§l§kCorruption" + " §e∞ golds");
         List<CDITeam> rankedTeams = new ArrayList<>();
         int positiona = 1;
         for(CDITeam team : PluginCite.instance().teamManager().getTeams()) {

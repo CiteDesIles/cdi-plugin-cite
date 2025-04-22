@@ -23,7 +23,7 @@ public class ArrowShootOnPlayerRankingHologram {
         textHologramData.setScale(new Vector3f(0.8f));
         textHologramData.setSeeThrough(false);
         textHologramData.setBillboard(Display.Billboard.CENTER);
-        textHologramData.setText(List.of("§6§k§lXXXXXXXXXX XXXXXX", "§7Loading..."));
+        textHologramData.setText(List.of("§6§k§lClassement des archers", "§7Loading..."));
         Hologram prout = hologramManager.create(textHologramData);
         hologramManager.addHologram(prout);
     }
@@ -44,7 +44,7 @@ public class ArrowShootOnPlayerRankingHologram {
         }
 
         List<String> lines = new ArrayList<>();
-        lines.add("§6§l§kXXXXXXXXXX XXXXXXX");
+        lines.add("§6§l§kClassement des archers");
         int position = 1;
         List<CDITeam> teamListalreadysorted = new ArrayList<>();
         for(CDITeam team : PluginCite.instance().teamManager().getTeams()) {
