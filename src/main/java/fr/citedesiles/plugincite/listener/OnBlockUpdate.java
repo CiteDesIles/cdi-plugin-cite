@@ -37,7 +37,7 @@ public class OnBlockUpdate implements Listener {
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
         if (event.getPlayer().isOp()) return;
-        if (event.getBlock().getType() == Material.PLAYER_HEAD) event.setCancelled(true);
+        if (event.getBlock().getType() == Material.PLAYER_HEAD || event.getBlock().getType() == Material.PLAYER_WALL_HEAD) event.setCancelled(true);
     }
 
     @EventHandler

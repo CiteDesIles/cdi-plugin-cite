@@ -23,7 +23,7 @@ public class ApiculteurRankingHologram {
         textHologramData.setScale(new Vector3f(0.8f));
         textHologramData.setSeeThrough(false);
         textHologramData.setBillboard(Display.Billboard.CENTER);
-        textHologramData.setText(List.of("§6§k§lXXXXXXXXXX XX X'XXXXXX", "§7Loading..."));
+        textHologramData.setText(List.of("§6§k§lClassement de l'asmiel", "§7Loading..."));
         Hologram prout = hologramManager.create(textHologramData);
         hologramManager.addHologram(prout);
     }
@@ -44,7 +44,7 @@ public class ApiculteurRankingHologram {
         }
 
         List<String> lines = new ArrayList<>();
-        lines.add("§6§l§kXXXXXXXXXX XX X'XXXXXX");
+        lines.add("§6§l§kClassement de l'asmiel");
         int position = 1;
         List<CDITeam> teamListalreadysorted = new ArrayList<>();
         for(CDITeam team : PluginCite.instance().teamManager().getTeams()) {
