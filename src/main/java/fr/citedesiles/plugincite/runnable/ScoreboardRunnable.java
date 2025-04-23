@@ -45,8 +45,7 @@ public class ScoreboardRunnable extends BukkitRunnable {
                 Component.text("? G").color(NamedTextColor.YELLOW).decorate(TextDecoration.BOLD),
                 Component.text("? SP").color(NamedTextColor.AQUA).decorate(TextDecoration.BOLD),
                 Component.text(""),
-                Component.text("Position: ").color(NamedTextColor.WHITE)
-                    .append(Component.text(plugin.teamManager().position(cdiTeam)).color(NamedTextColor.RED))
+                Component.text("Position: §c?").color(NamedTextColor.WHITE)
             );
         }
 

@@ -38,7 +38,7 @@ public class PluginCite extends JavaPlugin {
     private static IslandManager islandManager;
 
     public static boolean shouldShowMainScoreboard = false;
-    public static boolean shouldShowObjectifScore = false;
+    public static boolean shouldShowObjectifScore = true;
 
     public static boolean islandEnable = true;
 
