@@ -2,6 +2,7 @@ package fr.citedesiles.plugincite.commands;
 
 import com.github.t9t.minecraftrconclient.RconClient;
 import fr.citedesiles.plugincite.PluginCite;
+import fr.citedesiles.plugincite.holograms.MainRankingHologram;
 import fr.citedesiles.plugincite.npcs.NPCs;
 import fr.citedesiles.plugincite.towerbuilder.CopyIceRaceFromAnotherWorld;
 import fr.citedesiles.plugincite.towerbuilder.CopyTowerFromAnotherWorld;
@@ -249,6 +250,10 @@ public class AdminCommand implements CommandExecutor {
                     commandSender.sendMessage("§cLa valeur doit être true ou false");
                 }
                 break;
+            case "line":
+                int number = Integer.parseInt(strings[1]);
+                MainRankingHologram.lineToShow = number;
+                commandSender.sendMessage("§aLes lignes affichés: " + number);
         }
         return true;
     }
