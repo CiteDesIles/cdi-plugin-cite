@@ -24,10 +24,10 @@ public class ChangeServerMenu {
         inv.setItem(3, lumenItem);
         ItemStack kaelum = new ItemStack(Material.PURPLE_CONCRETE);
         ItemMeta kaelumMeta = kaelum.getItemMeta();
-        kaelumMeta.setDisplayName("§5§lKaelum");
+        kaelumMeta.setDisplayName("§5§lShadow's Garden");
         kaelumMeta.setLore(
             List.of(
-                "§7Cliquez pour aller sur §5§lKaelum"
+                "§7Cliquez pour aller sur §5§lShadow's Garden"
             )
         );
         kaelum.setItemMeta(kaelumMeta);

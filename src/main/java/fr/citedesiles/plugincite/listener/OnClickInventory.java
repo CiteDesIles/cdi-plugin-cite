@@ -35,7 +35,7 @@ public class OnClickInventory implements Listener {
                 return;
             }
             if (event.getCurrentItem().getType().equals(Material.PURPLE_CONCRETE)) {
-                event.getWhoClicked().sendMessage("§fVous allez être redirigé vers le serveur §5§lKaelum");
+                event.getWhoClicked().sendMessage("§fVous allez être redirigé vers le serveur §5§lShadow's Garden");
                 JoinFunctionUtility.connect("kaelum", (Player) event.getWhoClicked());
                 event.getWhoClicked().closeInventory();
                 return;
