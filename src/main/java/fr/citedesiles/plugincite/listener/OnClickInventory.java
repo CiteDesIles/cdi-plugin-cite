@@ -77,6 +77,9 @@ public class OnClickInventory implements Listener {
         }
 
         if (event.getView().getTitle().startsWith("§6")) {
+
+            // TODO: Implement buy logic
+
             event.setCancelled(true);
             String itemList = event.getView().getTitle().replace("§6", "");
             ItemStack item = event.getCurrentItem();
