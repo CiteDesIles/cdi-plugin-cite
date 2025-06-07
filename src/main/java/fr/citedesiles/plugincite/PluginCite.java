@@ -1,3 +1,11 @@
+/*
+ *
+ * Ceci est une archive du code source de la première version de
+ *          La Cité des Îles - Across The Sea -
+ *
+ */
+
+
 package fr.citedesiles.plugincite;
 
 import fr.citedesiles.plugincite.commands.AdminCommand;
