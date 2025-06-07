@@ -26,16 +26,29 @@ public class ShopManager {
                 long count = countItemInInventory(player, item);
                 ItemMeta itemMeta = item.getItemMeta();
                 if(!itemsList.equals("upgrade")) {
-                    itemMeta.setLore(List.of(
-                        "§fPrix Unité: §e" + price + " golds",
-                        "§fQuantité dans votre inventaire: " + count,
-                        "§c ",
-                        "§fClique gauche pour vendre §e1 §funité",
-                        "§fClique droit pour vendre §e64 §funités",
-                        "§fShift-Click pour vendre §eTOUT §fce que vous avez (soit " + count * price + " golds)"
-                    ));
-                    item.setItemMeta(itemMeta);
-                    inv.setItem(i, item);
+                    if(itemsList.contains("sell")) {
+                        itemMeta.setLore(List.of(
+                            "§fPrix Unité: §e" + price + " golds",
+                            "§fQuantité dans votre inventaire: " + count,
+                            "§c ",
+                            "§fClique gauche pour vendre §e1 §funité",
+                            "§fClique droit pour vendre §e64 §funités",
+                            "§fShift-Click pour vendre §eTOUT §fce que vous avez (soit " + count * price + " golds)"
+                        ));
+                        item.setItemMeta(itemMeta);
+                        inv.setItem(i, item);
+                    }
+                    if(itemsList.contains("buy")) {
+                        itemMeta.setLore(List.of(
+                            "§fPrix Unité: §e" + price + " golds",
+                            "§fQuantité dans votre inventaire: " + count,
+                            "§c ",
+                            "§fClique gauche pour acheter §e1 §funité",
+                            "§fClique droit pour acheter §e64 §funités"
+                        ));
+                        item.setItemMeta(itemMeta);
+                        inv.setItem(i, item);
+                    }
                 } else {
                     itemMeta.setLore(List.of(
                         "§fReste nécessaire: §c§l" + price + " objets",
